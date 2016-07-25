@@ -13,7 +13,7 @@
     <link href="/clinica/sif/css/sb-admin.css" rel="stylesheet">
     <link href="/clinica/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
     <!--link href="css/plugins/morris.css" rel="stylesheet"-->
-    <script src="/c/sif/js/jquery.js"></script>
+    <script src="/clinica/sif/js/jquery.js"></script>
     <script src="/clinica/sif/js/bootstrap.min.js"></script>
     <script src="/clinica/sif/js/plugins/morris/raphael.min.js"></script>
     <script src="/clinica/sif/js/plugins/morris/morris.min.js"></script>
@@ -85,9 +85,9 @@
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-							<i class="glyphicon glyphicon-user"></i>
-							Compareceu
-						</h3>
+                            <i class="glyphicon glyphicon-user"></i>
+                            Compareceu
+			</h3>
                     </div>
                     <div class="panel-body">
                         10 Atendidos
@@ -111,7 +111,7 @@
 			<!-- Page Heading -->
 			<div class="row">
 				<div class="col-lg-12">
-                                    <h1 class="page-header">Agenda DiÃ¡ria</h1>
+                                    <h1 class="page-header">Agenda Di&aacute;ria</h1>
 				</div>
 			</div>
 			

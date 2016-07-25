@@ -21,8 +21,28 @@
         $('.collapse').collapse();
     </script>
 	<script>
-		$(document).ready(function(){
+		/*avança do dados do paciente para ficha de avaliação*/
+                $(document).ready(function(){
 			$('#avancar1').on('click', function(){
+				$('#aprofile').trigger('click');
+			});
+		});
+                
+                /*Avança do Ficha de avaliação para Disponibilidade para sessões*/
+                $(document).ready(function(){
+			$('#avancar2').on('click', function(){
+				$('#amessages').trigger('click');
+			});
+		});
+                /*Volta da ficha de avaliação para Dados do paciente*/
+                $(document).ready(function(){
+			$('#voltar1').on('click', function(){
+				$('#ahome').trigger('click');
+			});
+		});
+                /*Volta da Disponibilidade de sessões para ficha de avaliação*/
+                $(document).ready(function(){
+			$('#voltar2').on('click', function(){
 				$('#aprofile').trigger('click');
 			});
 		});
@@ -203,7 +223,7 @@
 							</div>
 						</div>
 						<div>
-							<button type="button" id="avancar1" class="btn btn-primary">AVAN&Ccedil;AR 1 <i class="glyphicon glyphicon-arrow-right"></i></button>
+							<button type="button" id="avancar1" class="btn btn-primary">AVAN&Ccedil;AR 1 <i class="glyphicon glyphicon-chevron-right"></i></button>
 						</div>
 					</div>
 					<!-- FIM DADOS DO PACIENTE-->
@@ -476,7 +496,7 @@
 						</div>
 													
 						<div class="form-group">
-							<label>CaracterÃ­stica da regiÃ£o apalpada:</label>
+							<label>Caracter&iacute;stica da regiÃ£o apalpada:</label>
 								<label class="radio-inline">
 									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temparatura
 								</label>
@@ -495,8 +515,8 @@
 							
 						<!--ANVAÃAR 2 >> PARA MARCAR HORARIOS-->
 						<div>
-							<button type="button" id="voltar1" class="btn btn-primary">VOLTAR 1 <i class="glyphicon glyphicon-arrow-right"></i></button>
-							<button type="button" id="avancar2" class="btn btn-primary">AVAN&Ccedil;AR 2 <i class="glyphicon glyphicon-arrow-right"></i></button>
+							<button type="button" id="voltar1" class="btn btn-primary "><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
+							<button type="button" id="avancar2" class="btn btn-primary">AVAN&Ccedil;AR 2 <i class="glyphicon glyphicon-chevron-right"></i></button>
 						</div>
 						
 					 </div>	
@@ -558,14 +578,13 @@
 							<!-- BOTÃO CADASTRAR E GERAR FICHA DE PRESENÃA-->
 							<div>
 								<button type="button" class="btn btn-DANGER">CANCELAR</button>
-								<button type="button" id="voltar2" class="btn btn-info">VOLTAR</button>
+								<button type="button" id="voltar2" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
 								<a class="btn btn-success" href="3.1_TelaFichaPresenca.png">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></a>
 								<!--button type="button" class="btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i></button-->
 							</div>
 						</div>
 					</div>
 					<!-- FIM DISPONBILIDADE PARA SESSÃES-->
-				  
 				</div>
 			</div>
 			
