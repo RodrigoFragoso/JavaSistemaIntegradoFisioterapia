@@ -7,6 +7,7 @@ public class testador {
 	}
 	  public static void main(String [] args) throws SQLException{
             LoginCliDao p = new LoginCliDao();
+            //Rodrigo testando com o Alexandre
                 System.out.println("Conectado com o Banco de dados Mysql!");
 	}
 }
