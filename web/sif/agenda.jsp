@@ -13,7 +13,7 @@
     <link href="/ClinicaFisioterapia/sif/css/sb-admin.css" rel="stylesheet">
     <link href="/ClinicaFisioterapia/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
     <!--link href="css/plugins/morris.css" rel="stylesheet"-->
-    <script src="/ClinicaFisioterapia/sif/js/jquery.js"></script>
+    <script src="/c/sif/js/jquery.js"></script>
     <script src="/ClinicaFisioterapia/sif/js/bootstrap.min.js"></script>
     <script src="/ClinicaFisioterapia/sif/js/plugins/morris/raphael.min.js"></script>
     <script src="/ClinicaFisioterapia/sif/js/plugins/morris/morris.min.js"></script>
