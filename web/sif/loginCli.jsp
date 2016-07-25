@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>S.I.F - Sistema integrado de Fisioterapia</title>
-    <link href="/ClinicaFisioterapia/sif/css/bootstrapLogin.css" rel="stylesheet">
-    <link href="/ClinicaFisioterapia/sif/css/bootstrapLogin.min.css" rel="stylesheet">
-    <link href="/ClinicaFisioterapia/sif/css/bootstrapLogin-theme.css" rel="stylesheet">
-    <link href="/ClinicaFisioterapia/sif/css/bootstrapLogin-theme.min.css" rel="stylesheet">
-    <script src="/ClinicaFisioterapia/sif/js/jquery.js"></script>
-    <script src="/ClinicaFisioterapia/sif/js/bootstrap.js"></script>
-    <script src="/ClinicaFisioterapia/sif/js/bootstrap.min.js"></script>
-    <script src="/ClinicaFisioterapia/sif/js/npm.js"></script>
+    <link href="/clinica/sif/css/bootstrapLogin.css" rel="stylesheet">
+    <link href="/clinica/sif/css/bootstrapLogin.min.css" rel="stylesheet">
+    <link href="/clinica/sif/css/bootstrapLogin-theme.css" rel="stylesheet">
+    <link href="/clinica/sif/css/bootstrapLogin-theme.min.css" rel="stylesheet">
+    <script src="/clinica/sif/js/jquery.js"></script>
+    <script src="/clinica/sif/js/bootstrap.js"></script>
+    <script src="/clinica/sif/js/bootstrap.min.js"></script>
+    <script src="/clinica/sif/js/npm.js"></script>
 </head>
 <body>
 	</br></br></br></br>
@@ -34,7 +34,7 @@
                         </c:choose>
 			<div class="bs-example" data-example-id="navbar-form" align="center">
 				<nav class="navbar navbar-default">
-                                <form action="/ClinicaFisioterapia/LoginCli" method="POST" class="form-signin">
+                                <form action="/clinica/LoginCli" method="POST" class="form-signin">
                                     <div class="container-fluid"></br>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                                             <div class="form-group" align="center">

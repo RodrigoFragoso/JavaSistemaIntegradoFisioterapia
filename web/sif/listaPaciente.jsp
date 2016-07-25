@@ -9,15 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>S.I.F - Sistema Integrado de Fisioterapia</title>
-    <link href="/ClinicaFisioterapia/sif/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/ClinicaFisioterapia/sif/css/sb-admin.css" rel="stylesheet">
-    <link href="/ClinicaFisioterapia/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
-    <link href="/ClinicaFisioterapia/sif/css/plugins/morris.css" rel="stylesheet">
-    <script src="/ClinicaFisioterapia/sif/js/jquery.js"></script>
-    <script src="/ClinicaFisioterapia/sif/js/bootstrap.min.js"></script>
-    <script src="/ClinicaFisioterapia/sif/js/plugins/morris/raphael.min.js"></script>
-    <script src="/ClinicaFisioterapia/sif/js/plugins/morris/morris.min.js"></script>
-    <script src="/ClinicaFisioterapia/sif/js/plugins/morris/morris-data.js"></script>
+    <link href="/clinica/sif/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/clinica/sif/css/sb-admin.css" rel="stylesheet">
+    <link href="/clinica/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
+    <link href="/clinica/sif/css/plugins/morris.css" rel="stylesheet">
+    <script src="/clinica/sif/js/jquery.js"></script>
+    <script src="/clinica/sif/js/bootstrap.min.js"></script>
+    <script src="/clinica/sif/js/plugins/morris/raphael.min.js"></script>
+    <script src="/clinica/sif/js/plugins/morris/morris.min.js"></script>
+    <script src="/clinica/sif/js/plugins/morris/morris-data.js"></script>
 	<script>
 		$('.collapse').collapse();
 	</script>
@@ -28,7 +28,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="/ClinicaFisioterapia/sif/agenda.jsp">S.I.F - Sistema Integrado de Fisioterapia</a>
+                <a class="navbar-brand" href="/clinica/sif/agenda.jsp">S.I.F - Sistema Integrado de Fisioterapia</a>
             </div>
             
 			<!-- Top Menu Items -->
@@ -41,7 +41,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="/ClinicaFisioterapia/sif/loginCli.jsp"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="/clinica/sif/loginCli.jsp"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -50,25 +50,25 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="/ClinicaFisioterapia/sif/agenda.jsp"><i class="fa fa-fw fa-table"></i> Agenda</a>
+                        <a href="/clinica/sif/agenda.jsp"><i class="fa fa-fw fa-table"></i> Agenda</a>
                     </li>
                     <li>
-                        <a href="/ClinicaFisioterapia/sif/cadastraPaciente.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Pacientes</a>
+                        <a href="/clinica/sif/cadastraPaciente.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Pacientes</a>
                     </li>
-					<li class="active">
-                        <a href="/ClinicaFisioterapia/sif/listaPaciente.jsp"><i class="glyphicon glyphicon-list-alt"></i> Pacientes</a>
-                    </li>
-					<li>
-                        <a href="/ClinicaFisioterapia/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
+                    <li class="active">
+                        <a href="/clinica/sif/listaPaciente.jsp"><i class="glyphicon glyphicon-list-alt"></i> Pacientes</a>
                     </li>
                     <li>
-                        <a href="/ClinicaFisioterapia/sif/listaFuncionario.jsp"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
+                        <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li>
-                        <a href="/ClinicaFisioterapia/sif/relatorios.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Relat&oacute;rios</a>
+                        <a href="/clinica/sif/listaFuncionario.jsp"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
                     </li>
                     <li>
-                        <a href="/ClinicaFisioterapia/sif/loginCli.jsp"><i class="glyphicon glyphicon-off"></i> SAIR</a>
+                        <a href="/clinica/sif/relatorios.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Relat&oacute;rios</a>
+                    </li>
+                    <li>
+                        <a href="/clinica/sif/loginCli.jsp"><i class="glyphicon glyphicon-off"></i> SAIR</a>
                     </li>
                 </ul>
             </div>
@@ -83,7 +83,7 @@
 			
 			<div class="alert alert-info" role="alert">
 			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-				Digite o <b><u>NÂº do cartÃ£o SUS</u></b> e clique em <b>PESQUISAR!</b>
+				Digite o <b><u>Nº do Cart&atilde;o SUS</u></b> e clique em <b>PESQUISAR!</b>
 			</div>
 			
 			<!-- Page Heading -->
@@ -120,7 +120,7 @@
 						<div>
 							<div class="row">
 								 <div class="form-group col-md-3">
-								   <label for="campo1">NÂº CartÃ£o SUS: </label>
+								   <label for="campo1">Nº Cart&atilde;o SUS: </label>
 								   <input type="text" class="form-control" id="campo1">
 								 </div>
 								 
@@ -154,11 +154,11 @@
 								   <input type="text" class="form-control" id="campo3">
 								</div>
 								<div class="form-group col-md-2">
-								   <label for="campo3">Data de EmissÃ£o: </label>
+								   <label for="campo3">Data de Emiss&atilde;o: </label>
 								   <input type="text" class="form-control" id="campo3">
 								</div>
 								<div class="form-group col-md-2">
-								   <label for="campo3">OrgÃ£o Emissor: </label>
+								   <label for="campo3">Org&atilde;o Emissor: </label>
 								   <input type="text" class="form-control" id="campo3">
 								</div>
 								<div class="form-group col-md-3">
@@ -314,6 +314,7 @@
 						</div>
 						
 						<!-- ANALISE DO SINTOMA PRINCIPAL-->
+                                                <br />
 						<h5 class="page-header"><b><u>ANALISE DO SINTOMA PRINCIPAL</u></b></h5>
 						<div class="form-group col-md-3">
 							<label for="sel1">In&iacute;cio</label>
@@ -330,7 +331,7 @@
 							<label for="sel1">Acompanha outros sintomas?</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
@@ -341,9 +342,10 @@
 						
 						
 						<!-- CLASSIFICAÃÃO DA DOR -->
+                                                <br />
 						<h5 class="page-header"><b><u>CLASSIFICA&Ccedil;&Atilde;O DA DOR</u></b></h5>
 						<div class="form-group col-md-4">
-							<label for="campo2">LocalizaÃ§Ã£o:</label>
+							<label for="campo2">Localiza&ccedil;&atilde;o:</label>
 							<input type="text" class="form-control" id="campo3">
 						</div>
 						<div class="form-group col-md-2">
@@ -357,7 +359,7 @@
 							<label for="sel1">Irradia&ccedil;&atilde;o:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -369,7 +371,7 @@
 							<label for="sel1">Ao movimento:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -381,14 +383,14 @@
 							<label for="sel1">Ao repouso:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
 							<label for="sel1">Clim&aacute;tica:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						
@@ -396,7 +398,7 @@
 							<label for="sel1">EsforÃ§o:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -481,7 +483,7 @@
 						</div>
 													
 						<div class="form-group">
-							<label>CaracterÃ­stica da regiÃ£o apalpada:</label>
+							<label>Caracter&iacute;stica da regi&atilde;o apalpada:</label>
 								<label class="radio-inline">
 									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temparatura
 								</label>
