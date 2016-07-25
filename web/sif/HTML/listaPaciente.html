@@ -1,0 +1,575 @@
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>S.I.F - Sistema Integrado de Fisioterapia</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
+    <link href="css/plugins/morris.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+	<script>
+		$('.collapse').collapse();
+	</script>
+</head>
+
+<body>
+    <div id="wrapper">    
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="agenda.html">S.I.F - Sistema Integrado de Fisioterapia</a>
+            </div>
+            
+			<!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="agenda.html"><i class="fa fa-fw fa-table"></i> Agenda</a>
+                    </li>
+                    <li>
+                        <a href="cadastraPaciente.html"><i class="fa fa-fw fa-edit"></i> Cadastro de Pacientes</a>
+                    </li>
+					<li class="active">
+                        <a href="listaPaciente.html"><i class="glyphicon glyphicon-list-alt"></i> Pacientes</a>
+                    </li>
+					<li>
+                        <a href="cadastraFuncionario.html"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
+                    </li>
+                    <li>
+                        <a href="listaFuncionario.html"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
+                    </li>
+                    <li>
+                        <a href="relatorios.html"><i class="fa fa-fw fa-bar-chart-o"></i> Relat&oacute;rios</a>
+                    </li>
+                    <li>
+                        <a href="login.html"><i class="glyphicon glyphicon-off"></i> SAIR</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+				
+		<div id="page-wrapper">
+			<ol class="breadcrumb">
+			  <li><a href="#">In&iacute;cio</a></li>
+			  <li class="active"><i class="glyphicon glyphicon-list-alt"></i> Pacientes Cadastrados</a></li>
+			</ol>
+			
+			<div class="alert alert-info" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				Digite o <b><u>Nº do cartão SUS</u></b> e clique em <b>PESQUISAR!</b>
+			</div>
+			
+			<!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                   <h1 class="page-header">Pacientes Cadastrados</h1>
+					<div class="form-group col-md-3"></div>
+						<div class="row "  align="center">
+							<div class="col-lg-6">
+								<div class="input-group">
+								<input type="text" class="form-control" placeholder="DIGITE O N&ordm; CART&Atilde;O SUS">
+								  <span class="input-group-btn">
+									<button class="btn btn-primary" type="button">PESQUISAR</button>
+								  </span>
+								</div><!-- /input-group -->
+							</div><!-- /.col-lg-6 -->
+						</div></br>
+                </div>
+            </div>
+			
+			<div>
+				  <!-- Nav tabs -->
+				<ul class="nav nav-tabs nav-justified " role="tablist" id="myTabs">
+					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><b>DADOS DO PACIENTE</b></a></li>
+					<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><b>FICHA DE AVALI&Ccedil;&Atilde;O</b></a></li>
+					<!--li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><b>DISPONIBILIDADE PARA SESS&Otilde;ES</b></a></li-->
+				</ul>
+
+				  <!-- Tab panes -->
+				<div class="tab-content">
+					
+					<!-- DADOS DO PACIENTE-->
+					<div role="tabpanel" class="tab-pane active" id="home"></br>
+						<div>
+							<div class="row">
+								 <div class="form-group col-md-3">
+								   <label for="campo1">Nº Cartão SUS: </label>
+								   <input type="text" class="form-control" id="campo1">
+								 </div>
+								 
+								 <div class="form-group col-md-6">
+								   <label for="campo2">Nome Completo: </label>
+								   <input type="text" class="form-control" id="campo3">
+								 </div>
+								 
+								 <div class="form-group col-md-3">
+								   <label for="campo3">Telefone</label>
+								   <input type="text" class="form-control" id="campo3">
+								 </div>
+								 <div class="form-group col-md-2">
+								   <label for="campo3">Data Nascimento</label>
+								   <input type="test" class="form-control" id="campo3">
+								 </div>
+								 <div class="form-group col-md-1">
+								   <label for="campo3">Idade</label>
+								   <input type="text" class="form-control" id="campo3">
+								 </div>
+								<div class="form-group col-md-3">
+								  <label for="sel1">Sexo</label>
+								  <select class="form-control" id="sel1">
+									<option>Selecionar</option>
+									<option>Masculino</option>
+									<option>Feminino</option>
+								  </select>
+								</div>							
+								<div class="form-group col-md-2">
+								   <label for="campo3">R.G: </label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-2">
+								   <label for="campo3">Data de Emissão: </label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-2">
+								   <label for="campo3">Orgão Emissor: </label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-3">
+								   <label for="campo3">Nome do Pai:</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-3">
+								   <label for="campo3">Nome da M&atilde;e:</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-3">
+								   <label for="campo3">Profiss&atilde;o:</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-3">
+								  <label for="sel1">Ra&ccedil;a/Cor:</label>
+								  <select class="form-control" id="sel1">
+									<option>Branco</option>
+									<option>Negro</option>
+									<option>Pardo</option>
+									<option>Amarelo</option>
+									<option>Ignorar</option>
+								  </select>
+								</div>
+								<div class="form-group col-md-2">
+								   <label for="campo3">C.E.P</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-3">
+								   <label for="campo3">Endere&ccedil;o</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-1">
+								   <label for="campo3">N&ordm;:</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-3">
+								   <label for="campo3">Bairro</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-1">
+								   <label for="campo3">UF</label>
+								   <input type="text" class="form-control" id="campo3">
+								</div>
+								<div class="form-group col-md-2">
+								   <label for="campo3">Cidade
+									<input type="text" class="form-control" id="campo3">
+								   </label>
+								</div>
+							</div>
+						</div>
+						<div>
+							<button type="button" class="btn btn-primary">AVAN&Ccedil;AR 1 <i class="glyphicon glyphicon-arrow-right"></i></button>
+						</div>
+					</div>
+					<!-- FIM DADOS DO PACIENTE-->
+					
+					
+					<!-- FICHA CADASTRAL-->
+					<div role="tabpanel" class="tab-pane" id="profile"></br>
+					  <div>
+						<div class="form-group col-md-6">
+							<label for="campo2">Diagn&oacute;stico Cl&iacute;nico </label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="campo2">Diagn&oacute;stico fisioterap&ecirc;utico </label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-4">
+							<label for="campo2">ANAMNESE </label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-4">
+							<label for="campo2">H.M.A</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-4">
+							<label for="campo2">H.M.P</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Antecedentes heredit&aacute;rios</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Antecedentes heredit&aacute;rios</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sel1">Algum tipo de Cirurgia?</label>
+							<select class="form-control" id="sel1">
+								<option>Selecionar</option>
+								<option>Sim</option>
+								<option>N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Quais?</label>
+							<input type="text" class="form-control" id="campo3">
+							</BR>
+						</div>
+						<!-- HABITOS DE VIDA-->
+						<h5 class="page-header"><b><u>HABITOS DE VIDA</u></b></h5>
+						<div class="form-group col-md-3">
+							<label for="sel1">Tabagista?</label>
+							<select class="form-control" id="sel1">
+								<option>Selecionar</option>
+								<option>Sim</option>
+								<option>N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">N&ordm; cigarros dia?</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sel1">Etilista?</label>
+							<select class="form-control" id="sel1">
+								<option>Selecionar</option>
+								<option>Sim</option>
+								<option>N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Quantidade?</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sel1">Sedent&aacute;rio?</label>
+							<select class="form-control" id="sel1">
+								<option>Selecionar</option>
+								<option>Sim</option>
+								<option>N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Frequ&ecirc;ncia:</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sel1">Medicamentos?</label>
+							<select class="form-control" id="sel1">
+								<option>Selecionar</option>
+								<option>Sim</option>
+								<option>N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Quais:</label>
+							<input type="text" class="form-control" id="campo3">
+							</BR>
+						</div>
+						
+						<!-- ANALISE DO SINTOMA PRINCIPAL-->
+						<h5 class="page-header"><b><u>ANALISE DO SINTOMA PRINCIPAL</u></b></h5>
+						<div class="form-group col-md-3">
+							<label for="sel1">In&iacute;cio</label>
+							<select class="form-control" id="sel1">
+								<option>Gradual</option>
+								<option>Repentino</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Mecanismo que leva ao sintoma:</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sel1">Acompanha outros sintomas?</label>
+							<select class="form-control" id="sel1">
+								<option>Sim</option>
+								<option>Não</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="campo2">Qual?</label>
+							<input type="text" class="form-control" id="campo3">
+							</br>
+						</div>
+						
+						
+						<!-- CLASSIFICAÇÃO DA DOR -->
+						<h5 class="page-header"><b><u>CLASSIFICA&Ccedil;&Atilde;O DA DOR</u></b></h5>
+						<div class="form-group col-md-4">
+							<label for="campo2">Localização:</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="sel1">C&aacute;rater:</label>
+							<select class="form-control" id="sel1">
+								<option>Aguda</option>
+								<option>Cr&ocirc;nica</option>
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="sel1">Irradia&ccedil;&atilde;o:</label>
+							<select class="form-control" id="sel1">
+								<option>Sim</option>
+								<option>Não</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="campo2">Local:</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						
+						<div class="form-group col-md-2">
+							<label for="sel1">Ao movimento:</label>
+							<select class="form-control" id="sel1">
+								<option>Sim</option>
+								<option>Não</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="campo2">Qual?</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						
+						<div class="form-group col-md-3">
+							<label for="sel1">Ao repouso:</label>
+							<select class="form-control" id="sel1">
+								<option>Sim</option>
+								<option>Não</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sel1">Clim&aacute;tica:</label>
+							<select class="form-control" id="sel1">
+								<option>Sim</option>
+								<option>Não</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-3">
+							<label for="sel1">Esforço:</label>
+							<select class="form-control" id="sel1">
+								<option>Sim</option>
+								<option>Não</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="campo2">Qual?</label>
+							<input type="text" class="form-control" id="campo3">
+						</div>
+						
+						<div class="form-group">
+							<label>Escala da dor EVA:</label>
+							<div>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>2
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>3
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>4
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>5
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>6
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>7
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>8
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>9
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>10
+								</label>
+							</div>
+							</br>
+							</br>
+						</div>
+												
+						
+						<!-- EXAME FISICO -->
+						<h5 class="page-header"><b><u>EXAME F&Iacute;SICO</u></b></h5>
+						<div class="form-group">
+								<label>Inspe&ccedil;&atilde;o(atrav&eacute;s da vis&atilde;o):</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Edema
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Hematoma
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Hiperemia
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Atrofia
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Cicatriz
+								</label>
+						</div>
+						<div class="form-group">
+								<label><u>Palpa&ccedil;&atilde;o(atrav&eacute;s do tato)</u></label></br>
+								<label>Tonus:</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Normal
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Aumentando
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Diminuíndo
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Ausente
+								</label>
+						</div>
+													
+						<div class="form-group">
+							<label>Característica da região apalpada:</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temparatura
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Deformidade
+								</label>
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Ader&ecirc;ncia
+								</label>
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Dor
+								</label>
+						</div>
+							
+						<!--ANVAÇAR 2 >> PARA MARCAR HORARIOS-->
+						<div>
+							<button type="button" class="btn btn-danger"><a href="agenda.jsp">VOLTAR</a></button>
+							<button type="button" class="btn btn-success">ATUALIZAR <i class="glyphicon glyphicon-repeat"></i></button>
+						</div>
+						
+					 </div>	
+					</div>
+					<!-- FIM FICHA CADASTRAL-->
+					
+					
+					<!-- DISPONBILIDADE PARA SESSÕES-->
+					<!--div role="tabpanel" class="tab-pane" id="messages"></br>
+						<div align="center">
+							<div class="form-group">
+								<label>DIAS:</label>
+									<label class="checkbox-inline">
+										<input type="checkbox">Segunda-feira
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox">Quarta-feira
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox">Sexta-feira
+									</label>
+							</div>
+							<div class="form-group">
+								<label>MANH&Atilde;:</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>07:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">08:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">09:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">10:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">11:00
+									</label>
+								</br>	
+								<label>TARDE:</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">13:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">14:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">15:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">16:00
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">17:00
+									</label>
+							</div-->
+						
+							<!-- BOTÃO CADASTRAR E GERAR FICHA DE PRESENÇA-->
+							<!--div>
+								<button type="button" class="btn btn-success">CADASTRAR E GERAR FICHA DE PRESEN&Ccedil;A<i class="glyphicon glyphicon-floppy-disk"></i></button>
+							</div>
+						</div>
+					</div-->
+					<!-- FIM DISPONBILIDADE PARA SESSÕES-->
+				  
+				</div>
+			</div>
+		</div>
+	
+
+	</div>
+</body>
+</html>
