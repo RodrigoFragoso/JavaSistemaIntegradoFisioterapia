@@ -252,15 +252,11 @@
 							<label for="campo2">H.M.P</label>
 							<input type="text" class="form-control" id="campo3">
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-4">
 							<label for="campo2">Antecedentes heredit&aacute;rios</label>
 							<input type="text" class="form-control" id="campo3">
 						</div>
-						<div class="form-group col-md-3">
-							<label for="campo2">Antecedentes heredit&aacute;rios</label>
-							<input type="text" class="form-control" id="campo3">
-						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-4">
 							<label for="sel1">Algum tipo de Cirurgia?</label>
 							<select class="form-control" id="sel1">
 								<option>Selecionar</option>
@@ -268,10 +264,9 @@
 								<option>N&atilde;o</option>
 							</select>
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-4">
 							<label for="campo2">Quais?</label>
 							<input type="text" class="form-control" id="campo3">
-							</BR>
 						</div>
 						<!-- HABITOS DE VIDA-->
                                                 <br />
@@ -344,7 +339,7 @@
 							<label for="sel1">Acompanha outros sintomas?</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
@@ -358,7 +353,7 @@
                                                 <br />
 						<h5 class="page-header"><b><u>CLASSIFICA&Ccedil;&Atilde;O DA DOR</u></b></h5>
 						<div class="form-group col-md-4">
-							<label for="campo2">LocalizaÃ§Ã£o:</label>
+							<label for="campo2">Localiza&ccedil;&atilde;o:</label>
 							<input type="text" class="form-control" id="campo3">
 						</div>
 						<div class="form-group col-md-2">
@@ -372,7 +367,7 @@
 							<label for="sel1">Irradia&ccedil;&atilde;o:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -384,7 +379,7 @@
 							<label for="sel1">Ao movimento:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -396,22 +391,22 @@
 							<label for="sel1">Ao repouso:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
 							<label for="sel1">Clim&aacute;tica:</label>
 							<select class="form-control" id="sel1">
 								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option>N&atilde;o</option>
 							</select>
 						</div>
 						
 						<div class="form-group col-md-3">
-							<label for="sel1">EsforÃ§o:</label>
+							<label for="sel1">Esforço:</label>
 							<select class="form-control" id="sel1">
-								<option>Sim</option>
-								<option>NÃ£o</option>
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -488,7 +483,7 @@
 									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Aumentando
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">DiminuÃ­ndo
+									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Dimin&iacute;ndo
 								</label>
 								<label class="checkbox-inline">
 									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Ausente
@@ -496,7 +491,7 @@
 						</div>
 													
 						<div class="form-group">
-							<label>Caracter&iacute;stica da regiÃ£o apalpada:</label>
+							<label>Caracter&iacute;stica da regi&atilde;o apalpada:</label>
 								<label class="radio-inline">
 									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temparatura
 								</label>
@@ -527,7 +522,16 @@
 					<!-- DISPONBILIDADE PARA SESSÃES-->
 					<div role="tabpanel" class="tab-pane" id="messages"></br>
 						<div align="center">
-							<div class="form-group">
+							<div class="radio-inline">	
+                                                            <label>QUANTIDADE DE SESS&Otilde;ES:</label>
+                                                            <label class="checkbox-inline">
+                                                                <input type="radio" name="qtd_sessoes" id="10" value="10" checked>10 Sess&otilde;es
+                                                            </label>
+                                                            <label class="checkbox-inline">
+                                                                <input type="radio" name="qtd_sessoes" id="20" value="20">20 Sess&otilde;es
+                                                            </label>
+							</div>
+                                                        <div class="form-group">
 								<label>DIAS:</label>
 									<label class="checkbox-inline">
 										<input type="checkbox">Segunda-feira
