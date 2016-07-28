@@ -12,6 +12,6 @@ public class ConnectionClass {
             throws SQLException {
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/sif", "root", "lkm-98cd");
+                "jdbc:mysql://localhost:3306/sif", "root", "testebdmysql");
     }
 }
