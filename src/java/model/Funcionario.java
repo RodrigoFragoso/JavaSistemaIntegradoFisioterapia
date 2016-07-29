@@ -7,7 +7,7 @@ package model;
 public class Funcionario {
         
     public int idFuncionario;
-    private String nome;
+    private String nome ="";
     private String email;
     private String senha;
     private String cpf;

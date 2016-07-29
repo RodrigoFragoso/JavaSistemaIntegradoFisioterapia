@@ -57,7 +57,7 @@ public class Paciente {
     private int escala_eva; 
     private String inspecao_exame; 
     private String tonus_exame; 
-    private int carac_exame; 
+    private String carac_exame; 
     private int qtd_sessoes;
     private String dias_sessoes; 
     private String hora_sessoes;
@@ -282,8 +282,8 @@ public class Paciente {
         return qual_cirurgia;
     }
 
-    public void setQual_Cirurgia(String qual_Cirurgia) {
-        this.qual_cirurgia = qual_Cirurgia;
+    public void setQual_cirurgia(String qual_cirurgia) {
+        this.qual_cirurgia = qual_cirurgia;
     }
 
     public int getTabagista() {
@@ -486,11 +486,11 @@ public class Paciente {
         this.tonus_exame = tonus_exame;
     }
 
-    public int getCarac_exame() {
+    public String getCarac_exame() {
         return carac_exame;
     }
 
-    public void setCarac_exame(int carac_exame) {
+    public void setCarac_exame(String carac_exame) {
         this.carac_exame = carac_exame;
     }
     

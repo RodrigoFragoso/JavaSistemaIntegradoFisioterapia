@@ -16,7 +16,15 @@
     <script src="/clinica/sif/js/jquery.js"></script>
     <script src="/clinica/sif/js/bootstrap.min.js"></script>
     <!--script src="js/plugins/morris/raphael.min.js"></script-->
-    
+            
+    <script>
+        function cadastraPaciente(){
+            var nome=$('#nome').val();
+            var matricula=$('#email').val();
+                alert("O Funcionario: "+nome+"\n"+"do E-mail: "+email+"\n\n"+"Cadastrado com Sucesso !");
+            return true;
+        }
+    </script>
     <script>
         $('.collapse').collapse();
     </script>
@@ -147,7 +155,7 @@
 								 </div>
 								 <div class="form-group col-md-2">
 								   <label for="dt_nasc">Data Nascimento</label>
-								   <input type="test" class="form-control" name="dt_nasc" id="dt_nasc">
+								   <input type="text" class="form-control" name="dt_nasc" id="dt_nasc">
 								 </div>
 								 <div class="form-group col-md-1">
 								   <label for="idade">Idade</label>
@@ -156,7 +164,6 @@
 								<div class="form-group col-md-3">
 								  <label for="sexo">Sexo</label>
 								  <select class="form-control" name="sexo" id="sexo">
-									<option>Selecionar</option>
 									<option value="Masculino">Masculino</option>
 									<option value="Feminino">Feminino</option>
 								  </select>
@@ -259,7 +266,6 @@
 						<div class="form-group col-md-4">
 							<label for="alg_cirurgia">Algum tipo de Cirurgia?</label>
 							<select class="form-control" name="alg_cirurgia" id="alg_cirurgia">
-								<option>Selecionar</option>
 								<option value="1">Sim</option>
 								<option value="0">N&atilde;o</option>
 							</select>
@@ -274,7 +280,6 @@
 						<div class="form-group col-md-3">
 							<label for="tabagista">Tabagista?</label>
 							<select class="form-control" name="tabagista" id="tabagista">
-								<option>Selecionar</option>
 								<option value="1">Sim</option>
 								<option value="0">N&atilde;o</option>
 							</select>
@@ -286,7 +291,6 @@
 						<div class="form-group col-md-3">
 							<label for="etilista">Etilista?</label>
 							<select class="form-control" name="etilista" id="etilista">
-								<option>Selecionar</option>
 								<option value="1">Sim</option>
 								<option value="0">N&atilde;o</option>
 							</select>
@@ -298,7 +302,6 @@
 						<div class="form-group col-md-3">
 							<label for="sedentario">Sedent&aacute;rio?</label>
 							<select class="form-control" name="sedentario" id="sedentario">
-								<option>Selecionar</option>
 								<option value="1">Sim</option>
 								<option value="0">N&atilde;o</option>
 							</select>
@@ -310,7 +313,6 @@
 						<div class="form-group col-md-3">
 							<label for="medicamentos">Medicamentos?</label>
 							<select class="form-control" name="medicamentos" id="medicamentos">
-								<option>Selecionar</option>
 								<option value="1">Sim</option>
 								<option value="0">N&atilde;o</option>
 							</select>
@@ -483,7 +485,7 @@
 									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Aumentando">Aumentando
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Diminuíndo">Diminu&iacute;ndo
+									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Diminu&iacute;ndo">Diminu&iacute;ndo
 								</label>
 								<label class="checkbox-inline">
 									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Ausente">Ausente
@@ -584,7 +586,7 @@
                                                             <button type="button" class="btn btn-DANGER">CANCELAR</button>
                                                             <button type="button" id="voltar2" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
                                                             <!--a class="btn btn-success" href="3.1_TelaFichaPresenca.png">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></a-->
-                                                            <button type="button" class="btn btn-success">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></button>
+                                                            <button type="submit" class="btn btn-success">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></button>
 							</div>
 						</div>
 					</div>

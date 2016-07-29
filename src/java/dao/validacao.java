@@ -23,14 +23,13 @@ public class validacao {
     }
     //validacao.ValidaSessao(request, response);
         
-    public static void ValidaSessaoEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    /*public static void ValidaSessaoEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         Funcionario funcionario = (Funcionario)session.getAttribute("dadosFuncionarioooo");
             if(funcionario == null){
                 RequestDispatcher view = request.getRequestDispatcher("/LoginEmpresa");
                 view.forward(request, response);
             }
-    }
-    //validacao.ValidaSessaoEmp(request, response);
-    
+    }*/
+    //validacao.ValidaSessaoEmp(request, response);   
 }
