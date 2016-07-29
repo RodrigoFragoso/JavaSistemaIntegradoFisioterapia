@@ -120,7 +120,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Dados do funcion&aacute;rio</h3>
 				</div>
-			<form method="POST" action='../funcionarioController' name="frmAddFuncionario" id="frmAddFuncionario" role="form" onsubmit="cadastraFunc()">	
+			<form method="POST" action='../funcionarioController' name="frmAddFuncionario" id="frmAddFuncionario" role="form" onsubmit="cadastraFunc()">
                             <div class="panel-body">
 					<div class="form-group col-md-4">
 					   <label for="campo1">Nome/Usu&aacute;rio: </label>

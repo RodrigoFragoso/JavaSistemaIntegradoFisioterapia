@@ -60,7 +60,7 @@
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  ${dadosFuncionario.nome} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -116,7 +116,7 @@
 				   <h1 class="page-header">Cadastrar Pacientes</h1>
 				</div>
 			</div>
-			
+	<form method="POST" action='../pacienteController' name="frmAddPaciente" id="frmAddPaciente" role="form" onsubmit="cadastraPaciente()">
 			<div>
 				  <!-- Nav tabs -->
 				<ul class="nav nav-tabs nav-justified " role="tablist" id="myTabs">
@@ -132,92 +132,92 @@
 						<div>
 							<div class="row">
 								 <div class="form-group col-md-3">
-								   <label for="campo1">Nº Cart&atilde;o SUS: </label>
-								   <input type="text" class="form-control" id="campo1">
+								   <label for="num_sus">Nº Cart&atilde;o SUS: </label>
+								   <input type="text" class="form-control" name="num_sus" id="num_sus">
 								 </div>
 								 
 								 <div class="form-group col-md-6">
-								   <label for="campo2">Nome Completo: </label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="nome">Nome Completo: </label>
+								   <input type="text" class="form-control" name="nome" id="nome">
 								 </div>
 								 
 								 <div class="form-group col-md-3">
-								   <label for="campo3">Telefone</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="telefone">Telefone</label>
+								   <input type="text" class="form-control" name="telefone" id="telefone">
 								 </div>
 								 <div class="form-group col-md-2">
-								   <label for="campo3">Data Nascimento</label>
-								   <input type="test" class="form-control" id="campo3">
+								   <label for="dt_nasc">Data Nascimento</label>
+								   <input type="test" class="form-control" name="dt_nasc" id="dt_nasc">
 								 </div>
 								 <div class="form-group col-md-1">
-								   <label for="campo3">Idade</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="idade">Idade</label>
+								   <input type="text" class="form-control" name="idade" id="idade">
 								 </div>
 								<div class="form-group col-md-3">
-								  <label for="sel1">Sexo</label>
-								  <select class="form-control" id="sel1">
+								  <label for="sexo">Sexo</label>
+								  <select class="form-control" name="sexo" id="sexo">
 									<option>Selecionar</option>
-									<option>Masculino</option>
-									<option>Feminino</option>
+									<option value="Masculino">Masculino</option>
+									<option value="Feminino">Feminino</option>
 								  </select>
 								</div>							
 								<div class="form-group col-md-2">
-								   <label for="campo3">R.G: </label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="rg">R.G: </label>
+								   <input type="text" class="form-control" name="rg" id="rg">
 								</div>
 								<div class="form-group col-md-2">
-								   <label for="campo3">Data de Emiss&atilde;o: </label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="dt_emissao">Data de Emiss&atilde;o: </label>
+								   <input type="text" class="form-control" name="dt_emissao" id="dt_emissao">
 								</div>
 								<div class="form-group col-md-2">
-								   <label for="campo3">Org&atilde;o Emissor: </label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="org_emissor">Org&atilde;o Emissor: </label>
+								   <input type="text" class="form-control" name="org_emissor" id="org_emissor">
 								</div>
 								<div class="form-group col-md-3">
-								   <label for="campo3">Nome do Pai:</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="nome_pai">Nome do Pai:</label>
+								   <input type="text" class="form-control" name="nome_pai" id="nome_pai">
 								</div>
 								<div class="form-group col-md-3">
-								   <label for="campo3">Nome da M&atilde;e:</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="nome_mae">Nome da M&atilde;e:</label>
+								   <input type="text" class="form-control" name="nome_mae" id="nome_mae">
 								</div>
 								<div class="form-group col-md-3">
-								   <label for="campo3">Profiss&atilde;o:</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="profissao">Profiss&atilde;o:</label>
+								   <input type="text" class="form-control" name="profissao" id="profissao">
 								</div>
 								<div class="form-group col-md-3">
-								  <label for="sel1">Ra&ccedil;a/Cor:</label>
-								  <select class="form-control" id="sel1">
-									<option>Branco</option>
-									<option>Negro</option>
-									<option>Pardo</option>
-									<option>Amarelo</option>
-									<option>Ignorar</option>
+								  <label for="raca_cor">Ra&ccedil;a/Cor:</label>
+								  <select class="form-control" name="raca_cor" id="raca_cor">
+									<option value="Branco">Branco</option>
+									<option value="Negro">Negro</option>
+									<option value="Pardo">Pardo</option>
+									<option value="Amarelo">Amarelo</option>
+									<option value="Ignorar">Ignorar</option>
 								  </select>
 								</div>
 								<div class="form-group col-md-2">
-								   <label for="campo3">C.E.P</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="cep">C.E.P</label>
+								   <input type="text" class="form-control" name="cep" id="cep">
 								</div>
 								<div class="form-group col-md-3">
-								   <label for="campo3">Endere&ccedil;o</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="endereco">Endere&ccedil;o</label>
+								   <input type="text" class="form-control" name="endereco" id="endereco">
 								</div>
 								<div class="form-group col-md-1">
-								   <label for="campo3">N&ordm;:</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="numero_casa">N&ordm;:</label>
+								   <input type="text" class="form-control" name="numero_casa" id="numero_casa">
 								</div>
 								<div class="form-group col-md-3">
-								   <label for="campo3">Bairro</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="bairro">Bairro</label>
+								   <input type="text" class="form-control" name="bairro" id="bairro">
 								</div>
 								<div class="form-group col-md-1">
-								   <label for="campo3">UF</label>
-								   <input type="text" class="form-control" id="campo3">
+								   <label for="uf">UF</label>
+								   <input type="text" class="form-control" name="uf" id="uf">
 								</div>
 								<div class="form-group col-md-2">
-								   <label for="campo3">Cidade
-									<input type="text" class="form-control" id="campo3">
+								   <label for="cidade">Cidade
+									<input type="text" class="form-control" name="cidade" id="cidade">
 								   </label>
 								</div>
 							</div>
@@ -233,91 +233,91 @@
 					<div role="tabpanel" class="tab-pane" id="profile"></br>
 					  <div>
 						<div class="form-group col-md-6">
-							<label for="campo2">Diagn&oacute;stico Cl&iacute;nico </label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="diag_clinico">Diagn&oacute;stico Cl&iacute;nico </label>
+							<input type="text" class="form-control" name="diag_clinico" id="diag_clinico">
 						</div>
 						<div class="form-group col-md-6">
-							<label for="campo2">Diagn&oacute;stico fisioterap&ecirc;utico </label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="diag_fiso">Diagn&oacute;stico fisioterap&ecirc;utico </label>
+							<input type="text" class="form-control" name="diag_fiso" id="diag_fiso">
 						</div>
 						<div class="form-group col-md-4">
-							<label for="campo2">ANAMNESE </label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="anamnese">ANAMNESE </label>
+							<input type="text" class="form-control" name="anamnese" id="anamnese">
 						</div>
 						<div class="form-group col-md-4">
-							<label for="campo2">H.M.A</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="hma">H.M.A</label>
+							<input type="text" class="form-control" name="hma" id="hma">
 						</div>
 						<div class="form-group col-md-4">
-							<label for="campo2">H.M.P</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="hmp">H.M.P</label>
+							<input type="text" class="form-control" name="hmp" id="hmp">
 						</div>
 						<div class="form-group col-md-4">
-							<label for="campo2">Antecedentes heredit&aacute;rios</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="ant_hereditario">Antecedentes heredit&aacute;rios</label>
+							<input type="text" class="form-control" name="ant_hereditario" id="ant_hereditario">
 						</div>
 						<div class="form-group col-md-4">
-							<label for="sel1">Algum tipo de Cirurgia?</label>
-							<select class="form-control" id="sel1">
+							<label for="alg_cirurgia">Algum tipo de Cirurgia?</label>
+							<select class="form-control" name="alg_cirurgia" id="alg_cirurgia">
 								<option>Selecionar</option>
-								<option>Sim</option>
-								<option>N&atilde;o</option>
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
-							<label for="campo2">Quais?</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="qual_cirurgia">Quais?</label>
+							<input type="text" class="form-control" name="qual_cirurgia" id="qual_cirurgia">
 						</div>
 						<!-- HABITOS DE VIDA-->
                                                 <br />
 						<h5 class="page-header"><b><u>HABITOS DE VIDA</u></b></h5>
 						<div class="form-group col-md-3">
-							<label for="sel1">Tabagista?</label>
-							<select class="form-control" id="sel1">
+							<label for="tabagista">Tabagista?</label>
+							<select class="form-control" name="tabagista" id="tabagista">
 								<option>Selecionar</option>
-								<option>Sim</option>
-								<option>N&atilde;o</option>
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
-							<label for="campo2">N&ordm; cigarros dia?</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="num_cigarros">N&ordm; cigarros dia?</label>
+							<input type="text" class="form-control" name="num_cigarros" id="num_cigarros">
 						</div>
 						<div class="form-group col-md-3">
-							<label for="sel1">Etilista?</label>
-							<select class="form-control" id="sel1">
+							<label for="etilista">Etilista?</label>
+							<select class="form-control" name="etilista" id="etilista">
 								<option>Selecionar</option>
-								<option>Sim</option>
-								<option>N&atilde;o</option>
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
-							<label for="campo2">Quantidade?</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="qtd_etilista">Quantidade?</label>
+							<input type="text" class="form-control" name="qtd_etilista" id="qtd_etilista">
 						</div>
 						<div class="form-group col-md-3">
-							<label for="sel1">Sedent&aacute;rio?</label>
-							<select class="form-control" id="sel1">
+							<label for="sedentario">Sedent&aacute;rio?</label>
+							<select class="form-control" name="sedentario" id="sedentario">
 								<option>Selecionar</option>
-								<option>Sim</option>
-								<option>N&atilde;o</option>
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
-							<label for="campo2">Frequ&ecirc;ncia:</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="freq_sendentario">Frequ&ecirc;ncia:</label>
+							<input type="text" class="form-control" name="freq_sendentario" id="freq_sendentario">
 						</div>
 						<div class="form-group col-md-3">
-							<label for="sel1">Medicamentos?</label>
-							<select class="form-control" id="sel1">
+							<label for="medicamentos">Medicamentos?</label>
+							<select class="form-control" name="medicamentos" id="medicamentos">
 								<option>Selecionar</option>
-								<option>Sim</option>
-								<option>N&atilde;o</option>
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
-							<label for="campo2">Quais:</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="quais_medicamentos">Quais:</label>
+							<input type="text" class="form-control" name="quais_medicamentos" id="quais_medicamentos">
 							</BR>
 						</div>
 						
@@ -325,26 +325,26 @@
                                                 <br />
 						<h5 class="page-header"><b><u>ANALISE DO SINTOMA PRINCIPAL</u></b></h5>
 						<div class="form-group col-md-3">
-							<label for="sel1">In&iacute;cio</label>
-							<select class="form-control" id="sel1">
-								<option>Gradual</option>
-								<option>Repentino</option>
+							<label for="inicio_sintoma">In&iacute;cio</label>
+							<select class="form-control" name="inicio_sintoma" id="inicio_sintoma">
+								<option value="Gradual">Gradual</option>
+								<option value="Repentino">Repentino</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
-							<label for="campo2">Mecanismo que leva ao sintoma:</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="mecanismo_sintoma">Mecanismo que leva ao sintoma:</label>
+							<input type="text" class="form-control" name="mecanismo_sintoma" id="mecanismo_sintoma">
 						</div>
 						<div class="form-group col-md-3">
-							<label for="sel1">Acompanha outros sintomas?</label>
-							<select class="form-control" id="sel1">
-								<option>Sim</option>
-								<option>N&atilde;o</option>
+							<label for="acomp_sintoma">Acompanha outros sintomas?</label>
+							<select class="form-control" name="acomp_sintoma" id="acomp_sintoma">
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
-							<label for="campo2">Qual?</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="qual_sintoma">Qual?</label>
+							<input type="text" class="form-control" name="qual_sintoma" id="qual_sintoma">
 							</br>
 						</div>
 						
@@ -353,99 +353,99 @@
                                                 <br />
 						<h5 class="page-header"><b><u>CLASSIFICA&Ccedil;&Atilde;O DA DOR</u></b></h5>
 						<div class="form-group col-md-4">
-							<label for="campo2">Localiza&ccedil;&atilde;o:</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="localizacao_dor">Localiza&ccedil;&atilde;o:</label>
+							<input type="text" class="form-control" name="localizacao_dor" id="localizacao_dor">
 						</div>
 						<div class="form-group col-md-2">
-							<label for="sel1">C&aacute;rater:</label>
-							<select class="form-control" id="sel1">
-								<option>Aguda</option>
-								<option>Cr&ocirc;nica</option>
+							<label for="carater_dor">C&aacute;rater:</label>
+							<select class="form-control" name="carater_dor" id="carater_dor">
+								<option value="Aguda">Aguda</option>
+								<option value="Crónica">Cr&ocirc;nica</option>
 							</select>
 						</div>
 						<div class="form-group col-md-2">
-							<label for="sel1">Irradia&ccedil;&atilde;o:</label>
-							<select class="form-control" id="sel1">
-								<option>Sim</option>
-								<option>N&atilde;o</option>
-							</select>
-						</div>
-						<div class="form-group col-md-4">
-							<label for="campo2">Local:</label>
-							<input type="text" class="form-control" id="campo3">
-						</div>
-						
-						<div class="form-group col-md-2">
-							<label for="sel1">Ao movimento:</label>
-							<select class="form-control" id="sel1">
-								<option>Sim</option>
-								<option>N&atilde;o</option>
-							</select>
-						</div>
-						<div class="form-group col-md-4">
-							<label for="campo2">Qual?</label>
-							<input type="text" class="form-control" id="campo3">
-						</div>
-						
-						<div class="form-group col-md-3">
-							<label for="sel1">Ao repouso:</label>
-							<select class="form-control" id="sel1">
-								<option>Sim</option>
-								<option>N&atilde;o</option>
-							</select>
-						</div>
-						<div class="form-group col-md-3">
-							<label for="sel1">Clim&aacute;tica:</label>
-							<select class="form-control" id="sel1">
-								<option>Sim</option>
-								<option>N&atilde;o</option>
-							</select>
-						</div>
-						
-						<div class="form-group col-md-3">
-							<label for="sel1">Esforço:</label>
-							<select class="form-control" id="sel1">
+							<label for="irradiacao_dor">Irradia&ccedil;&atilde;o:</label>
+							<select class="form-control" name="irradiacao_dor" id="irradiacao_dor">
 								<option value="1">Sim</option>
 								<option value="0">N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
-							<label for="campo2">Qual?</label>
-							<input type="text" class="form-control" id="campo3">
+							<label for="local_dor">Local:</label>
+							<input type="text" class="form-control" name="local_dor" id="local_dor">
+						</div>
+						
+						<div class="form-group col-md-2">
+							<label for="movimento_dor">Ao movimento:</label>
+							<select class="form-control" name="movimento_dor" id="movimento_dor">
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="qual_dor">Qual?</label>
+							<input type="text" class="form-control" name="qual_dor" id="qual_dor">
+						</div>
+						
+						<div class="form-group col-md-3">
+							<label for="repouso_dor">Ao repouso:</label>
+							<select class="form-control" name="repouso_dor" id="repouso_dor">
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="climatica_dor">Clim&aacute;tica:</label>
+							<select class="form-control" name="climatica_dor" id="climatica_dor">
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-3">
+							<label for="esforco_dor">Esforço:</label>
+							<select class="form-control" name="esforco_dor" id="esforco_dor">
+								<option value="1">Sim</option>
+								<option value="0">N&atilde;o</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="qual_esforco">Qual?</label>
+							<input type="text" class="form-control" name="qual_esforco" id="qual_esforco">
 						</div>
 						
 						<div class="form-group">
 							<label>Escala da dor EVA:</label>
 							<div>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+									<input type="radio" name="escala_eva" id="escala_eva" value="1">1
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>2
+									<input type="radio" name="escala_eva" id="escala_eva" value="2" >2
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>3
+									<input type="radio" name="escala_eva" id="escala_eva" value="3">3
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>4
+									<input type="radio" name="escala_eva" id="escala_eva" value="4">4
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>5
+									<input type="radio" name="escala_eva" id="escala_eva" value="5">5
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>6
+									<input type="radio" name="escala_eva" id="escala_eva" value="6">6
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>7
+									<input type="radio" name="escala_eva" id="escala_eva" value="7">7
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>8
+									<input type="radio" name="escala_eva" id="escala_eva" value="8">8
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>9
+									<input type="radio" name="escala_eva" id="escala_eva" value="9">9
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>10
+									<input type="radio" name="escala_eva" id="escala_eva" value="10">10
 								</label>
 							</div>
 							</br>
@@ -458,53 +458,53 @@
 						<div class="form-group">
 								<label>Inspe&ccedil;&atilde;o(atrav&eacute;s da vis&atilde;o):</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Edema
+									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Edema">Edema
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Hematoma
+									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Hematoma">Hematoma
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Hiperemia
+									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Hiperemia">Hiperemia
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Atrofia
+									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Atrofia">Atrofia
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Cicatriz
+									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Cicatriz">Cicatriz
 								</label>
 						</div>
 						<div class="form-group">
 								<label><u>Palpa&ccedil;&atilde;o(atrav&eacute;s do tato)</u></label></br>
 								<label>Tonus:</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Normal
+									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Normal">Normal
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Aumentando
+									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Aumentando">Aumentando
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Dimin&iacute;ndo
+									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Diminuíndo">Diminu&iacute;ndo
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1">Ausente
+									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Ausente">Ausente
 								</label>
 						</div>
 													
 						<div class="form-group">
 							<label>Caracter&iacute;stica da regi&atilde;o apalpada:</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temparatura
+									<input type="radio" name="carac_exame" id="carac_exame" value="Temperatura">Temparatura
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Deformidade
-								</label>
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Ader&ecirc;ncia
+									<input type="radio" name="carac_exame" id="carac_exame" value="Deformidade">Deformidade
 								</label>
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Dor
+									<input type="radio" name="carac_exame" id="carac_exame" value="Aderência">Ader&ecirc;ncia
+								</label>
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="carac_exame" id="carac_exame" value="Dor">Dor
 								</label>
 						</div>
 							
@@ -534,64 +534,64 @@
                                                         <div class="form-group">
 								<label>DIAS:</label>
 									<label class="checkbox-inline">
-										<input type="checkbox">Segunda-feira
+										<input type="checkbox" name="dias_sessoes" id="dias_sessoes" value="Segunda-feira">Segunda-feira
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox">Quarta-feira
+										<input type="checkbox" name="dias_sessoes" id="dias_sessoes" value="Quarta-feira">Quarta-feira
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox">Sexta-feira
+										<input type="checkbox" name="dias_sessoes" id="dias_sessoes" value="Sexta-feira">Sexta-feira
 									</label>
 							</div>
 							<div class="form-group">
 								<label>MANH&Atilde;:</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>07:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="07:00">07:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">08:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="08:00">08:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">09:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="09:00">09:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">10:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="10:00">10:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">11:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="11:00">11:00
 									</label>
 								</br>	
 								<label>TARDE:</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">13:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="13:00">13:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">14:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="14:00">14:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">15:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="15:00">15:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">16:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="16:00">16:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">17:00
+										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="17:00">17:00
 									</label>
 							</div>
 						
 							<!-- BOTÃO CADASTRAR E GERAR FICHA DE PRESENÃA-->
 							<div>
-								<button type="button" class="btn btn-DANGER">CANCELAR</button>
-								<button type="button" id="voltar2" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
-								<a class="btn btn-success" href="3.1_TelaFichaPresenca.png">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></a>
-								<!--button type="button" class="btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i></button-->
+                                                            <button type="button" class="btn btn-DANGER">CANCELAR</button>
+                                                            <button type="button" id="voltar2" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
+                                                            <!--a class="btn btn-success" href="3.1_TelaFichaPresenca.png">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></a-->
+                                                            <button type="button" class="btn btn-success">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></button>
 							</div>
 						</div>
 					</div>
 					<!-- FIM DISPONBILIDADE PARA SESSÃES-->
 				</div>
 			</div>
-			
+            </form>
 		</div>
 	</div>
 </body>
