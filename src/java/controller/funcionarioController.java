@@ -2,6 +2,7 @@ package controller;
 import dao.FuncionarioDAO;
 import dao.validacao;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +26,7 @@ public class funcionarioController extends HttpServlet {
     }
         
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        validacao.ValidaSessao(request, response);
         String forward = "";
         String action = request.getParameter("action");
         if (action.equalsIgnoreCase("delete")) {
@@ -71,5 +73,6 @@ public class funcionarioController extends HttpServlet {
             funcionariodao.updateFuncionario(funcionario);
         }
         response.sendRedirect(request.getContextPath() + "/LoginCli");
-    }                
+    }
+
 }

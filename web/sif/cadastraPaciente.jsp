@@ -15,6 +15,7 @@
     <link href="/clinica/sif/css/plugins/morris.css" rel="stylesheet">
     <script src="/clinica/sif/js/jquery.js"></script>
     <script src="/clinica/sif/js/bootstrap.min.js"></script>
+    
     <!--script src="js/plugins/morris/raphael.min.js"></script-->
             
     <script>
@@ -55,6 +56,17 @@
 			});
 		});
 	</script>
+<script language='JavaScript'>
+function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+</script>
+
 </head>
 
 <body>
@@ -84,15 +96,15 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="/clinica/sif/agenda.jsp"><i class="fa fa-fw fa-table"></i> Agenda</a>
+                        <a href="/clinica/controllerAgenda"><i class="fa fa-fw fa-table"></i> Agenda</a>
                     </li>
                     <li class="active">
                         <a href="/clinica/sif/cadastraPaciente.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Pacientes</a>
                     </li>
-					<li>
+                    <!--li>
                         <a href="/clinica/sif/listaPaciente.jsp"><i class="glyphicon glyphicon-list-alt"></i> Pacientes</a>
-                    </li>
-					<li>
+                    </li-->
+                    <li>
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li>
@@ -141,25 +153,24 @@
 							<div class="row">
 								 <div class="form-group col-md-3">
 								   <label for="num_sus">Nº Cart&atilde;o SUS: </label>
-								   <input type="text" class="form-control" name="num_sus" id="num_sus">
+                                                                   <input type="text" class="form-control" <c:out value="${paciente.num_sus}"/> name="num_sus" id="num_sus" maxlength="20" onkeypress="return SomenteNumero(event)" required/>
 								 </div>
-								 
 								 <div class="form-group col-md-6">
 								   <label for="nome">Nome Completo: </label>
-								   <input type="text" class="form-control" name="nome" id="nome">
+								   <input type="text" class="form-control" name="nome" id="nome" maxlength="40" required/>
 								 </div>
 								 
 								 <div class="form-group col-md-3">
 								   <label for="telefone">Telefone</label>
-								   <input type="text" class="form-control" name="telefone" id="telefone">
+								   <input type="text" class="form-control" name="telefone" id="telefone" maxlength="14" onkeypress="return SomenteNumero(event)">
 								 </div>
 								 <div class="form-group col-md-2">
 								   <label for="dt_nasc">Data Nascimento</label>
-								   <input type="text" class="form-control" name="dt_nasc" id="dt_nasc">
+								   <input type="text" class="form-control" name="dt_nasc" id="dt_nasc" maxlength="10" onkeypress="return SomenteNumero(event)">
 								 </div>
 								 <div class="form-group col-md-1">
 								   <label for="idade">Idade</label>
-								   <input type="text" class="form-control" name="idade" id="idade">
+								   <input type="text" class="form-control" name="idade" id="idade" maxlength="3" onkeypress="return SomenteNumero(event)">
 								 </div>
 								<div class="form-group col-md-3">
 								  <label for="sexo">Sexo</label>
@@ -170,27 +181,27 @@
 								</div>							
 								<div class="form-group col-md-2">
 								   <label for="rg">R.G: </label>
-								   <input type="text" class="form-control" name="rg" id="rg">
+								   <input type="text" class="form-control" name="rg" id="rg" maxlength="10">
 								</div>
 								<div class="form-group col-md-2">
 								   <label for="dt_emissao">Data de Emiss&atilde;o: </label>
-								   <input type="text" class="form-control" name="dt_emissao" id="dt_emissao">
+								   <input type="text" class="form-control" name="dt_emissao" id="dt_emissao" maxlength="10">
 								</div>
 								<div class="form-group col-md-2">
 								   <label for="org_emissor">Org&atilde;o Emissor: </label>
-								   <input type="text" class="form-control" name="org_emissor" id="org_emissor">
+								   <input type="text" class="form-control" name="org_emissor" id="org_emissor" maxlength="10">
 								</div>
 								<div class="form-group col-md-3">
 								   <label for="nome_pai">Nome do Pai:</label>
-								   <input type="text" class="form-control" name="nome_pai" id="nome_pai">
+								   <input type="text" class="form-control" name="nome_pai" id="nome_pai" maxlength="40">
 								</div>
 								<div class="form-group col-md-3">
 								   <label for="nome_mae">Nome da M&atilde;e:</label>
-								   <input type="text" class="form-control" name="nome_mae" id="nome_mae">
+								   <input type="text" class="form-control" name="nome_mae" id="nome_mae" maxlength="40">
 								</div>
 								<div class="form-group col-md-3">
 								   <label for="profissao">Profiss&atilde;o:</label>
-								   <input type="text" class="form-control" name="profissao" id="profissao">
+								   <input type="text" class="form-control" name="profissao" id="profissao" maxlength="40">
 								</div>
 								<div class="form-group col-md-3">
 								  <label for="raca_cor">Ra&ccedil;a/Cor:</label>
@@ -204,27 +215,27 @@
 								</div>
 								<div class="form-group col-md-2">
 								   <label for="cep">C.E.P</label>
-								   <input type="text" class="form-control" name="cep" id="cep">
+								   <input type="text" class="form-control" name="cep" id="cep" maxlength="8" onkeypress="return SomenteNumero(event)">
 								</div>
 								<div class="form-group col-md-3">
 								   <label for="endereco">Endere&ccedil;o</label>
-								   <input type="text" class="form-control" name="endereco" id="endereco">
+								   <input type="text" class="form-control" name="endereco" id="endereco" maxlength="40">
 								</div>
 								<div class="form-group col-md-1">
 								   <label for="numero_casa">N&ordm;:</label>
-								   <input type="text" class="form-control" name="numero_casa" id="numero_casa">
+								   <input type="text" class="form-control" name="numero_casa" id="numero_casa" maxlength="4" onkeypress="return SomenteNumero(event)">
 								</div>
 								<div class="form-group col-md-3">
 								   <label for="bairro">Bairro</label>
-								   <input type="text" class="form-control" name="bairro" id="bairro">
+								   <input type="text" class="form-control" name="bairro" id="bairro" maxlength="40">
 								</div>
 								<div class="form-group col-md-1">
 								   <label for="uf">UF</label>
-								   <input type="text" class="form-control" name="uf" id="uf">
+								   <input type="text" class="form-control" name="uf" id="uf" maxlength="2">
 								</div>
 								<div class="form-group col-md-2">
-								   <label for="cidade">Cidade
-									<input type="text" class="form-control" name="cidade" id="cidade">
+                                                                    <label for="cidade">Cidade</label>
+									<input type="text" class="form-control" name="cidade" id="cidade" maxlength="40">
 								   </label>
 								</div>
 							</div>
@@ -241,27 +252,27 @@
 					  <div>
 						<div class="form-group col-md-6">
 							<label for="diag_clinico">Diagn&oacute;stico Cl&iacute;nico </label>
-							<input type="text" class="form-control" name="diag_clinico" id="diag_clinico">
+							<input type="text" class="form-control" name="diag_clinico" id="diag_clinico" maxlength="40">
 						</div>
 						<div class="form-group col-md-6">
 							<label for="diag_fiso">Diagn&oacute;stico fisioterap&ecirc;utico </label>
-							<input type="text" class="form-control" name="diag_fiso" id="diag_fiso">
+							<input type="text" class="form-control" name="diag_fiso" id="diag_fiso" maxlength="40">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="anamnese">ANAMNESE </label>
-							<input type="text" class="form-control" name="anamnese" id="anamnese">
+							<input type="text" class="form-control" name="anamnese" id="anamnese" maxlength="40">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="hma">H.M.A</label>
-							<input type="text" class="form-control" name="hma" id="hma">
+							<input type="text" class="form-control" name="hma" id="hma" maxlength="40">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="hmp">H.M.P</label>
-							<input type="text" class="form-control" name="hmp" id="hmp">
+							<input type="text" class="form-control" name="hmp" id="hmp" maxlength="40">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="ant_hereditario">Antecedentes heredit&aacute;rios</label>
-							<input type="text" class="form-control" name="ant_hereditario" id="ant_hereditario">
+							<input type="text" class="form-control" name="ant_hereditario" id="ant_hereditario" maxlength="40">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="alg_cirurgia">Algum tipo de Cirurgia?</label>
@@ -272,7 +283,7 @@
 						</div>
 						<div class="form-group col-md-4">
 							<label for="qual_cirurgia">Quais?</label>
-							<input type="text" class="form-control" name="qual_cirurgia" id="qual_cirurgia">
+							<input type="text" class="form-control" name="qual_cirurgia" id="qual_cirurgia" maxlength="40">
 						</div>
 						<!-- HABITOS DE VIDA-->
                                                 <br />
@@ -286,7 +297,7 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="num_cigarros">N&ordm; cigarros dia?</label>
-							<input type="text" class="form-control" name="num_cigarros" id="num_cigarros">
+							<input type="text" class="form-control" name="num_cigarros" id="num_cigarros" maxlength="4" onkeypress="return SomenteNumero(event)">
 						</div>
 						<div class="form-group col-md-3">
 							<label for="etilista">Etilista?</label>
@@ -297,7 +308,7 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="qtd_etilista">Quantidade?</label>
-							<input type="text" class="form-control" name="qtd_etilista" id="qtd_etilista">
+							<input type="text" class="form-control" name="qtd_etilista" id="qtd_etilista" maxlength="4" onkeypress="return SomenteNumero(event)">
 						</div>
 						<div class="form-group col-md-3">
 							<label for="sedentario">Sedent&aacute;rio?</label>
@@ -308,7 +319,7 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="freq_sendentario">Frequ&ecirc;ncia:</label>
-							<input type="text" class="form-control" name="freq_sendentario" id="freq_sendentario">
+							<input type="text" class="form-control" name="freq_sendentario" id="freq_sendentario" maxlength="40">
 						</div>
 						<div class="form-group col-md-3">
 							<label for="medicamentos">Medicamentos?</label>
@@ -319,7 +330,7 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="quais_medicamentos">Quais:</label>
-							<input type="text" class="form-control" name="quais_medicamentos" id="quais_medicamentos">
+							<input type="text" class="form-control" name="quais_medicamentos" id="quais_medicamentos" maxlength="40" >
 							</BR>
 						</div>
 						
@@ -335,7 +346,7 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="mecanismo_sintoma">Mecanismo que leva ao sintoma:</label>
-							<input type="text" class="form-control" name="mecanismo_sintoma" id="mecanismo_sintoma">
+							<input type="text" class="form-control" name="mecanismo_sintoma" id="mecanismo_sintoma" maxlength="40" >
 						</div>
 						<div class="form-group col-md-3">
 							<label for="acomp_sintoma">Acompanha outros sintomas?</label>
@@ -346,7 +357,7 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="qual_sintoma">Qual?</label>
-							<input type="text" class="form-control" name="qual_sintoma" id="qual_sintoma">
+							<input type="text" class="form-control" name="qual_sintoma" id="qual_sintoma" maxlength="40">
 							</br>
 						</div>
 						
@@ -356,7 +367,7 @@
 						<h5 class="page-header"><b><u>CLASSIFICA&Ccedil;&Atilde;O DA DOR</u></b></h5>
 						<div class="form-group col-md-4">
 							<label for="localizacao_dor">Localiza&ccedil;&atilde;o:</label>
-							<input type="text" class="form-control" name="localizacao_dor" id="localizacao_dor">
+							<input type="text" class="form-control" name="localizacao_dor" id="localizacao_dor" maxlength="40" >
 						</div>
 						<div class="form-group col-md-2">
 							<label for="carater_dor">C&aacute;rater:</label>
@@ -374,7 +385,7 @@
 						</div>
 						<div class="form-group col-md-4">
 							<label for="local_dor">Local:</label>
-							<input type="text" class="form-control" name="local_dor" id="local_dor">
+							<input type="text" class="form-control" name="local_dor" id="local_dor" maxlength="40" >
 						</div>
 						
 						<div class="form-group col-md-2">
@@ -386,7 +397,7 @@
 						</div>
 						<div class="form-group col-md-4">
 							<label for="qual_dor">Qual?</label>
-							<input type="text" class="form-control" name="qual_dor" id="qual_dor">
+							<input type="text" class="form-control" name="qual_dor" id="qual_dor" maxlength="40" >
 						</div>
 						
 						<div class="form-group col-md-3">
@@ -413,41 +424,41 @@
 						</div>
 						<div class="form-group col-md-4">
 							<label for="qual_esforco">Qual?</label>
-							<input type="text" class="form-control" name="qual_esforco" id="qual_esforco">
+							<input type="text" class="form-control" name="qual_esforco" id="qual_esforco" maxlength="4" >
 						</div>
 						
 						<div class="form-group">
 							<label>Escala da dor EVA:</label>
 							<div>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="1">1
+									<input type="radio" name="escala_eva" id="escala_eva1" value="1">1
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="2" >2
+									<input type="radio" name="escala_eva" id="escala_eva2" value="2" >2
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="3">3
+									<input type="radio" name="escala_eva" id="escala_eva3" value="3">3
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="4">4
+									<input type="radio" name="escala_eva" id="escala_eva4" value="4">4
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="5">5
+									<input type="radio" name="escala_eva" id="escala_eva5" value="5">5
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="6">6
+									<input type="radio" name="escala_eva" id="escala_eva6" value="6">6
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="7">7
+									<input type="radio" name="escala_eva" id="escala_eva7" value="7">7
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="8">8
+									<input type="radio" name="escala_eva" id="escala_eva8" value="8">8
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="9">9
+									<input type="radio" name="escala_eva" id="escala_eva9" value="9">9
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="escala_eva" id="escala_eva" value="10">10
+									<input type="radio" name="escala_eva" id="escala_eva10" value="10">10
 								</label>
 							</div>
 							</br>
@@ -460,53 +471,53 @@
 						<div class="form-group">
 								<label>Inspe&ccedil;&atilde;o(atrav&eacute;s da vis&atilde;o):</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Edema">Edema
+									<input type="checkbox" name="inspecao_exame[]" id="Edema" value="Edema">Edema
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Hematoma">Hematoma
+									<input type="checkbox" name="inspecao_exame[]" id="Hematoma" value="Hematoma">Hematoma
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Hiperemia">Hiperemia
+									<input type="checkbox" name="inspecao_exame[]" id="Hiperemia" value="Hiperemia">Hiperemia
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Atrofia">Atrofia
+									<input type="checkbox" name="inspecao_exame[]" id="Atrofia" value="Atrofia">Atrofia
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame" id="optionsRadiosInline1" value="Cicatriz">Cicatriz
+									<input type="checkbox" name="inspecao_exame[]" id="Cicatriz" value="Cicatriz">Cicatriz
 								</label>
 						</div>
 						<div class="form-group">
 								<label><u>Palpa&ccedil;&atilde;o(atrav&eacute;s do tato)</u></label></br>
 								<label>Tonus:</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Normal">Normal
+									<input type="checkbox" name="tonus_exame[]" id="Normal" value="Normal">Normal
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Aumentando">Aumentando
+									<input type="checkbox" name="tonus_exame[]" id="Aumentando" value="Aumentando">Aumentando
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Diminu&iacute;ndo">Diminu&iacute;ndo
+									<input type="checkbox" name="tonus_exame[]" id="Diminuindo" value="Diminu&iacute;ndo">Diminu&iacute;ndo
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame" id="tonus_exame" value="Ausente">Ausente
+									<input type="checkbox" name="tonus_exame[]" id="Ausente" value="Ausente">Ausente
 								</label>
 						</div>
 													
 						<div class="form-group">
 							<label>Caracter&iacute;stica da regi&atilde;o apalpada:</label>
 								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="carac_exame" value="Temperatura">Temparatura
+									<input type="radio" name="carac_exame" id="Temperatura" value="Temperatura">Temparatura
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="carac_exame" value="Deformidade">Deformidade
-								</label>
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="carac_exame" value="Aderência">Ader&ecirc;ncia
+									<input type="radio" name="carac_exame" id="Deformidade" value="Deformidade">Deformidade
 								</label>
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="carac_exame" value="Dor">Dor
+									<input type="radio" name="carac_exame" id="Aderencia" value="Aderência">Ader&ecirc;ncia
+								</label>
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="carac_exame" id="Dor" value="Dor">Dor
 								</label>
 						</div>
 							
@@ -533,51 +544,51 @@
                                                                 <input type="radio" name="qtd_sessoes" id="20" value="20">20 Sess&otilde;es
                                                             </label>
 							</div>
-                                                        <div class="form-group">
+                                                        <div class="form-group" required/>
 								<label>DIAS:</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" name="dias_sessoes" id="dias_sessoes" value="Segunda-feira">Segunda-feira
+										<input type="checkbox" name="segunda" value="1">Segunda-feira
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" name="dias_sessoes" id="dias_sessoes" value="Quarta-feira">Quarta-feira
+										<input type="checkbox" name="quarta" value="1">Quarta-feira
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" name="dias_sessoes" id="dias_sessoes" value="Sexta-feira">Sexta-feira
+										<input type="checkbox" name="sexta" value="1">Sexta-feira
 									</label>
 							</div>
 							<div class="form-group">
 								<label>MANH&Atilde;:</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="07:00">07:00
+										<input type="radio" name="hora_sessoes" id="07:00" value="07:00">07:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="08:00">08:00
+										<input type="radio" name="hora_sessoes" id="08:00" value="08:00">08:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="09:00">09:00
+										<input type="radio" name="hora_sessoes" id="09:00" value="09:00">09:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="10:00">10:00
+										<input type="radio" name="hora_sessoes" id="10:00" value="10:00">10:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="11:00">11:00
+										<input type="radio" name="hora_sessoes" id="11:00" value="11:00">11:00
 									</label>
 								</br>	
 								<label>TARDE:</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="13:00">13:00
+										<input type="radio" name="hora_sessoes" id="13:00" value="13:00">13:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="14:00">14:00
+										<input type="radio" name="hora_sessoes" id="14:00" value="14:00">14:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="15:00">15:00
+										<input type="radio" name="hora_sessoes" id="15:00" value="15:00">15:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="16:00">16:00
+										<input type="radio" name="hora_sessoes" id="16:00" value="16:00">16:00
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="hora_sessoes" id="hora_sessoes" value="17:00">17:00
+										<input type="radio" name="hora_sessoes" id="17:00" value="17:00">17:00
 									</label>
 							</div>
 						

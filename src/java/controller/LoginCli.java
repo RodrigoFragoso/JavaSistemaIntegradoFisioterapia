@@ -23,7 +23,7 @@ public class LoginCli extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher view = request.getRequestDispatcher("/sif/loginCli.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("sif/loginCli.jsp");
         view.forward(request, response);
 
     }
@@ -67,12 +67,11 @@ public class LoginCli extends HttpServlet {
             if(session!=null)  
             session.setAttribute("dadosFuncionario", dados);
             
-            RequestDispatcher rd=request.getRequestDispatcher("sif/agenda.jsp");    
-            rd.forward(request,response);    
+            response.sendRedirect("controllerAgenda");//Redireciona para a pagina View agenda.jsp
         }
         else{    
-            out.print("<p align=\"center\" style=\"color:red\">DESCULPE LOGIN OU SENHA INCORRETOS !!!</p>");    
-            RequestDispatcher rd=request.getRequestDispatcher("sif/loginCli.jsp");    
+            out.print("<p align=\"center\" style=\"color:red\">DESCULPE LOGIN OU SENHA INCORRETOS !!!</p>");
+            RequestDispatcher rd=request.getRequestDispatcher("/sif/loginCli.jsp");    
             rd.forward(request,response);    
         }    
   

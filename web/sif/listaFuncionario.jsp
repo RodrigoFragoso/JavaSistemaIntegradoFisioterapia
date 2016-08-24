@@ -16,11 +16,28 @@
     <script src="/clinica/sif/js/jquery.js"></script>
     <script src="/clinica/sif/js/bootstrap.min.js"></script>
     <script src="/clinica/sif/js/plugins/morris/raphael.min.js"></script>
-    <script src="/clinica/sif/js/plugins/morris/morris.min.js"></script>
-    <script src="/clinica/sif/js/plugins/morris/morris-data.js"></script>
-	<script>
+    <!--script src="/clinica/sif/js/plugins/morris/morris.min.js"></script-->
+    <!--script src="/clinica/sif/js/plugins/morris/morris-data.js"--></script>
+    <!-- Scripts que trasem o nome do paciente AUTOCOMPLETE-->
+    <!--script src="https://code.jquery.com/jquery-1.12.4.js"></script-->
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!--AUTOCOMPLETE-->
+	<!--script>
 		$('.collapse').collapse();
-	</script>
+	</script-->
+
+        <script>
+            $( function() {
+            $('input[name="q"]').autocomplete({
+                source: function(request, response){
+                    $.getJSON('/clinica/controllerListaFunc', { q: request.term }, function(data){ response(data); });
+                    minLength: 3
+                }
+            });
+            });
+        </script>
 </head>
 
 <body>
@@ -34,7 +51,7 @@
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${dadosFuncionario.nome} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -50,15 +67,15 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="/clinica/sif/agenda.jsp"><i class="fa fa-fw fa-table"></i> Agenda</a>
+                        <a href="/clinica/controllerAgenda"><i class="fa fa-fw fa-table"></i> Agenda</a>
                     </li>
                     <li>
                         <a href="/clinica/sif/cadastraPaciente.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Pacientes</a>
                     </li>
-					<li>
+                    <!--li>
                         <a href="/clinica/sif/listaPaciente.jsp"><i class="glyphicon glyphicon-list-alt"></i> Pacientes</a>
-                    </li>
-					<li>
+                    </li-->
+                    <li>
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li class="active">
@@ -92,7 +109,7 @@
 						<div class="row "  align="center">
 							<div class="col-lg-6">
 								<div class="input-group">
-								<input type="text" class="form-control" placeholder="DIGITE O NOME DO FUNCIONÃRIO">
+								<input type="text" name ="q" id="tags" class="form-control" placeholder="DIGITE O NOME DO FUNCIONÃRIO">
 								  <span class="input-group-btn">
 									<button class="btn btn-primary" type="button">PESQUISAR</button>
 								  </span>

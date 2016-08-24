@@ -1,5 +1,6 @@
 package controller;
 import dao.PacienteDAO;
+import dao.validacao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import model.Paciente;
 public class pacienteController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String insert_or_edit = "/Paciente.jsp";
-    private static String list_person = "/ListPaciente.jsp";
+    private static String list_person = "/sif/listaPaciente.jsp";
     private PacienteDAO pacientedao;
     
     public pacienteController(){
@@ -24,27 +25,29 @@ public class pacienteController extends HttpServlet {
     }
         
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        validacao.ValidaSessao(request, response);
         String forward = "";
         String action = request.getParameter("action");
+        
+        int idPacientes = Integer.parseInt(request.getParameter("idpacientes"));
         if (action.equalsIgnoreCase("delete")) {
 
-            int idPacientes = Integer.parseInt(request.getParameter("idpacientes"));
-
-            forward = list_person;
+        forward = list_person;
             try {
-                request.setAttribute("paciente", pacientedao.getPaciente());
+                request.setAttribute("paciente", pacientedao.getPaciente(idPacientes));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        else if (action.equalsIgnoreCase("listPaciente")) {
+        else if (action.equalsIgnoreCase("paciente")) {
             forward = list_person;
             try {
-                request.setAttribute("paciente", pacientedao.getPaciente());
+                request.setAttribute("paciente", pacientedao.getPaciente(idPacientes));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else {
+        }        
+        else {
             forward = insert_or_edit;
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -108,7 +111,21 @@ public class pacienteController extends HttpServlet {
                 paciente.setTonus_exame(request.getParameter("tonus_exame"));
                 paciente.setCarac_exame(request.getParameter("carac_exame"));
                 paciente.setQtd_sessoes(Integer.parseInt(request.getParameter("qtd_sessoes")));
-                paciente.setDias_sessoes(request.getParameter("dias_sessoes"));
+                if(request.getParameter("segunda")==null){
+                    paciente.setSegunda("0");
+                }else{
+                    paciente.setSegunda(request.getParameter("segunda"));
+                }
+                if(request.getParameter("quarta")==null){
+                    paciente.setQuarta("0");
+                }else{
+                    paciente.setQuarta(request.getParameter("quarta"));
+                }
+                if(request.getParameter("sexta")==null){
+                    paciente.setSexta("0");
+                }else{
+                    paciente.setSexta(request.getParameter("sexta"));
+                }
                 paciente.setHora_sessoes(request.getParameter("hora_sessoes"));
                 String idpacientes = request.getParameter("idpacientes");
         System.out.println("Paciente Cadastrado !");

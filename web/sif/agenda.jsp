@@ -34,14 +34,14 @@
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${dadosFuncionario.nome} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="/clinica/sif/loginCli.jsp"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="/clinica/LoginCli"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -50,14 +50,14 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="/clinica/sif/agenda.jsp"><i class="fa fa-fw fa-table"></i> Agenda</a>
+                        <a href="/clinica/controllerAgenda"><i class="fa fa-fw fa-table"></i> Agenda</a>
                     </li>
                     <li>
                         <a href="/clinica/sif/cadastraPaciente.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Pacientes</a>
                     </li>
-                    <li>
+                    <!--li>
                         <a href="/clinica/sif/listaPaciente.jsp"><i class="glyphicon glyphicon-list-alt"></i> Pacientes</a>
-                    </li>
+                    </li-->
                     <li>
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
@@ -81,7 +81,7 @@
 			  <li class="active"><i class="fa fa-table"></i> Agenda</a></li>
 			</ol>
 			
-			<div class="col-sm-4">
+            <div class="col-sm-4">
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <h3 class="panel-title">
@@ -90,7 +90,7 @@
 			</h3>
                     </div>
                     <div class="panel-body">
-                        10 Atendidos
+                        10 ${count.paciente}Atendidos
                     </div>
                 </div>
             </div>
@@ -116,70 +116,69 @@
 			</div>
 			
 			<!-- PACIENTES POR HORAS-->
-			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-				<div class="panel-group" id="accordion">
-					<div class="panel panel-primary" id="panel1">
-						<div class="panel-heading">
-							 <h4 class="panel-title">
-								 <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
-								 <b>07:00 - PACIENTES DO DIA: {01/06/2016}</b>
-								 </a>
-							 </h4>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in">
-							<div class="table-responsive">
-								<table class="table table-bordered table-striped js-options-table">
-									<thead>
-										<tr>
-											<th>N&ordm; SUS</th> 
-											<th>NOME PACIENTE</th> 
-											<th>STATUS</th>
-											<th>A&Ccedil;&Otilde;ES</th>
-										</tr> 
-									</thead>
-									<tbody>
-										<tr>
-											<td>0000000.000.00</td>
-											<td>Hulk Smash</td>
-											<td>aguardando</td>
-											<td>
-												<a class="btn btn-success" href="atualizaStatus.php?id=">Compareceu</a>
-												<a class="btn btn-danger" href="atualizaStatus.php?id=">Falta</a>
-												<a class="btn btn-info" href="visualizaPaciente.php?id=">Editar</a>
-											</td>
-										</tr> 
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					
-					<div class="panel panel-primary" id="panel2">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-target="#collapseTwo" href="#collapseTwo" class="collapsed">
-									<b>08:00 - PACIENTES DO DIA: {01/06/2016}</b>
-									<!--i class="glyphicon glyphicon-user"></i-->
-								</a>
-							</h4>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse">
-							<div class="panel-body">tEXTO</div>
-						</div>
-					</div>
-					
-					<div class="panel panel-primary" id="panel3">
-						<div class="panel-heading">
-							<h4 class="panel-title"><a data-toggle="collapse" data-target="#collapseThree" href="#collapseThree" class="collapsed"><b>09:00 - PACIENTES DO DIA: {01/06/2016}</b></a></h4>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse">
-							<div class="panel-body">tEXTO</div>
-						</div>
-					</div>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel-group" id="accordion">
+                        <c:set var="aberto" value="0" scope="session"/>
+                        <c:set var="horas" value="0" scope="session"/>
+                            <c:forEach items="${pacientes}" var="panel">
+                                    <c:if test="${aberto eq 1 && horas != panel.hora_sessoes}">
+                                            </tbody>
+                                        </table>
+                                       </div>
+                                    </div>
+                                   </div>
+                                     <c:set var="aberto" value="0" scope="session"/>
+                                    </c:if>
+                                    <c:if test="${aberto eq 0 && horas != panel.hora_sessoes}">
+                                        <c:set var="horas" value="${panel.hora_sessoes}" scope="session"/>
+                                        <c:set var="aberto" value="1" scope="session"/>
+                                       <div class="panel panel-primary" id="panel_<c:out value="${panel.idpacientes}"/>">
+                                            <div class="panel-heading">
+                                                 <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
+                                                    <b><c:out value="${panel.hora_sessoes}"/> - PACIENTES DO DIA: <c:out value="${panel.data}"/></b>
+                                                    </a>
+                                                 </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped js-options-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th> 
+                                                <th>N&ordm; SUS</th> 
+                                                <th>NOME PACIENTE</th> 
+                                                <th>STATUS</th>
+                                                <th>A&Ccedil;&Otilde;ES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            </c:if>
+                                            <c:if test="${aberto eq 1}">
+                                                <tr>
+                                                    <td>
+                                                        <c:out value="${panel.idpacientes}"/>
+                                                    </td>
+                                                    <td>
+                                                        <c:out value="${panel.num_sus}"/>
+                                                    </td>
+                                                    <td>
+                                                        <c:out value="${panel.nome}"/>
+                                                    </td>
+                                                    <td>
+                                                        <c:out value="${panel.status}"/>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-success" href="controllerAgenda?action=comp&idpacientes=<c:out value="${panel.idpacientes}"/>">Compareceu</a>
+                                                        <a class="btn btn-danger" href="controllerAgenda?action=ncomp&idpacientes=<c:out value="${panel.idpacientes}"/>">Falta</a>
+                                                        <a class="btn btn-info" href="/clinica/pacienteController?action=paciente&idpacientes=<c:out value="${panel.idpacientes}"/>">Editar</a>
+                                                    </td>
+                                                </tr>
+                                            </c:if>
+                                        </c:forEach>
 				</div>
 			</div>
 			<!-- FIMPACIENTES POR HORAS-->
-			
 		</div>	
 	</div>
 </body>

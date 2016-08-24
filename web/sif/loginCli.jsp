@@ -27,11 +27,6 @@
 		  </div>
 			<h1 class="form-signin-heading" align="center">S.I.F</h1>
 			<h2 class="form-signin-heading" align="center">SISTEMA INTEGRADO DE FISIOTERAPIA</h2>
-                        <c:choose> 
-                            <c:when test="${ifdo eq '1'}">
-                               <br /> <h4><center style="color:red">Cadastro realizado com sucesso!</center></h4>
-                            </c:when>
-                        </c:choose>
 			<div class="bs-example" data-example-id="navbar-form" align="center">
 				<nav class="navbar navbar-default">
                                 <form action="/clinica/LoginCli" method="POST" class="form-signin">
@@ -45,7 +40,7 @@
                                                     <a href="#" type="text">Esqueceu sua senha?</a>
                                                 </label>
                                             </div>
-                                          <button type="submit" class="btn btn-primary">ENTRAR</button>
+                                          <input type="submit" class="btn btn-primary" value="ENTRAR">
 					</div>
                                     </div><br>
                                 </form>

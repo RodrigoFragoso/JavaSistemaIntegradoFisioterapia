@@ -4,7 +4,7 @@ package model;
  * @author Rodrigo
  */
 public class Paciente {
-    private int idpacientes; 
+    public int idpacientes; 
     private int num_sus; 
     private String nome; 
     private int telefone; 
@@ -59,8 +59,12 @@ public class Paciente {
     private String tonus_exame; 
     private String carac_exame; 
     private int qtd_sessoes;
-    private String dias_sessoes; 
+    private String segunda; 
+    private String quarta; 
+    private String sexta; 
     private String hora_sessoes;
+    private String data;
+    private String status;
 
     public int getIdpacientes() {
         return idpacientes;
@@ -501,13 +505,29 @@ public class Paciente {
     public void setQtd_sessoes(int qtd_sessoes) {
         this.qtd_sessoes = qtd_sessoes;
     }
-    
-    public String getDias_sessoes() {
-        return dias_sessoes;
+
+    public String getSegunda() {
+        return segunda;
     }
 
-    public void setDias_sessoes(String dias_sessoes) {
-        this.dias_sessoes = dias_sessoes;
+    public void setSegunda(String segunda) {
+        this.segunda = segunda;
+    }
+
+    public String getQuarta() {
+        return quarta;
+    }
+
+    public void setQuarta(String quarta) {
+        this.quarta = quarta;
+    }
+
+    public String getSexta() {
+        return sexta;
+    }
+
+    public void setSexta(String sexta) {
+        this.sexta = sexta;
     }
 
     public String getHora_sessoes() {
@@ -518,5 +538,20 @@ public class Paciente {
         this.hora_sessoes = hora_sessoes;
     }
 
-    
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+       
 }

@@ -39,7 +39,7 @@
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${dadosFuncionario.nome} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -55,15 +55,15 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="/clinica/sif/agenda.jsp"><i class="fa fa-fw fa-table"></i> Agenda</a>
+                        <a href="/clinica/controllerAgenda"><i class="fa fa-fw fa-table"></i> Agenda</a>
                     </li>
                     <li>
                         <a href="/clinica/sif/cadastraPaciente.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Pacientes</a>
                     </li>
-					<li>
+                    <!--li>
                         <a href="/clinica/sif/listaPaciente.jsp"><i class="glyphicon glyphicon-list-alt"></i> Pacientes</a>
-                    </li>
-					<li>
+                    </li-->
+                    <li>
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li>
@@ -91,141 +91,141 @@
                    <h1 class="page-header">Relat&oacute;rios</h1>
                 </div>
             </div>
-			<!--painel do primeiro relatorio-->
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">RELAT&Oacute;RIO DE PACIENTES</h3>
-				</div>
-				<div class="panel-body">
-					<div class="form-group">
-						<!--label>CaracterÃ­stica da regiÃ£o apalpada:</label-->
-						<label class="radio-inline">
-							<input type="radio" name="pacientes" id="optionsRadiosInline1" value="pctAtendidos">Pacientes Atendidos
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="pacientes" id="optionsRadiosInline1" value="pctNaoAtendidos">Pacientes N&atilde;o Atendidos
-						</label>
-					</div>
-					<div class="form-group col-md-3">
-					   <label for="campo1">DE: </label>
-					   <input type="date" class="form-control" id="campo1">
-					</div>
-					<div class="form-group col-md-3">
-					   <label for="campo1">AT&Eacute;: </label>
-					   <input type="date" class="form-control" id="campo1">
-					</div>
-					<div class="form-group col-md-8">
-						<button type="button" class="btn btn-SUCCESS"><a href="7.2_TelaExportarPacientesAtendENaoAtend.png">EXPORTAR PARA EXCEL </a><i class="glyphicon glyphicon-cloud-download"></i></button>
-					</div>
-				</div>
-			</div>
-			<!--painel do segundo relatorio-->
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">RELAT&Oacute;RIO DE FECHAMENTO</h3>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Digite o N&ordm; Cart&atilde;o SUS ou Nome do Paciente">
-							<span class="input-group-btn">
-							<button class="btn btn-primary" type="button">LOCALIZAR E INSERIR</button>
-							</span>
-						</div><!-- /input-group -->
-					</div>
-				</div></br>
-				
-				<div id="collapseOne" class="panel-collapse collapse in">
-					<div class="table-responsive">
-						<table class="table table-bordered table-striped js-options-table">
-							<thead>
-								<tr>
-									<th>N&ordm; SUS</th> 
-									<th>NOME PACIENTE</th> 
-									<th>QUANTIDADE DE SESS&Otilde;ES</th>
-									<th>A&Ccedil;&Otilde;ES</th>
-								</tr> 
-							</thead>
-							<tbody>
-								<tr class="warning">
-									<td>0000000.000.00</td>
-									<td>Hulk Smash</td>
-									<td>10</td>
-									<td>
-										<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">EDITAR SESS&Otilde;ES</button>
-									</td>
-								</tr>
-								<tr class="warning">
-									<td>0000000.000.01</td>
-									<td>Batman Cavaleiro das trevas</td>
-									<td>8</td>
-									<td>
-										<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">EDITAR SESS&Otilde;ES</button>
-									</td>
-								</tr> 
-							</tbody>
-						</table>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					  <div class="modal-dialog" role="document">
-						<div class="modal-content">
-						  <div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">EDITA SESS&Otilde;ES</h4>
-						  </div>
-						  
-							<div id="collapseOne" class="panel-collapse collapse in">
-								<div class="table-responsive">
-									<table class="table table-bordered table-striped js-options-table">
-										<thead>
-											<tr>
-												<th>DATA</th>
-												<th>A&Ccedil;&Otilde;ES</th>
-											</tr> 
-										</thead>
-										<tbody>
-											<tr>
-												<td>
-													<input type="date" name="dataConsulta" value="dataConsulta">
-												</td>
-												<td>
-													<a class="btn btn-success" href="atualizaDataConsulta.php?id=">Compareceu</a>
-													<a class="btn btn-danger" href="atualizaDataConsulta.php?id=">Falta</a>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<input type="date" name="dataConsulta" value="dataConsulta">
-												</td>
-												<td>
-													<a class="btn btn-success" href="atualizaDataConsulta.php?id=">Compareceu</a>
-													<a class="btn btn-danger" href="atualizaDataConsulta.php?id=">Falta</a>
-												</td>
-											</tr> 
-										</tbody>
-									</table>
-								</div>
-							</div>
-						  
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Salvar</button>
-							</div>
-						</div>
-					  </div>
-					</div>
-					
-				</div>
-				
-				<div class="form-group">
-					<button type="button" class="btn btn-SUCCESS"><a href="7.1_TelaExportarFechamentoGuias.png">EXPORTAR PARA EXCEL </a><i class="glyphicon glyphicon-cloud-download"></i></button>
-					<!--button type="button" class="btn btn-SUCCESS">EXPORTAR PARA EXCEL <i class="glyphicon glyphicon-cloud-download"></i></button-->
-				</div>
-			</div>
-		</div>
-		</div>
-	</div>
+                <!--painel do primeiro relatorio-->
+                <div class="panel panel-primary">
+                        <div class="panel-heading">
+                                <h3 class="panel-title">RELAT&Oacute;RIO DE PACIENTES</h3>
+                        </div>
+                        <div class="panel-body">
+                                <div class="form-group">
+                                        <!--label>CaracterÃ­stica da regiÃ£o apalpada:</label-->
+                                        <label class="radio-inline">
+                                                <input type="radio" name="pacientes" id="optionsRadiosInline1" value="pctAtendidos">Pacientes Atendidos
+                                        </label>
+                                        <label class="radio-inline">
+                                                <input type="radio" name="pacientes" id="optionsRadiosInline1" value="pctNaoAtendidos">Pacientes N&atilde;o Atendidos
+                                        </label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                   <label for="campo1">DE: </label>
+                                   <input type="date" class="form-control" id="campo1">
+                                </div>
+                                <div class="form-group col-md-3">
+                                   <label for="campo1">AT&Eacute;: </label>
+                                   <input type="date" class="form-control" id="campo1">
+                                </div>
+                                <div class="form-group col-md-8">
+                                        <button type="button" class="btn btn-SUCCESS"><a href="7.2_TelaExportarPacientesAtendENaoAtend.png">EXPORTAR PARA EXCEL </a><i class="glyphicon glyphicon-cloud-download"></i></button>
+                                </div>
+                        </div>
+                </div>
+                <!--painel do segundo relatorio-->
+        <div class="panel panel-primary">
+                <div class="panel-heading">
+                        <h3 class="panel-title">RELAT&Oacute;RIO DE FECHAMENTO</h3>
+                </div>
+                <div class="panel-body">
+                        <div class="row">
+                                <div class="col-lg-8">
+                                        <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Digite o N&ordm; Cart&atilde;o SUS ou Nome do Paciente">
+                                                <span class="input-group-btn">
+                                                <button class="btn btn-primary" type="button">LOCALIZAR E INSERIR</button>
+                                                </span>
+                                        </div><!-- /input-group -->
+                                </div>
+                        </div></br>
+
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="table-responsive">
+                                        <table class="table table-bordered table-striped js-options-table">
+                                                <thead>
+                                                        <tr>
+                                                                <th>N&ordm; SUS</th> 
+                                                                <th>NOME PACIENTE</th> 
+                                                                <th>QUANTIDADE DE SESS&Otilde;ES</th>
+                                                                <th>A&Ccedil;&Otilde;ES</th>
+                                                        </tr> 
+                                                </thead>
+                                                <tbody>
+                                                        <tr class="warning">
+                                                                <td>0000000.000.00</td>
+                                                                <td>Hulk Smash</td>
+                                                                <td>10</td>
+                                                                <td>
+                                                                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">EDITAR SESS&Otilde;ES</button>
+                                                                </td>
+                                                        </tr>
+                                                        <tr class="warning">
+                                                                <td>0000000.000.01</td>
+                                                                <td>Batman Cavaleiro das trevas</td>
+                                                                <td>8</td>
+                                                                <td>
+                                                                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">EDITAR SESS&Otilde;ES</button>
+                                                                </td>
+                                                        </tr> 
+                                                </tbody>
+                                        </table>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                  <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">EDITA SESS&Otilde;ES</h4>
+                                          </div>
+
+                                                <div id="collapseOne" class="panel-collapse collapse in">
+                                                        <div class="table-responsive">
+                                                                <table class="table table-bordered table-striped js-options-table">
+                                                                        <thead>
+                                                                                <tr>
+                                                                                        <th>DATA</th>
+                                                                                        <th>A&Ccedil;&Otilde;ES</th>
+                                                                                </tr> 
+                                                                        </thead>
+                                                                        <tbody>
+                                                                                <tr>
+                                                                                        <td>
+                                                                                                <input type="date" name="dataConsulta" value="dataConsulta">
+                                                                                        </td>
+                                                                                        <td>
+                                                                                                <a class="btn btn-success" href="atualizaDataConsulta.php?id=">Compareceu</a>
+                                                                                                <a class="btn btn-danger" href="atualizaDataConsulta.php?id=">Falta</a>
+                                                                                        </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td>
+                                                                                                <input type="date" name="dataConsulta" value="dataConsulta">
+                                                                                        </td>
+                                                                                        <td>
+                                                                                                <a class="btn btn-success" href="atualizaDataConsulta.php?id=">Compareceu</a>
+                                                                                                <a class="btn btn-danger" href="atualizaDataConsulta.php?id=">Falta</a>
+                                                                                        </td>
+                                                                                </tr> 
+                                                                        </tbody>
+                                                                </table>
+                                                        </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Salvar</button>
+                                                </div>
+                                        </div>
+                                  </div>
+                                </div>
+
+                        </div>
+
+                        <div class="form-group">
+                                <button type="button" class="btn btn-SUCCESS"><a href="7.1_TelaExportarFechamentoGuias.png">EXPORTAR PARA EXCEL </a><i class="glyphicon glyphicon-cloud-download"></i></button>
+                                <!--button type="button" class="btn btn-SUCCESS">EXPORTAR PARA EXCEL <i class="glyphicon glyphicon-cloud-download"></i></button-->
+                        </div>
+                </div>
+        </div>
+        </div>
+    </div>
 </body>
 </html>

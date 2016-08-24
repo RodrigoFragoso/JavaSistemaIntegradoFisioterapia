@@ -1,11 +1,14 @@
 package dao;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import model.Paciente;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -23,8 +26,93 @@ public class PacienteDAO {
         }
     }
     
-    public int addPaciente(Paciente paciente) {
-        int id = 0;
+    public void addPaciente(Paciente paciente) {        
+        int qtd_sessoes = paciente.getQtd_sessoes();
+        int segunda = 0;
+        int quarta = 0;
+        int sexta = 0;
+        boolean bsegunda = false;
+        boolean bquarta = false;
+        boolean bsexta = false;
+        int qtd_diaSemana = 0;
+        
+        if (paciente.getSegunda().equals("1")){
+            bsegunda = true;
+            qtd_diaSemana ++;
+        }
+        if (paciente.getQuarta().equals("1")){
+            bquarta = true;
+            qtd_diaSemana ++;
+        }
+        if (paciente.getSexta().equals("1")){
+            bsexta = true;
+            qtd_diaSemana ++;
+        }
+        
+        double divDias = ((double)qtd_sessoes/(double)qtd_diaSemana); 
+        if (qtd_diaSemana==1){
+            if(bsegunda){
+                segunda = qtd_sessoes;
+                InserirLoop(paciente, Calendar.MONDAY, segunda);
+            }else if(bquarta){
+                quarta = qtd_sessoes;
+                InserirLoop(paciente, Calendar.WEDNESDAY, quarta);
+            }else{
+                sexta = qtd_sessoes;
+                InserirLoop(paciente, Calendar.FRIDAY, sexta);
+            }   
+        }else if(qtd_diaSemana==2){
+            if(bsegunda && bquarta){
+                segunda = (int)divDias;
+                quarta = (int)Math.ceil(divDias);
+                InserirLoop(paciente, Calendar.MONDAY, segunda);
+                InserirLoop(paciente, Calendar.WEDNESDAY, quarta);
+            }
+            if(bsegunda && bsexta){
+                segunda = (int)divDias;
+                sexta = (int)Math.ceil(divDias);
+                InserirLoop(paciente, Calendar.MONDAY, segunda);
+                InserirLoop(paciente, Calendar.FRIDAY, sexta);
+            }
+            if(bquarta && bsexta){
+                quarta = (int)divDias;
+                sexta = (int)Math.ceil(divDias);
+                InserirLoop(paciente, Calendar.WEDNESDAY, quarta);
+                InserirLoop(paciente, Calendar.FRIDAY, sexta);
+            }
+        }else if(qtd_diaSemana==3){
+            segunda = (int)divDias;
+            quarta = (int)divDias;
+            sexta = (int)Math.ceil(divDias);
+            InserirLoop(paciente, Calendar.MONDAY, segunda);
+            InserirLoop(paciente, Calendar.WEDNESDAY, quarta);
+            InserirLoop(paciente, Calendar.FRIDAY, sexta);
+        }
+        
+    }
+    
+    public void InserirLoop(Paciente paciente, int diaSemana, int quantidade){
+                Calendar date1 = Calendar.getInstance();
+                String dias = "segunda-feira";
+                if (diaSemana==Calendar.WEDNESDAY){
+                    dias = "quarta-feira";
+                }else if(diaSemana==Calendar.FRIDAY){
+                    dias = "sexta-feira";
+                }
+                while (date1.get(Calendar.DAY_OF_WEEK) != diaSemana){
+                    date1.add(Calendar.DATE, 1);
+                }        
+                for(int x=0; x < quantidade; x++){
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    paciente.setData(sdf.format(date1.getTime()));
+                    //InserirPaciente(paciente, "ff");
+                    InserirPaciente(paciente, dias);
+                    date1.add(Calendar.DATE, 7);
+                }
+    }
+    
+    public void InserirPaciente(Paciente paciente, String dias_sessoes){
+        //int id = 0;
         try {          
             String query = "INSERT INTO pacientes"
                     +"("
@@ -37,7 +125,7 @@ public class PacienteDAO {
                     + "rg, "
                     + "dt_emissao, "
                     + "org_emissor, "
-                    + "nome_pai, "
+                    + "nome_pai, " 
                     + "nome_mae, "
                     + "profissao, "
                     + "raca_cor, "
@@ -83,8 +171,9 @@ public class PacienteDAO {
                     + "carac_exame, "
                     + "qtd_sessoes, "
                     + "dias_sessoes, "
-                    + "hora_sessoes) values "
-                    + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "hora_sessoes, "
+                    + "data) values "
+                    + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             
             PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, paciente.getNum_sus()); 
@@ -141,18 +230,15 @@ public class PacienteDAO {
             stmt.setString(52, paciente.getTonus_exame());
             stmt.setString(53, paciente.getCarac_exame());
             stmt.setInt(54, paciente.getQtd_sessoes());
-            stmt.setString(55, paciente.getDias_sessoes());
+            stmt.setString(55, dias_sessoes);
             stmt.setString(56, paciente.getHora_sessoes());
+            stmt.setString(57, paciente.getData());
             stmt.executeUpdate();
             
-            ResultSet keyResultSet = stmt.getGeneratedKeys();
-            if (keyResultSet.next()) {
-                id = (int) keyResultSet.getInt(1);
-            }
         } catch (SQLException e) {
             e.printStackTrace();
-        }     
-        return id;
+        }
+        //return id;
     }
     
     public void updatePaciente(Paciente paciente) {
@@ -211,7 +297,6 @@ public class PacienteDAO {
                     + " '" + paciente.getTonus_exame() + "',"
                     + " '" + paciente.getCarac_exame() + "',"
                     + " '" + paciente.getQtd_sessoes() + "',"
-                    + " '" + paciente.getDias_sessoes() + "',"
                     + " '" + paciente.getHora_sessoes() +
                     "' where idpacientes = " + paciente.getIdpacientes() +" ";
         
@@ -224,12 +309,14 @@ public class PacienteDAO {
         }
     }
     
-    public ArrayList<Paciente> getPaciente() throws SQLException {
-        String query = "select * from pacientes";
-        ArrayList<Paciente> Paciente = new ArrayList<Paciente>();
+    public Paciente getPaciente(int idpacientes) throws SQLException {
+        String query = "select * from pacientes where idpacientes='" + idpacientes + "'";
+        //ArrayList<Paciente> Paciente = new ArrayList<Paciente>();
         Statement stmt = connection.createStatement();
+        //PreparedStatement stmt = connection.prepareStatement(query);
+        //stmt.setInt(1, idpacientes);
         ResultSet res = stmt.executeQuery(query);
-        while (res.next()) {
+        if (res.next()) {
             Paciente paciente = new Paciente();
                 paciente.setNum_sus(res.getInt("num_sus"));
                 paciente.setNome(res.getString("nome"));
@@ -285,12 +372,73 @@ public class PacienteDAO {
                 paciente.setTonus_exame(res.getString("tonus_exame"));
                 paciente.setCarac_exame(res.getString("carac_exame"));
                 paciente.setQtd_sessoes(res.getInt("qtd_sessoes"));
-                paciente.setDias_sessoes(res.getString("dias_sessoes"));
                 paciente.setHora_sessoes(res.getString("hora_sessoes"));
-            Paciente.add(paciente);
+            //Paciente.add(paciente);
+        return paciente;
         }
-        return Paciente;
+        return null;
+    }
+    
+    
+    public ArrayList<Paciente>listaPaciente() throws SQLException{
+        String query = "select idpacientes, num_sus, nome, status, hora_sessoes, date_format(data,'%d/%m/%Y') as data "
+                + "from clinica.pacientes "
+                + "where data regexp curdate() "
+                + "order by hora_sessoes";
+        
+        ArrayList<Paciente> listaPaciente = new ArrayList<Paciente>();
+        Statement stmt = connection.createStatement();
+        ResultSet res = stmt.executeQuery(query);
+        while (res.next()){
+            Paciente paciente = new Paciente();
+            paciente.setIdpacientes(res.getInt("idpacientes"));
+            paciente.setNum_sus(res.getInt("num_sus"));
+            paciente.setNome(res.getString("nome"));
+            paciente.setStatus(res.getString("status"));
+            paciente.setHora_sessoes(res.getString("hora_sessoes"));
+            paciente.setData(res.getString("data"));
+            listaPaciente.add(paciente);
+        }
+        return listaPaciente;
+    }
+    
+    
+    
+    public void removePaciente(String Idpacientes) {
+        String query = "delete from clinica.pacientes where idpacientes= '"+ Idpacientes +"' ";
+        try{
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 
+    public void UpdateStatus(String Idpacientes, String status) {
+        String query = "UPDATE clinica.pacientes "
+                + "SET status='"+ status +"' "
+                + "WHERE idpacientes='"+ Idpacientes +"'";
+        System.out.println(query);
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+   
+    public Paciente PacienteAtendidos(int paciente) throws SQLException {
+        String query = "select count(*) as 'PacientesAtendidos' from pacientes where status = 'Compareceu' and data regexp curdate()";
+        Statement stmt = connection.createStatement();
+        ResultSet res = stmt.executeQuery(query);
+        return null;
+    }
+    
+    public Paciente PacienteNaoAtendidos(int paciente) throws SQLException {
+        String query = "select count(*) as 'PacientesNaoAtendidos' from pacientes where status = 'Não Compareceu' and data regexp curdate()";
+        Statement stmt = connection.createStatement();
+        ResultSet res = stmt.executeQuery(query);
+        return null;
+    }
     
 }
