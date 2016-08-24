@@ -18,6 +18,12 @@
     <script src="/clinica/sif/js/npm.js"></script>
 </head>
 <body>
+    <!-- JEITO MEIO DIFICIL-->
+    <%
+    if (request.getAttribute("error") == "SenhaInvalida") {
+        out.println("<p align=\"center\" style=\"color:red\">DESCULPE LOGIN OU SENHA INCORRETOS !!!</p>");
+    }
+    %>
 	</br></br></br></br>
 <div class="container">
     <!--form method="post" action="agenda.html" class="form-signin"-->
@@ -33,13 +39,7 @@
                         <div class="container-fluid"></br>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                                 <div class="form-group" align="center">
-                                    <!-- se o parametro no momento da requisação for "error" 
-                                    igual a "SenhaInvalida" ira printar login incorreto -->
-                                    <%
-                                        if (request.getAttribute("error") == "SenhaInvalida") {%>
-                                            <p align="center" style="color:red"><b>DESCULPE LOGIN OU SENHA INCORRETOS!!!</b></p>
-                                        <%}
-                                    %>
+                                    <p align="center" style="color:red">DESCULPE LOGIN OU SENHA INCORRETOS !!!</p>
                                     <input type="text" name="username" id="email" class="form-control" placeholder="Digite seu e-Mail ou Usuário" maxlength="30" required>
                                     </br>
                                         <input type="password" name="userpass" class="form-control" placeholder="Digite sua senha" maxlength="30" required>

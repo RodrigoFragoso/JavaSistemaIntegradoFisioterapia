@@ -120,7 +120,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Dados do funcion&aacute;rio</h3>
 				</div>
-			<form method="POST" action='../funcionarioController' name="frmAddFuncionario" id="frmAddFuncionario" role="form" onsubmit="cadastraFunc()">
+			  <form method="POST" action='../funcionarioController' name="frmAddFuncionario" id="frmAddFuncionario" role="form" onsubmit="cadastraFunc()">
                             <div class="panel-body">
 					<div class="form-group col-md-4">
 					   <label for="campo1">Nome/Usu&aacute;rio: </label>
@@ -153,13 +153,15 @@
 					</div>
 					<div class="form-group col-md-6">
 						<button type="button" class="btn btn-DANGER">CANCELAR</button>
-						<button type="button" class="btn btn-SUCCESS" onclick="validaEmail()">CADASTRAR <i class="glyphicon glyphicon-floppy-disk"></i></button>
+						<button type="submit" class="btn btn-SUCCESS">
+                                                    CADASTRAR
+                                                    <i class="glyphicon glyphicon-floppy-disk"></i>
+                                                </button>
 					</div>
 				</div>
                             </form>
 			</div>
 		</div>
-	
 	</div>
 </body>
 </html>

@@ -52,29 +52,23 @@ public class LoginCli extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setContentType("text/html");    
-        PrintWriter out = response.getWriter();    
-          
+        PrintWriter out = response.getWriter();
         String n=request.getParameter("username");    
-        String p=request.getParameter("userpass");       
+        String p=request.getParameter("userpass");
         
-        if(LoginCliDao.validate(n, p)){    
-            
+        if(LoginCliDao.validate(n, p)){
             Funcionario dados = LoginCliDao.getDados(n);
-            
             HttpSession session = request.getSession();
             if(session!=null)  
             session.setAttribute("dadosFuncionario", dados);
-            
             response.sendRedirect("controllerAgenda");//Redireciona para a pagina View agenda.jsp
         }
         else{    
-            out.print("<p align=\"center\" style=\"color:red\">DESCULPE LOGIN OU SENHA INCORRETOS !!!</p>");
-            RequestDispatcher rd=request.getRequestDispatcher("/sif/loginCli.jsp");    
+            request.setAttribute("error", "SenhaInvalida"); //este parametro esta enviando para o arquivo loginCli.jsp
+            RequestDispatcher rd=request.getRequestDispatcher("sif/loginCli.jsp");
             rd.forward(request,response);    
         }    
-  
         out.close();
     }
 

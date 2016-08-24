@@ -72,7 +72,7 @@ public class funcionarioController extends HttpServlet {
             funcionario.setIdFuncionario(Integer.parseInt(idFuncionario));
             funcionariodao.updateFuncionario(funcionario);
         }
-        response.sendRedirect(request.getContextPath() + "/LoginCli");
+        response.sendRedirect(request.getContextPath() + "/controllerAgenda");
     }
 
 }

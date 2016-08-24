@@ -86,11 +86,8 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="glyphicon glyphicon-user"></i>
-                            Compareceu
+                            Compareceu: <b>10 ${count.pacientes}Atendidos</b>
 			</h3>
-                    </div>
-                    <div class="panel-body">
-                        10 ${count.paciente}Atendidos
                     </div>
                 </div>
             </div>
@@ -99,11 +96,8 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
 			<i class="glyphicon glyphicon-user"></i>
-                            Não Compareceu
+                            Não Compareceu <b>10 ${count.pacientes}Atendidos</b>
 			</h3>
-                    </div>
-                    <div class="panel-body">
-                        2 Não Atendidos
                     </div>
                 </div>
             </div>
