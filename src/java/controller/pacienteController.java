@@ -136,6 +136,7 @@ public class pacienteController extends HttpServlet {
             paciente.setIdpacientes(Integer.parseInt(idpacientes));
             pacientedao.updatePaciente(paciente);
         }
-        response.sendRedirect(request.getContextPath() + "/LoginCli");
+        response.sendRedirect(request.getContextPath() + "controllerAgenda");
+        //response.sendRedirect(request.getContextPath() + "/LoginCli");
     }                
 }

@@ -83,7 +83,12 @@ public class PacienteDAO {
         }else if(qtd_diaSemana==3){
             segunda = (int)divDias;
             quarta = (int)divDias;
-            sexta = (int)Math.ceil(divDias);
+            //sexta = (int)Math.ceil(divDias);
+            sexta = qtd_sessoes - (segunda + quarta);
+                if((sexta - segunda) == 2){
+                    segunda ++;
+                    sexta = segunda;
+                }
             InserirLoop(paciente, Calendar.MONDAY, segunda);
             InserirLoop(paciente, Calendar.WEDNESDAY, quarta);
             InserirLoop(paciente, Calendar.FRIDAY, sexta);

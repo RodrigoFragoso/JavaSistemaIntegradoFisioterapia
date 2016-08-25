@@ -98,7 +98,7 @@
 			<i class="glyphicon glyphicon-user"></i>
                             Não Compareceu <b>10 ${count.pacientes}Atendidos</b>
 			</h3>
-                    </div>
+                    </div>  
                 </div>
             </div>
 			
