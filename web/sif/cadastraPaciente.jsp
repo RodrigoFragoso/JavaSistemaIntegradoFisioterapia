@@ -471,35 +471,35 @@ function SomenteNumero(e){
 						<div class="form-group">
 								<label>Inspe&ccedil;&atilde;o(atrav&eacute;s da vis&atilde;o):</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Edema" value="Edema">Edema
+									<input type="checkbox" name="inspecao_exame" id="Edema" value="Edema">Edema
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Hematoma" value="Hematoma">Hematoma
+									<input type="checkbox" name="inspecao_exame" id="Hematoma" value="Hematoma">Hematoma
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Hiperemia" value="Hiperemia">Hiperemia
+									<input type="checkbox" name="inspecao_exame" id="Hiperemia" value="Hiperemia">Hiperemia
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Atrofia" value="Atrofia">Atrofia
+									<input type="checkbox" name="inspecao_exame" id="Atrofia" value="Atrofia">Atrofia
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Cicatriz" value="Cicatriz">Cicatriz
+									<input type="checkbox" name="inspecao_exame" id="Cicatriz" value="Cicatriz">Cicatriz
 								</label>
 						</div>
 						<div class="form-group">
 								<label><u>Palpa&ccedil;&atilde;o(atrav&eacute;s do tato)</u></label></br>
 								<label>Tonus:</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Normal" value="Normal">Normal
+									<input type="checkbox" name="tonus_exame" id="Normal" value="Normal">Normal
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Aumentando" value="Aumentando">Aumentando
+									<input type="checkbox" name="tonus_exame" id="Aumentando" value="Aumentando">Aumentando
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Diminuindo" value="Diminu&iacute;ndo">Diminu&iacute;ndo
+									<input type="checkbox" name="tonus_exame" id="Diminuindo" value="Diminuindo">Diminuindo
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Ausente" value="Ausente">Ausente
+									<input type="checkbox" name="tonus_exame" id="Ausente" value="Ausente">Ausente
 								</label>
 						</div>
 													

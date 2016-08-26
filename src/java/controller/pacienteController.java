@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -107,8 +107,21 @@ public class pacienteController extends HttpServlet {
                 paciente.setEsforco_dor(Integer.parseInt(request.getParameter("esforco_dor")));
                 paciente.setQual_esforco(request.getParameter("qual_esforco"));
                 paciente.setEscala_eva(Integer.parseInt(request.getParameter("escala_eva")));
-                paciente.setInspecao_exame(request.getParameter("inspecao_exame"));
-                paciente.setTonus_exame(request.getParameter("tonus_exame"));
+                
+                String[] inspecao_exame = request.getParameterValues("inspecao_exame");
+                StringBuilder inspecao = new StringBuilder();
+                for(String s : inspecao_exame){
+                    inspecao.append(s).append(";");
+                }
+                paciente.setInspecao_exame(inspecao.toString());
+                
+                String[] tonus_exame = request.getParameterValues("tonus_exame");
+                StringBuilder tonus = new StringBuilder();
+                for(String s : tonus_exame){
+                    tonus.append(s).append(";");
+                }
+                paciente.setTonus_exame(tonus.toString());
+                
                 paciente.setCarac_exame(request.getParameter("carac_exame"));
                 paciente.setQtd_sessoes(Integer.parseInt(request.getParameter("qtd_sessoes")));
                 if(request.getParameter("segunda")==null){
@@ -136,7 +149,7 @@ public class pacienteController extends HttpServlet {
             paciente.setIdpacientes(Integer.parseInt(idpacientes));
             pacientedao.updatePaciente(paciente);
         }
-        response.sendRedirect(request.getContextPath() + "controllerAgenda");
+        response.sendRedirect(request.getContextPath() + "/controllerAgenda");
         //response.sendRedirect(request.getContextPath() + "/LoginCli");
     }                
 }
