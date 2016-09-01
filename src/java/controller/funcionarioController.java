@@ -16,8 +16,8 @@ import model.Funcionario;
 @WebServlet(name = "funcionarioController", urlPatterns = {"/funcionarioController"})
 public class funcionarioController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static String insert_or_edit = "/Funcionario.jsp";
-    private static String list_person = "/ListFuncionario.jsp";
+    private static String insert_or_edit = "/listafuncionario.jsp";
+    private static String list_person = "/listafuncionario.jsp";
     private FuncionarioDAO funcionariodao;
     
     public funcionarioController(){
@@ -27,26 +27,22 @@ public class funcionarioController extends HttpServlet {
         
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         validacao.ValidaSessao(request, response);
-        String forward = "";
+        String forward = "/controllerListaFunc";
+        
         String action = request.getParameter("action");
-        if (action.equalsIgnoreCase("delete")) {
-
-            int idCadastroFunc = Integer.parseInt(request.getParameter("idFuncionario"));
-
-            forward = list_person;
-            try {
-                request.setAttribute("funcinarios", funcionariodao.getFuncionario());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        if(action != null && action.equals("delete")){ 
+            String Idfuncionario = request.getParameter("idfuncionario");
+            funcionariodao.removeFuncionario(Idfuncionario);
         }
-        else if (action.equalsIgnoreCase("listFuncionario")) {
-            forward = list_person;
-            try {
+        else if (action != null && action.equals("atualiza")) {
+            String Idfuncionario = request.getParameter("idfuncionario");
+            //funcionariodao.updateFuncionario(Idfuncionario);
+            //forward = list_person;
+            /*try {
                 request.setAttribute("funcionarios", funcionariodao.getFuncionario());
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
+            }*/
         } else {
             forward = insert_or_edit;
         }
@@ -62,14 +58,14 @@ public class funcionarioController extends HttpServlet {
         funcionario.setCpf(request.getParameter("cpf"));
         funcionario.setCargo(request.getParameter("cargo"));
         funcionario.setTelefone(request.getParameter("telefone"));
-        String idFuncionario = request.getParameter("idFuncionario");
+        String Idfuncionario = request.getParameter("idFuncionario");
         System.out.println("Funcionario Cadastrado !");
-        System.out.println(idFuncionario);
+        System.out.println(Idfuncionario);
         
-        if (idFuncionario == null || idFuncionario.isEmpty()) {
+        if (Idfuncionario == null || Idfuncionario.isEmpty()) {
             funcionariodao.addFuncionario(funcionario);
         } else {
-            funcionario.setIdFuncionario(Integer.parseInt(idFuncionario));
+            funcionario.setIdfuncionario(Integer.parseInt(Idfuncionario));
             funcionariodao.updateFuncionario(funcionario);
         }
         response.sendRedirect(request.getContextPath() + "/controllerAgenda");

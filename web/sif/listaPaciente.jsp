@@ -14,6 +14,7 @@
     <link href="/clinica/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
     <link href="/clinica/sif/css/plugins/morris.css" rel="stylesheet">
     <script src="/clinica/sif/js/jquery.js"></script>
+    <script src="/clinica/sif/js/jquery.maskedinput.js" type="text/javascript"></script>
     <script src="/clinica/sif/js/bootstrap.min.js"></script>
     
     <!--script src="js/plugins/morris/raphael.min.js"></script-->
@@ -56,16 +57,24 @@
 			});
 		});
 	</script>
-<script language='JavaScript'>
-function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;   
-    if((tecla>47 && tecla<58)) return true;
-    else{
-    	if (tecla==8 || tecla==0) return true;
-	else  return false;
-    }
-}
-</script>
+        <script language='JavaScript'>
+        function SomenteNumero(e){
+            var tecla=(window.event)?event.keyCode:e.which;   
+            if((tecla>47 && tecla<58)) return true;
+            else{
+                if (tecla==8 || tecla==0) return true;
+                else  return false;
+            }
+        }
+        </script>
+        <script>jQuery(function($){
+            //$("#cpf").mask("999.999.999-99");
+            $("#cep").mask("99999-999");
+            $("#dt_nasc").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+            $("#dt_emissao").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+            $("#telefone").mask("(99) 9999-9999");
+         });
+         </script>
 
 </head>
 
@@ -87,7 +96,7 @@ function SomenteNumero(e){
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="/clinica/sif/loginCli.jsp"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="/clinica/LoginCli"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -108,13 +117,13 @@ function SomenteNumero(e){
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li>
-                        <a href="/clinica/sif/listaFuncionario.jsp"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
+                        <a href="/clinica/controllerListaFunc"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
                     </li>
                     <li>
                         <a href="/clinica/sif/relatorios.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Relat&oacute;rios</a>
                     </li>
                     <li>
-                        <a href="loginCli.jsp"><i class="glyphicon glyphicon-off"></i> SAIR</a>
+                        <a href="/clinica/LoginCli"><i class="glyphicon glyphicon-off"></i> SAIR</a>
                     </li>
                 </ul>
             </div>
@@ -164,7 +173,7 @@ function SomenteNumero(e){
 								 
 								 <div class="form-group col-md-3">
 								   <label for="telefone">Telefone</label>
-								   <input type="text" class="form-control" name="telefone" value="${paciente.telefone}" id="telefone" maxlength="14" onkeypress="return SomenteNumero(event)">
+								   <input type="text" class="form-control" name="telefone" id="telefone" value="${paciente.telefone}" maxlength="14" onkeypress="return SomenteNumero(event)">
 								 </div>
 								 <div class="form-group col-md-2">
 								   <label for="dt_nasc">Data Nascimento</label>
@@ -433,34 +442,44 @@ function SomenteNumero(e){
 							<label>Escala da dor EVA:</label>
 							<div>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva1" value="${paciente.escala_eva}">1
+                                                                    <input type="radio" name="escala_eva" id="escala_eva1" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_1}"/>>1
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva2" value="${paciente.escala_eva}" >2
+                                                                    <input type="radio" name="escala_eva" id="escala_eva2" value="${paciente.escala_eva}" 
+                                                                    <c:out value="${radio_resultado_2}"/>>2
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva3" value="${paciente.escala_eva}">3
+                                                                    <input type="radio" name="escala_eva" id="escala_eva3" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_3}"/>>3
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva4" value="${paciente.escala_eva}">4
+                                                                    <input type="radio" name="escala_eva" id="escala_eva4" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_4}"/>>4
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva5" value="${paciente.escala_eva}">5
+                                                                    <input type="radio" name="escala_eva" id="escala_eva5" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_5}"/>>5
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva6" value="${paciente.escala_eva}">6
+                                                                    <input type="radio" name="escala_eva" id="escala_eva6" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_6}"/>>6
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva7" value="${paciente.escala_eva}">7
+                                                                    <input type="radio" name="escala_eva" id="escala_eva7" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_7}"/>>7
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva8" value="${paciente.escala_eva}">8
+                                                                    <input type="radio" name="escala_eva" id="escala_eva8" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_8}"/>>8
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva9" value="${paciente.escala_eva}">9
+                                                                    <input type="radio" name="escala_eva" id="escala_eva9" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_9}"/>>9
 								</label>
 								<label class="radio-inline">
-                                                                    <input type="radio" name="escala_eva" id="escala_eva10" value="${paciente.escala_eva}">10
+                                                                    <input type="radio" name="escala_eva" id="escala_eva10" value="${paciente.escala_eva}"
+                                                                    <c:out value="${radio_resultado_10}"/>>10
 								</label>
 							</div>
 							</br>
@@ -471,63 +490,76 @@ function SomenteNumero(e){
 						<!-- EXAME FISICO -->
 						<h5 class="page-header"><b><u>EXAME F&Iacute;SICO</u></b></h5>
 						<div class="form-group">
-								<label>Inspe&ccedil;&atilde;o(atrav&eacute;s da vis&atilde;o):</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Edema" value="Edema">Edema
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Hematoma" value="Hematoma">Hematoma
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Hiperemia" value="Hiperemia">Hiperemia
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Atrofia" value="Atrofia">Atrofia
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="inspecao_exame[]" id="Cicatriz" value="Cicatriz">Cicatriz
-								</label>
+                                                    <label>Inspe&ccedil;&atilde;o(atrav&eacute;s da vis&atilde;o):</label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="inspecao_exame" id="Edema" value="${paciente.inspecao_exame}"
+                                                        <c:out value="${edema}"/> >Edema
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="inspecao_exame" id="Hematoma" value="${paciente.inspecao_exame}"
+                                                        <c:out value="${hematoma}"/>>Hematoma
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="inspecao_exame" id="Hiperemia" value="${paciente.inspecao_exame}"
+                                                        <c:out value="${hiperamia}"/>>Hiperemia
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="inspecao_exame" id="Atrofia" value="${paciente.inspecao_exame}"
+                                                        <c:out value="${atrofia}"/>>Atrofia
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="inspecao_exame" id="Cicatriz" value="${paciente.inspecao_exame}"
+                                                        <c:out value="${cicatriz}"/>>Cicatriz
+                                                    </label>
 						</div>
+                                                
+                                                
 						<div class="form-group">
-								<label><u>Palpa&ccedil;&atilde;o(atrav&eacute;s do tato)</u></label></br>
-								<label>Tonus:</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Normal" value="Normal">Normal
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Aumentando" value="Aumentando">Aumentando
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Diminuindo" value="Diminu&iacute;ndo">Diminu&iacute;ndo
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" name="tonus_exame[]" id="Ausente" value="Ausente">Ausente
-								</label>
+                                                    <label><u>Palpa&ccedil;&atilde;o(atrav&eacute;s do tato)</u></label></br>
+                                                    <label>Tonus:</label>
+                                                    <label class="checkbox-inline">
+                                                            <input type="checkbox" name="tonus_exame" id="Normal" value="${paciente.inspecao_exame}"
+                                                            <c:out value="${normal}"/>>Normal
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                            <input type="checkbox" name="tonus_exame" id="Aumentando" value="${paciente.inspecao_exame}"
+                                                            <c:out value="${aumentando}"/>>Aumentando
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                            <input type="checkbox" name="tonus_exame" id="Diminuindo" value="${paciente.inspecao_exame}"
+                                                            <c:out value="${diminuindo}"/>>Diminu&iacute;ndo
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="tonus_exame" id="Ausente" value="${paciente.inspecao_exame}"
+                                                        <c:out value="${ausente}"/>>Ausente
+                                                    </label>
 						</div>
 													
 						<div class="form-group">
-							<label>Caracter&iacute;stica da regi&atilde;o apalpada:</label>
-								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="Temperatura" value="Temperatura">Temparatura
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="Deformidade" value="Deformidade">Deformidade
-								</label>
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="Aderencia" value="Aderência">Ader&ecirc;ncia
-								</label>
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="Dor" value="Dor">Dor
-								</label>
+                                                    <label>Caracter&iacute;stica da regi&atilde;o apalpada:</label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="carac_exame" id="Temperatura" value="${paciente.carac_exame}"
+                                                            <c:out value="${temperatura}"/>>Temperatura
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="carac_exame" id="Deformidade" value="${paciente.carac_exame}"
+                                                            <c:out value="${deformidade}"/>>Deformidade
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="carac_exame" id="Aderencia" value="${paciente.carac_exame}"
+                                                            <c:out value="${aderencia}"/>>Aderencia
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="carac_exame" id="Dor" value="${paciente.carac_exame}"
+                                                            <c:out value="${dor}"/>>Dor
+                                                        </label>
 						</div>
 							
 						<!--ANVAÃAR 2 >> PARA MARCAR HORARIOS-->
 						<div>
 							<button type="button" id="voltar1" class="btn btn-primary "><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
 							<!--button type="button" id="avancar2" class="btn btn-primary">AVAN&Ccedil;AR 2 <i class="glyphicon glyphicon-chevron-right"></i></button-->
-                                                        <button type="submit" class="btn btn-info">ATUALIZAR PACIENTE <i class="glyphicon glyphicon-refresh"></i></button>
+                                                        <button type="submit" class="btn btn-info">SALVAR E ATUALIZAR PACIENTE <i class="glyphicon glyphicon-refresh"></i></button>
                                                         <button type="submit" class="btn btn-success">2º VIA FICHA DE PRESENÇA <i class="glyphicon glyphicon-floppy-disk"></i></button>
 						</div>
 						

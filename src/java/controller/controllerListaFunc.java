@@ -1,6 +1,6 @@
 package controller;
 
-import dao.PacienteDAO;
+import dao.FuncionarioDAO;
 import dao.validacao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Paciente;
+import model.Funcionario;
 
 /**
  *
@@ -22,41 +22,53 @@ import model.Paciente;
 @WebServlet(name = "controllerListaFunc", urlPatterns = {"/controllerListaFunc"})
 public class controllerListaFunc extends HttpServlet {
     //private static final long serialVersionUID = 1L;
-    private static String insert_or_edit = "/sif/agenda.jsp";
-    private static String lista_paciente = "/sif/agenda.jsp";
-    private PacienteDAO PacienteDAO;
+    private static String insert_or_edit = "/sif/listaFuncionario.jsp";
+    private static String lista_funcionario = "/sif/listaFuncionario.jsp";
+    private FuncionarioDAO FuncionarioDAO;
 
         
     public controllerListaFunc(){
         super();
-        PacienteDAO = new PacienteDAO();
+        FuncionarioDAO = new FuncionarioDAO();
     }
      
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //validacao.ValidaSessao(request, response);
-        String forward = lista_paciente;
+        validacao.ValidaSessao(request, response);
+        String forward = lista_funcionario;
         String pesquisa = request.getParameter("pesquisa");
         
-        //Paciente dadosPaciente = null;
+        //Funcionario dadosFuncionario = null;
         //HttpSession session = request.getSession();  
-        // dadosPaciente = (Paciente)session.getAttribute("dadosPaciente");
+        //dadosFuncionario = (Funcionario)session.getAttribute("dadosFuncionario");
+                     
+        try{
+            ArrayList<Funcionario> lista;
+            if(pesquisa != null && !pesquisa.equals("")){
+            lista = FuncionarioDAO.listaFuncionario();
+            }
+            else{
+            lista = FuncionarioDAO.listaFuncionario();
+            }
+            request.setAttribute("funcionarios", lista);    
+            }
+            catch (SQLException e ) {
+                e.printStackTrace();
+            }
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request, response);
         
-        String action = request.getParameter("action");
+        /*String action = request.getParameter("action");
         String jsonObject = "[\"Rodrigo\",\"Alexandre\",\"Andre\",\"Leanderson\",\"Claiton\",\"Eduardo\",\"Patricia\",\"Erika\",\"Mario\",\"Silvanei\"]";
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(jsonObject);
-        out.flush();
+        out.flush();*/
   }
     
     @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         validacao.ValidaSessao(request, response);
-        Paciente paciente = new Paciente();
-        //Integer prazoLavagem = new Integer(request.getParameter("dtPedido"));
-        //pedido.setIdCadastroPedido(request.getInt("idCadastroPedido"));
-        //pedido.setQtdRoupa(request.getParameter("qtdRoupa"));
-        //paciente.setStatusLavagem(request.getParameter("status"));
+        Funcionario funcionario = new Funcionario();
         
     }
     

@@ -26,7 +26,7 @@ public class LoginCliDao {
                         
                         if(rs.next()){
                             dados.setNome(rs.getString("nome"));
-                            dados.setIdFuncionario(rs.getInt("idFuncionario"));
+                            dados.setIdfuncionario(rs.getInt("idFuncionario"));
                         }
 
 		} catch (Exception e) {

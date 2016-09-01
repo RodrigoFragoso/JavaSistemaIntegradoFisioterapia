@@ -62,31 +62,31 @@
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li>
-                        <a href="/clinica/sif/listaFuncionario.jsp"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
+                        <a href="/clinica/controllerListaFunc"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
                     </li>
                     <li>
                         <a href="/clinica/sif/relatorios.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Relat&oacute;rios</a>
                     </li>
                     <li>
-                        <a href="/clinica/sif/loginCli.jsp"><i class="glyphicon glyphicon-off"></i> SAIR</a>
+                        <a href="/clinica/LoginCli"><i class="glyphicon glyphicon-off"></i> SAIR</a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>	
 		
-		<div id="page-wrapper">	
-			<ol class="breadcrumb">
-			  <li><a href="#">In&iacute;cio</a></li>
-			  <li class="active"><i class="fa fa-table"></i> Agenda</a></li>
-			</ol>
+        <div id="page-wrapper">	
+                <ol class="breadcrumb">
+                  <li><a href="#">In&iacute;cio</a></li>
+                  <li class="active"><i class="fa fa-table"></i> Agenda</a></li>
+                </ol>
 			
             <div class="col-sm-4">
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Compareceu: <b>10 ${count.pacientes}Atendidos</b>
+                                <i class="glyphicon glyphicon-user"></i>
+                                Compareceu: <b><c:out value="${status.compareceu}" /> Atendidos</b>
 			</h3>
                     </div>
                 </div>
@@ -95,9 +95,9 @@
                 <div class="panel panel-danger">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-			<i class="glyphicon glyphicon-user"></i>
-                            Não Compareceu <b>10 ${count.pacientes}Atendidos</b>
-			</h3>
+                            <i class="glyphicon glyphicon-user"></i>
+                            Não Compareceu: <b><c:out value="${status.ncompareceu}"/> Não Atendidos</b>
+                        </h3>
                     </div>  
                 </div>
             </div>
@@ -126,15 +126,15 @@
                                     <c:if test="${aberto eq 0 && horas != panel.hora_sessoes}">
                                         <c:set var="horas" value="${panel.hora_sessoes}" scope="session"/>
                                         <c:set var="aberto" value="1" scope="session"/>
-                                       <div class="panel panel-primary" id="panel_<c:out value="${panel.idpacientes}"/>">
-                                            <div class="panel-heading">
-                                                 <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
-                                                    <b><c:out value="${panel.hora_sessoes}"/> - PACIENTES DO DIA: <c:out value="${panel.data}"/></b>
-                                                    </a>
-                                                 </h4>
-                                            </div>
-                                            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel panel-primary" id="panel_<c:out value="${panel.idpacientes}"/>">
+                         <div class="panel-heading">
+                              <h4 class="panel-title">
+                                 <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
+                                 <b><c:out value="${panel.hora_sessoes}"/> - PACIENTES DO DIA: <c:out value="${panel.data}"/></b>
+                                 </a>
+                              </h4>
+                         </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped js-options-table">
                                         <thead>

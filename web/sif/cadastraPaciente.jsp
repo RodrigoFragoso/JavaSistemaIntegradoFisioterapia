@@ -13,7 +13,9 @@
     <link href="/clinica/sif/css/sb-admin.css" rel="stylesheet">
     <link href="/clinica/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
     <link href="/clinica/sif/css/plugins/morris.css" rel="stylesheet">
+    <!--script src="jquery.js" type="text/javascript"></script-->
     <script src="/clinica/sif/js/jquery.js"></script>
+    <script src="/clinica/sif/js/jquery.maskedinput.js" type="text/javascript"></script>
     <script src="/clinica/sif/js/bootstrap.min.js"></script>
     
     <!--script src="js/plugins/morris/raphael.min.js"></script-->
@@ -56,16 +58,24 @@
 			});
 		});
 	</script>
-<script language='JavaScript'>
-function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;   
-    if((tecla>47 && tecla<58)) return true;
-    else{
-    	if (tecla==8 || tecla==0) return true;
-	else  return false;
-    }
-}
-</script>
+        <script language='JavaScript'>
+        function SomenteNumero(e){
+            var tecla=(window.event)?event.keyCode:e.which;   
+            if((tecla>47 && tecla<58)) return true;
+            else{
+                if (tecla==8 || tecla==0) return true;
+                else  return false;
+            }
+        }
+        </script>
+        <script>jQuery(function($){
+            $("#cpf").mask("999.999.999-99");
+            $("#telefone").mask("(99) 9999-9999");
+            $("#dt_nasc").mask("99/99/9999");
+            $("#dt_emissao").mask("99/99/9999");
+            $("#cep").mask("99999-999");
+         });
+         </script>
 
 </head>
 
@@ -87,7 +97,7 @@ function SomenteNumero(e){
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="/clinica/sif/loginCli.jsp"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="/clinica/LoginCli"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -108,13 +118,13 @@ function SomenteNumero(e){
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li>
-                        <a href="/clinica/sif/listaFuncionario.jsp"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
+                        <a href="/clinica/controllerListaFunc"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
                     </li>
                     <li>
                         <a href="/clinica/sif/relatorios.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Relat&oacute;rios</a>
                     </li>
                     <li>
-                        <a href="loginCli.jsp"><i class="glyphicon glyphicon-off"></i> SAIR</a>
+                        <a href="/clinica/LoginCli"><i class="glyphicon glyphicon-off"></i> SAIR</a>
                     </li>
                 </ul>
             </div>
@@ -136,7 +146,7 @@ function SomenteNumero(e){
 				   <h1 class="page-header">Cadastrar Pacientes</h1>
 				</div>
 			</div>
-	<form method="POST" action='../pacienteController' name="frmAddPaciente" id="frmAddPaciente" role="form" onsubmit="cadastraPaciente()">
+	<form method="POST" action='../pacienteController' name="frmAddPaciente" id="frmAddPaciente" role="form">
 			<div>
 				  <!-- Nav tabs -->
 				<ul class="nav nav-tabs nav-justified " role="tablist" id="myTabs">
@@ -162,11 +172,11 @@ function SomenteNumero(e){
 								 
 								 <div class="form-group col-md-3">
 								   <label for="telefone">Telefone</label>
-								   <input type="text" class="form-control" name="telefone" id="telefone" maxlength="14" onkeypress="return SomenteNumero(event)">
+								   <input type="text" class="form-control" name="telefone" id="telefone" maxlength="20" onkeypress="return SomenteNumero(event)">
 								 </div>
 								 <div class="form-group col-md-2">
 								   <label for="dt_nasc">Data Nascimento</label>
-								   <input type="text" class="form-control" name="dt_nasc" id="dt_nasc" maxlength="10" onkeypress="return SomenteNumero(event)">
+								   <input type="text" class="form-control" name="dt_nasc" id="dt_nasc" maxlength="10" OnKeyUp="mascaraData(this);" onkeypress="return SomenteNumero(event)">
 								 </div>
 								 <div class="form-group col-md-1">
 								   <label for="idade">Idade</label>
@@ -185,7 +195,7 @@ function SomenteNumero(e){
 								</div>
 								<div class="form-group col-md-2">
 								   <label for="dt_emissao">Data de Emiss&atilde;o: </label>
-								   <input type="text" class="form-control" name="dt_emissao" id="dt_emissao" maxlength="10">
+								   <input type="text" class="form-control" name="dt_emissao" id="dt_emissao" maxlength="10" OnKeyUp="mascaraData(this);" onkeypress="return SomenteNumero(event)">
 								</div>
 								<div class="form-group col-md-2">
 								   <label for="org_emissor">Org&atilde;o Emissor: </label>
@@ -506,14 +516,14 @@ function SomenteNumero(e){
 						<div class="form-group">
 							<label>Caracter&iacute;stica da regi&atilde;o apalpada:</label>
 								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="Temperatura" value="Temperatura">Temparatura
+									<input type="radio" name="carac_exame" id="Temperatura" value="Temperatura">Temperatura
 								</label>
 								<label class="radio-inline">
 									<input type="radio" name="carac_exame" id="Deformidade" value="Deformidade">Deformidade
 								</label>
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="carac_exame" id="Aderencia" value="Aderência">Ader&ecirc;ncia
+									<input type="radio" name="carac_exame" id="Aderencia" value="Aderencia">Ader&ecirc;ncia
 								</label>
 								</label>
 								<label class="radio-inline">

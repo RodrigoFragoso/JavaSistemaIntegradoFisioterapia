@@ -1,6 +1,7 @@
 package controller;
 
 import dao.PacienteDAO;
+import dao.PacienteStatusDAO;
 import dao.validacao;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Paciente;
+import model.PacienteStatus;
 
 /**
  *
@@ -24,11 +26,13 @@ public class controllerAgenda extends HttpServlet {
     private static String insert_or_edit = "/sif/agenda.jsp";
     private static String lista_paciente = "/sif/agenda.jsp";
     private PacienteDAO PacienteDAO;
+    private PacienteStatusDAO PacienteStatusDAO; //instancia a DAO
 
         
     public controllerAgenda(){
         super();
         PacienteDAO = new PacienteDAO();
+        PacienteStatusDAO = new PacienteStatusDAO(); //construtor da controller 
     }
      
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,27 +44,29 @@ public class controllerAgenda extends HttpServlet {
         HttpSession session = request.getSession();  
         dadosPaciente = (Paciente)session.getAttribute("dadosPaciente");
         
-        
         String action = request.getParameter("action");
-        if(action != null && action.equals("comp")){ 
+        if(action != null && action.equals("comp")){
             String Idpacientes = request.getParameter("idpacientes");
             PacienteDAO.UpdateStatus(Idpacientes,"Compareceu");
         }else if(action != null && action.equals("ncomp")){ 
             String Idpacientes = request.getParameter("idpacientes");
             PacienteDAO.UpdateStatus(Idpacientes,"Não Compareceu");
         }
-                
-        try {
+               
+        try{
             ArrayList<Paciente> lista;
-            if (pesquisa != null && !pesquisa.equals("")){
-            lista = PacienteDAO.listaPaciente();
-            
-            }else{
+            PacienteStatus status = PacienteStatusDAO.listaPacienteStatus(); //consulta a qtd de pacientes atendidos e não atendidos
+            if(pesquisa != null && !pesquisa.equals("")){
             lista = PacienteDAO.listaPaciente();
             }
-            
-            request.setAttribute("pacientes", lista);    
-            } catch (SQLException e ) {
+            else{
+            //lista = PacienteDAO.listaPaciente();
+            lista = PacienteDAO.listaPaciente();
+            }
+            request.setAttribute("pacientes", lista);
+            request.setAttribute("status", status); //faz a a consulta a listaPacienteStatus
+            }
+            catch (SQLException e ) {
                 e.printStackTrace();
             }
         RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -77,5 +83,6 @@ public class controllerAgenda extends HttpServlet {
         //paciente.setStatusLavagem(request.getParameter("status"));
         
     }
+   
     
 }

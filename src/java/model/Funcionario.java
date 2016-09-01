@@ -6,7 +6,7 @@ package model;
  */
 public class Funcionario {
         
-    public int idFuncionario;
+    public int idfuncionario;
     private String nome ="";
     private String email;
     private String senha;
@@ -17,12 +17,12 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public int getIdFuncionario() {
-        return idFuncionario;
+    public int getIdfuncionario() {
+        return idfuncionario;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setIdfuncionario(int idfuncionario) {
+        this.idfuncionario = idfuncionario;
     }
 
     public String getNome() {

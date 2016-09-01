@@ -13,20 +13,21 @@
     <link href="/clinica/sif/css/sb-admin.css" rel="stylesheet">
     <link href="/clinica/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
     <link href="/clinica/sif/css/plugins/morris.css" rel="stylesheet">
-    <script src="/clinica/sif/js/jquery.js"></script>
-    <script src="/clinica/sif/js/bootstrap.min.js"></script>
+    <!--script src="/clinica/sif/js/bootstrap.min.js"></script>
     <script src="/clinica/sif/js/plugins/morris/raphael.min.js"></script>
-    <!--script src="/clinica/sif/js/plugins/morris/morris.min.js"></script-->
-    <!--script src="/clinica/sif/js/plugins/morris/morris-data.js"--></script>
-    <!-- Scripts que trasem o nome do paciente AUTOCOMPLETE-->
-    <!--script src="https://code.jquery.com/jquery-1.12.4.js"></script-->
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <!--AUTOCOMPLETE-->
-	<!--script>
-		$('.collapse').collapse();
-	</script-->
+    <script src="/clinica/sif/js/plugins/morris/morris.min.js"></script>
+    <script src="/clinica/sif/js/plugins/morris/morris-data.js"></script-->
+    <!--script src="jquery.js" type="text/javascript"></script-->
+    <script src="/clinica/sif/js/jquery.js"></script>
+    <script src="/clinica/sif/js/jquery.maskedinput.js" type="text/javascript"></script>
+    <script src="/clinica/sif/js/bootstrap.min.js"></script>
+        
+        <script>jQuery(function($){
+            $("#cpf").mask("999.999.999-99");
+            $("#cep").mask("99999-999");
+            $("#telefone").mask("(99) 9999-9999");
+         });
+         </script>
 
         <script>
             $( function() {
@@ -38,6 +39,13 @@
             });
             });
         </script>
+        <script>
+            jQuery(function($){
+                $("#cpf").mask("999.999.999-99");
+                $("#cep").mask("99999-999");
+                $("#telefone").mask("(99) 9999-9999");
+            });
+         </script>
 </head>
 
 <body>
@@ -58,7 +66,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="/clinica/sif/loginCli.jsp"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="/clinica/LoginCli"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -79,91 +87,82 @@
                         <a href="/clinica/sif/cadastraFuncionario.jsp"><i class="fa fa-fw fa-edit"></i> Cadastro de Funcion&aacute;rios</a>
                     </li>
                     <li class="active">
-                        <a href="/clinica/sif/listaFuncionario.jsp"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
+                        <a href="/clinica/controllerListaFunc"><i class="glyphicon glyphicon-list-alt"></i> Funcion&aacute;rios</a>
                     </li>
                     <li>
                         <a href="/clinica/sif/relatorios.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Relat&oacute;rios</a>
                     </li>
                     <li>
-                        <a href="/clinica/sif/loginCli.jsp"><i class="glyphicon glyphicon-off"></i> SAIR</a>
+                        <a href="/clinica/LoginCli"><i class="glyphicon glyphicon-off"></i> SAIR</a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
 		
-		<div id="page-wrapper">
-			<ol class="breadcrumb">
-			  <li><a href="#">In&iacute;cio</a></li>
-			  <li class="active"><i class="glyphicon glyphicon-list-alt"></i> Funci&oacute;narios Cadastrados</a></li>
-			</ol>
-			<div class="alert alert-info" role="alert">
-			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-				Selecione <b><u> qual funcion&aacute;rio deseja visualizar </u></b> e clique em <b>CARREGAR!</b>
-			</div>
-			<!-- Page Heading -->
-            <div class="row">
-                <div class="col-lg-12">
-                   <h1 class="page-header">Funcionários Cadastrados</h1>
-					<div class="form-group col-md-3"></div>
-						<div class="row "  align="center">
-							<div class="col-lg-6">
-								<div class="input-group">
-								<input type="text" name ="q" id="tags" class="form-control" placeholder="DIGITE O NOME DO FUNCIONÃRIO">
-								  <span class="input-group-btn">
-									<button class="btn btn-primary" type="button">PESQUISAR</button>
-								  </span>
-								</div><!-- /input-group -->
-							</div><!-- /.col-lg-6 -->
-						</div></br>
+    <div id="page-wrapper">
+            <ol class="breadcrumb">
+              <li><a href="#">In&iacute;cio</a></li>
+              <li class="active"><i class="glyphicon glyphicon-list-alt"></i> Funci&oacute;narios Cadastrados</a></li>
+            </ol>
+            <div class="alert alert-info" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    Atualize <b><u> o funcion&aacute;rio que deseja </u></b> e clique em <b>ATUALIZAR!</b>
+            </div>        
+            
+        <div class="panel panel-primary" id="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
+                    <b> FUNCIÓNARIOS </b>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped js-options-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th> 
+                                <th>NOME FUNCIONÁRIO</th> 
+                                <th>E-MAIL</th>
+                                <th>CPF</th>
+                                <th>CARGO</th>
+                                <th>TELEFONE</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${funcionarios}" var="panel">    
+                                <tr>
+                                    <td>
+                                        <c:out value="${panel.idfuncionario}"/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="nome" id="nome" value="<c:out value="${panel.nome}"/>">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="email" id="email" value="<c:out value="${panel.email}"/>">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="cpf" id="cpf" value="<c:out value="${panel.cpf}"/>">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="cargo" id="cargo" value="<c:out value="${panel.cargo}"/>">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="telefone" id="telefone" value="<c:out value="${panel.telefone}"/>">
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="funcionarioController?action=atualiza&idfuncionario=<c:out value="${panel.idfuncionario}"/>">ATUALIZAR</a>
+                                        <a class="btn btn-danger" href="funcionarioController?action=delete&idfuncionario=<c:out value="${panel.idfuncionario}"/>">EXCLUIR</a>
+                                    </td>
+                                </tr>
+                        </c:forEach>
                 </div>
             </div>
-			
-			
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Buscar funcion&aacute;rio</h3>
-				</div>			
-				<div class="panel-body">					
-					<div class="form-group col-md-4">
-					   <label for="campo1">Nome/Usu&aacute;rio: </label>
-					   <input type="text" class="form-control" id="campo1" required>
-					</div>
-					<div class="form-group col-md-4">
-					   <label for="campo1">e-Mail: </label>
-					   <input type="text" class="form-control" id="campo1" required>
-					</div>
-					<div class="form-group col-md-4">
-					   <label for="campo1">Senha de acesso: </label>
-					   <input type="text" class="form-control" id="campo1" required>
-					</div>
-					<div class="form-group col-md-4">
-					   <label for="campo1">CPF: </label>
-					   <input type="text" class="form-control" id="campo1">
-					</div>
-					<div class="form-group col-md-4">
-						<label for="sel1">Cargo:</label>
-						<select class="form-control" id="sel1">
-							<option>Selecionar</option>
-							<option>Fisioterapeuta</option>
-							<option>Secret&aacute;ria</option>
-							<option>Auxiliar de servi&ccedil;os gerais</option>
-						</select>
-					</div>
-					<div class="form-group col-md-4">
-					   <label for="campo1">Telefone: </label>
-					   <input type="text" class="form-control" id="campo1">
-					</div>
-					<div class="form-group col-md-6">
-						<button type="button" class="btn btn-DANGER">DESATIVAR</button>
-						<button type="button" class="btn btn-default">VOLTAR</button>
-						<button type="button" class="btn btn-SUCCESS">ATUALIZAR <i class="glyphicon glyphicon-refresh"></i></button>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	
-	</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -62,7 +62,7 @@ public class FuncionarioDAO {
                 + ", '" + funcionario.getCpf() + "',"
                 + ", '" + funcionario.getCargo() + "',"
                 + "'" + funcionario.getTelefone() + 
-                "' where cliente.idCliente = " + funcionario.getIdFuncionario() + " ";
+                "' where cliente.idCliente = " + funcionario.getIdfuncionario() + " ";
         
         System.out.println(query);
         try {
@@ -86,10 +86,40 @@ public class FuncionarioDAO {
             funcionario.setCpf(res.getString("cpf"));
             funcionario.setCargo(res.getString("cargo"));
             funcionario.setTelefone(res.getString("telefone"));
-            funcionario.setIdFuncionario(res.getInt("idFuncionario"));
+            funcionario.setIdfuncionario(res.getInt("idFuncionario"));
             Funcionarios.add(funcionario);
         }
         return Funcionarios;
+    }
+    
+    public ArrayList<Funcionario>listaFuncionario() throws SQLException{
+        String query = "SELECT * FROM clinica.funcionario order by nome";
+        
+        ArrayList<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
+        Statement stmt = connection.createStatement();
+        ResultSet res = stmt.executeQuery(query);
+        while (res.next()){
+            Funcionario funcionario = new Funcionario();
+            funcionario.setIdfuncionario(res.getInt("idfuncionario"));
+            funcionario.setNome(res.getString("nome"));
+            funcionario.setEmail(res.getString("email"));
+            funcionario.setSenha(res.getString("senha"));
+            funcionario.setCpf(res.getString("cpf"));
+            funcionario.setCargo(res.getString("cargo"));
+            funcionario.setTelefone(res.getString("telefone"));
+            listaFuncionario.add(funcionario);
+        }
+        return listaFuncionario;
+    }
+    
+    public void removeFuncionario(String idfuncionario) {
+        String query = "delete from funcionario where idfuncionario = '" + idfuncionario + "' ";
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     public static boolean validateEmail(String email) {		
@@ -136,4 +166,5 @@ public class FuncionarioDAO {
 		}
 		return status;
 	}
+
 }

@@ -106,17 +106,17 @@ public class PacienteDAO {
                 }
                 while (date1.get(Calendar.DAY_OF_WEEK) != diaSemana){
                     date1.add(Calendar.DATE, 1);
-                }        
+                }
+                Integer id = InserirPaciente(paciente, dias);
                 for(int x=0; x < quantidade; x++){
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     paciente.setData(sdf.format(date1.getTime()));
-                    //InserirPaciente(paciente, "ff");
-                    InserirPaciente(paciente, dias);
+                    //InserirPaciente(paciente, dias);
                     date1.add(Calendar.DATE, 7);
                 }
     }
     
-    public void InserirPaciente(Paciente paciente, String dias_sessoes){
+    public Integer InserirPaciente(Paciente paciente, String dias_sessoes){
         //int id = 0;
         try {          
             String query = "INSERT INTO pacientes"
@@ -173,17 +173,17 @@ public class PacienteDAO {
                     + "escala_eva, "
                     + "inspecao_exame, "
                     + "tonus_exame, "
-                    + "carac_exame, "
-                    + "qtd_sessoes, "
+                    + "carac_exame "
+                    /*+ "qtd_sessoes, "
                     + "dias_sessoes, "
                     + "hora_sessoes, "
-                    + "data) values "
-                    + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "data) values "*/
+                    + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             
-            PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS); // retorna o id do paciente
             stmt.setInt(1, paciente.getNum_sus()); 
             stmt.setString(2, paciente.getNome()); 
-            stmt.setInt(3, paciente.getTelefone()); 
+            stmt.setString(3, paciente.getTelefone()); 
             stmt.setString(4, paciente.getDt_nasc()); 
             stmt.setInt(5, paciente.getIdade()); 
             stmt.setString(6, paciente.getSexo()); 
@@ -194,7 +194,7 @@ public class PacienteDAO {
             stmt.setString(11, paciente.getNome_mae()); 
             stmt.setString(12, paciente.getProfissao()); 
             stmt.setString(13, paciente.getRaca_cor()); 
-            stmt.setInt(14, paciente.getCep());
+            stmt.setString(14, paciente.getCep());
             stmt.setString(15, paciente.getEndereco());
             stmt.setInt(16, paciente.getNumero_casa());
             stmt.setString(17, paciente.getBairro());
@@ -234,16 +234,21 @@ public class PacienteDAO {
             stmt.setString(51, paciente.getInspecao_exame());
             stmt.setString(52, paciente.getTonus_exame());
             stmt.setString(53, paciente.getCarac_exame());
-            stmt.setInt(54, paciente.getQtd_sessoes());
+            /*stmt.setInt(54, paciente.getQtd_sessoes());
             stmt.setString(55, dias_sessoes);
             stmt.setString(56, paciente.getHora_sessoes());
-            stmt.setString(57, paciente.getData());
-            stmt.executeUpdate();
-            
+            stmt.setString(57, paciente.getData());*/
+            //stmt.executeUpdate();
+            if (stmt.executeUpdate() > 0) {
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //return id;
+        return null;
     }
     
     public void updatePaciente(Paciente paciente) {
@@ -325,7 +330,7 @@ public class PacienteDAO {
             Paciente paciente = new Paciente();
                 paciente.setNum_sus(res.getInt("num_sus"));
                 paciente.setNome(res.getString("nome"));
-                paciente.setTelefone(res.getInt("telefone")); 
+                paciente.setTelefone(res.getString("telefone")); 
                 paciente.setDt_nasc(res.getString("dt_nasc"));
                 paciente.setIdade(res.getInt("idade"));
                 paciente.setSexo(res.getString("sexo"));
@@ -336,7 +341,7 @@ public class PacienteDAO {
                 paciente.setNome_mae(res.getString("nome_mae"));
                 paciente.setProfissao(res.getString("profissao"));
                 paciente.setRaca_cor(res.getString("raca_cor"));
-                paciente.setCep(res.getInt("cep"));
+                paciente.setCep(res.getString("cep"));
                 paciente.setEndereco(res.getString("endereco"));
                 paciente.setNumero_casa(res.getInt("numero_casa"));
                 paciente.setBairro(res.getString("bairro"));
@@ -378,7 +383,7 @@ public class PacienteDAO {
                 paciente.setCarac_exame(res.getString("carac_exame"));
                 paciente.setQtd_sessoes(res.getInt("qtd_sessoes"));
                 paciente.setHora_sessoes(res.getString("hora_sessoes"));
-            //Paciente.add(paciente);
+                
         return paciente;
         }
         return null;
@@ -432,18 +437,5 @@ public class PacienteDAO {
         }
     }
    
-    public Paciente PacienteAtendidos(int paciente) throws SQLException {
-        String query = "select count(*) as 'PacientesAtendidos' from pacientes where status = 'Compareceu' and data regexp curdate()";
-        Statement stmt = connection.createStatement();
-        ResultSet res = stmt.executeQuery(query);
-        return null;
-    }
-    
-    public Paciente PacienteNaoAtendidos(int paciente) throws SQLException {
-        String query = "select count(*) as 'PacientesNaoAtendidos' from pacientes where status = 'Não Compareceu' and data regexp curdate()";
-        Statement stmt = connection.createStatement();
-        ResultSet res = stmt.executeQuery(query);
-        return null;
-    }
     
 }

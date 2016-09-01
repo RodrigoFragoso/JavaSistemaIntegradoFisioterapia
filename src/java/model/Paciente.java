@@ -7,7 +7,7 @@ public class Paciente {
     public int idpacientes; 
     private int num_sus; 
     private String nome; 
-    private int telefone; 
+    private String telefone; 
     private String dt_nasc; 
     private int idade; 
     private String sexo; 
@@ -18,7 +18,7 @@ public class Paciente {
     private String nome_mae; 
     private String profissao; 
     private String raca_cor; 
-    private int cep; 
+    private String cep; 
     private String endereco; 
     private int numero_casa; 
     private String bairro; 
@@ -65,7 +65,10 @@ public class Paciente {
     private String hora_sessoes;
     private String data;
     private String status;
-
+    private String[] inspecao;
+    private String[] tonus;
+    
+    
     public int getIdpacientes() {
         return idpacientes;
     }
@@ -90,11 +93,11 @@ public class Paciente {
         this.nome = nome;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
@@ -178,11 +181,11 @@ public class Paciente {
         this.raca_cor = raca_cor;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
@@ -480,6 +483,7 @@ public class Paciente {
 
     public void setInspecao_exame(String inspecao_exame) {
         this.inspecao_exame = inspecao_exame;
+        this.inspecao = inspecao_exame.split(";");
     }
 
     public String getTonus_exame() {
@@ -488,6 +492,7 @@ public class Paciente {
 
     public void setTonus_exame(String tonus_exame) {
         this.tonus_exame = tonus_exame;
+        this.tonus = tonus_exame.split(";");
     }
 
     public String getCarac_exame() {
@@ -553,5 +558,23 @@ public class Paciente {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String[] getInspecao() {
+        return inspecao;
+    }
+
+    public void setInspecao(String[] inspecao) {
+        this.inspecao = inspecao;
+    }
+
+    public String[] getTonus() {
+        return tonus;
+    }
+
+    public void setTonus(String[] tonus) {
+        this.tonus = tonus;
+    }
+    
+    
        
 }
