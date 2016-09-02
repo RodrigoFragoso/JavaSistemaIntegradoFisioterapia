@@ -29,7 +29,7 @@ public class PacienteStatusDAO {
     //esse select tras apenas o resultado e não monta o array
     public PacienteStatus listaPacienteStatus() throws SQLException{
         //este select seleciona a qtd de pacientes atendidos, a codição CASE verifica se status for Compareceu soma 1 caso não é 0 ate o final do resultado
-        String query = "SELECT SUM(CASE status WHEN 'Compareceu' THEN 1 ELSE 0 END) AS 'compareceu', SUM(CASE status WHEN 'Não Compareceu' THEN 1 ELSE 0 END) AS 'ncompareceu' FROM pacientes where data = curdate()";
+        String query = "SELECT SUM(CASE status WHEN 'Compareceu' THEN 1 ELSE 0 END) AS 'compareceu', SUM(CASE status WHEN 'Não Compareceu' THEN 1 ELSE 0 END) AS 'ncompareceu' FROM pacientesessoes where data = curdate()";
         
         PacienteStatus pacientestatus = new PacienteStatus();
         Statement stmt = connection.createStatement();

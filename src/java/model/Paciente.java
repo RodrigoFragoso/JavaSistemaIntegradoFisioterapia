@@ -67,6 +67,7 @@ public class Paciente {
     private String status;
     private String[] inspecao;
     private String[] tonus;
+    private int idsessoes;
     
     
     public int getIdpacientes() {
@@ -574,7 +575,14 @@ public class Paciente {
     public void setTonus(String[] tonus) {
         this.tonus = tonus;
     }
-    
-    
+
+    public int getIdsessoes() {
+        return idsessoes;
+    }
+
+    public void setIdsessoes(int idsessoes) {
+        this.idsessoes = idsessoes;
+    }
+      
        
 }

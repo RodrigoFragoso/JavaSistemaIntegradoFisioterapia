@@ -139,7 +139,8 @@
                                     <table class="table table-bordered table-striped js-options-table">
                                         <thead>
                                             <tr>
-                                                <th>ID</th> 
+                                                <th>ID</th>
+                                                <th>ID_SESSOES</th>
                                                 <th>N&ordm; SUS</th> 
                                                 <th>NOME PACIENTE</th> 
                                                 <th>STATUS</th>
@@ -154,6 +155,9 @@
                                                         <c:out value="${panel.idpacientes}"/>
                                                     </td>
                                                     <td>
+                                                        <c:out value="${panel.idsessoes}"/>
+                                                    </td>
+                                                    <td>
                                                         <c:out value="${panel.num_sus}"/>
                                                     </td>
                                                     <td>
@@ -163,8 +167,8 @@
                                                         <c:out value="${panel.status}"/>
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-success" href="controllerAgenda?action=comp&idpacientes=<c:out value="${panel.idpacientes}"/>">Compareceu</a>
-                                                        <a class="btn btn-danger" href="controllerAgenda?action=ncomp&idpacientes=<c:out value="${panel.idpacientes}"/>">Falta</a>
+                                                        <a class="btn btn-success" href="controllerAgenda?action=comp&idsessoes=<c:out value="${panel.idsessoes}"/>">Compareceu</a>
+                                                        <a class="btn btn-danger" href="controllerAgenda?action=ncomp&idsessoes=<c:out value="${panel.idsessoes}"/>">Falta</a>
                                                         <a class="btn btn-info" href="/clinica/pacienteController?action=paciente&idpacientes=<c:out value="${panel.idpacientes}"/>">Editar</a>
                                                     </td>
                                                 </tr>

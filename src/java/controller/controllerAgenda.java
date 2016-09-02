@@ -46,11 +46,11 @@ public class controllerAgenda extends HttpServlet {
         
         String action = request.getParameter("action");
         if(action != null && action.equals("comp")){
-            String Idpacientes = request.getParameter("idpacientes");
-            PacienteDAO.UpdateStatus(Idpacientes,"Compareceu");
+            String Idsessoes = request.getParameter("idsessoes");
+            PacienteDAO.UpdateStatus(Idsessoes,"Compareceu");
         }else if(action != null && action.equals("ncomp")){ 
-            String Idpacientes = request.getParameter("idpacientes");
-            PacienteDAO.UpdateStatus(Idpacientes,"Não Compareceu");
+            String Idsessoes= request.getParameter("idsessoes");
+            PacienteDAO.UpdateStatus(Idsessoes,"Não Compareceu");
         }
                
         try{

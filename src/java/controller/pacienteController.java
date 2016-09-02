@@ -45,8 +45,43 @@ public class pacienteController extends HttpServlet {
             try {
                 Paciente paciente = pacientedao.getPaciente(idPacientes);
                 request.setAttribute("paciente", paciente);
-                
                 //contains = verifica se o valor esta dentro do getInspecao, é uma operação de comparação
+                
+                /*SELECT MASCULINO*/
+                request.setAttribute("Masculino", ("Masculino".equals(paciente.getSexo())) ? "selected" : "");
+                request.setAttribute("Feminino", ("Feminino".equals(paciente.getSexo())) ? "selected" : "");
+                
+                /*COR_RAÇA*/
+                request.setAttribute("Branco", ("Branco".equals(paciente.getRaca_cor())) ? "selected" : "");
+                request.setAttribute("Negro", ("Negro".equals(paciente.getRaca_cor())) ? "selected" : "");
+                request.setAttribute("Pardo", ("Pardo".equals(paciente.getRaca_cor())) ? "selected" : "");
+                request.setAttribute("Amarelo", ("Amarelo".equals(paciente.getRaca_cor())) ? "selected" : "");
+                request.setAttribute("Ignorar", ("Ignorar".equals(paciente.getRaca_cor())) ? "selected" : "");
+                
+                /*Algum tipo de cirurgia*/ 
+                request.setAttribute("cirurgia_sim",(paciente.getAlg_cirurgia() == 1) ? "selected" : "");
+                request.setAttribute("cirurgia_nao",(paciente.getAlg_cirurgia() == 0) ? "selected" : "");
+                
+                /*Tabagista*/
+                request.setAttribute("tabagista_sim",(paciente.getTabagista() == 1) ? "selected" : "");
+                request.setAttribute("tabagista_nao",(paciente.getTabagista() == 0) ? "selected" : "");
+                
+                /*Etilista*/
+                request.setAttribute("etilista_sim",(paciente.getEtilista() == 1) ? "selected" : "");
+                request.setAttribute("etilista_nao",(paciente.getEtilista() == 0) ? "selected" : "");
+                
+                /*Sedentario*/
+                request.setAttribute("sedentario_sim",(paciente.getSedentario() == 1) ? "selected" : "");
+                request.setAttribute("sedentario_nao",(paciente.getSedentario() == 0) ? "selected" : "");
+                
+                /*Medicamentos*/
+                request.setAttribute("medicamentos_sim",(paciente.getMedicamentos() == 1) ? "selected" : "");
+                request.setAttribute("medicamentos_nao",(paciente.getMedicamentos() == 0) ? "selected" : "");
+                
+                /*Inicio sintoma*/
+                request.setAttribute("gradual", ("Gradual".equals(paciente.getInicio_sintoma())) ? "selected" : "");
+                request.setAttribute("repentino", ("Repentino".equals(paciente.getInicio_sintoma())) ? "selected" : "");
+                
                 /*VIEW RADIO BUTTON ESCALA EVA -- VERIFICAR SE ESTA CHECADO*/
                 request.setAttribute("radio_resultado_1", (paciente.getEscala_eva() == 1) ? "checked" : "");
                 request.setAttribute("radio_resultado_2", (paciente.getEscala_eva() == 2) ? "checked" : "");
@@ -177,15 +212,15 @@ public class pacienteController extends HttpServlet {
             }
             paciente.setHora_sessoes(request.getParameter("hora_sessoes"));
             String idpacientes = request.getParameter("idpacientes");
-        System.out.println("Paciente Cadastrado !");
-        System.out.println(idpacientes);
+            
         if (idpacientes == null || idpacientes.isEmpty()) {
             pacientedao.addPaciente(paciente);
+            System.out.println("Paciente CADASTRADO!");
         } else {
             paciente.setIdpacientes(Integer.parseInt(idpacientes));
             pacientedao.updatePaciente(paciente);
+            System.out.println("Paciente ATUALIZADO! ID DO PACIENTE: " + idpacientes);
         }
         response.sendRedirect(request.getContextPath() + "/controllerAgenda");
-        //response.sendRedirect(request.getContextPath() + "/LoginCli");
     }                
 }

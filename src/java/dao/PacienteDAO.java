@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import model.Paciente;
 import java.text.SimpleDateFormat;
+import model.Sessoes;
 
 /**
  *
@@ -27,6 +28,10 @@ public class PacienteDAO {
     }
     
     public void addPaciente(Paciente paciente) {        
+        Integer id = InserirPaciente(paciente);//grava apenas as informações na tabela pacientes 
+        if (id != null){
+            paciente.setIdpacientes(id);
+        }
         int qtd_sessoes = paciente.getQtd_sessoes();
         int segunda = 0;
         int quarta = 0;
@@ -107,16 +112,16 @@ public class PacienteDAO {
                 while (date1.get(Calendar.DAY_OF_WEEK) != diaSemana){
                     date1.add(Calendar.DATE, 1);
                 }
-                Integer id = InserirPaciente(paciente, dias);
+                
                 for(int x=0; x < quantidade; x++){
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     paciente.setData(sdf.format(date1.getTime()));
-                    //InserirPaciente(paciente, dias);
+                    InserirPacientesSessoes(paciente, dias);
                     date1.add(Calendar.DATE, 7);
                 }
     }
     
-    public Integer InserirPaciente(Paciente paciente, String dias_sessoes){
+    public Integer InserirPaciente(Paciente paciente){
         //int id = 0;
         try {          
             String query = "INSERT INTO pacientes"
@@ -173,12 +178,13 @@ public class PacienteDAO {
                     + "escala_eva, "
                     + "inspecao_exame, "
                     + "tonus_exame, "
-                    + "carac_exame "
+                    + "qtd_sessoes, "
+                    + "carac_exame) "
                     /*+ "qtd_sessoes, "
                     + "dias_sessoes, "
                     + "hora_sessoes, "
                     + "data) values "*/
-                    + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             
             PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS); // retorna o id do paciente
             stmt.setInt(1, paciente.getNum_sus()); 
@@ -233,7 +239,8 @@ public class PacienteDAO {
             stmt.setInt(50, paciente.getEscala_eva());
             stmt.setString(51, paciente.getInspecao_exame());
             stmt.setString(52, paciente.getTonus_exame());
-            stmt.setString(53, paciente.getCarac_exame());
+            stmt.setInt(53, paciente.getQtd_sessoes());
+            stmt.setString(54, paciente.getCarac_exame());
             /*stmt.setInt(54, paciente.getQtd_sessoes());
             stmt.setString(55, dias_sessoes);
             stmt.setString(56, paciente.getHora_sessoes());
@@ -251,64 +258,93 @@ public class PacienteDAO {
         return null;
     }
     
+     public Integer InserirPacientesSessoes(Paciente paciente, String dias){
+        //int id = 0;
+        try {          
+            String query = "INSERT INTO pacientesessoes"
+                    +"("
+                    + "idpacientes,"
+                    /*+ "qtd_sessoes, "*/
+                    + "dias_sessoes, "
+                    + "hora_sessoes, "
+                    + "data"
+                    + " ) values (?,?,?,?)";
+            
+            PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS); // retorna o id do paciente
+            stmt.setInt(1, paciente.getIdpacientes());
+            /*stmt.setInt(2, paciente.getQtd_sessoes());*/
+            stmt.setString(2, dias);
+            stmt.setString(3, paciente.getHora_sessoes());
+            stmt.setString(4, paciente.getData());
+            //stmt.executeUpdate();
+            if (stmt.executeUpdate() > 0) {
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public void updatePaciente(Paciente paciente) {
-        String query = "update pacientes set "
-                    + " '" + paciente.getNum_sus() + "',"
-                    + " '" + paciente.getNome() + "',"
-                    + " '" + paciente.getTelefone() + "'," 
-                    + " '" + paciente.getDt_nasc() + "',"
-                    + " '" + paciente.getIdade() + "',"
-                    + " '" + paciente.getSexo() + "',"
-                    + " '" + paciente.getRg() + "',"
-                    + " '" + paciente.getDt_emissao() + "',"
-                    + " '" + paciente.getOrg_emissor() + "',"
-                    + " '" + paciente.getNome_pai() + "',"
-                    + " '" + paciente.getNome_mae() + "',"
-                    + " '" + paciente.getProfissao() + "',"
-                    + " '" + paciente.getRaca_cor() + "',"
-                    + " '" + paciente.getCep() + "',"
-                    + " '" + paciente.getEndereco() + "',"
-                    + " '" + paciente.getNumero_casa() + "',"
-                    + " '" + paciente.getBairro() + "',"
-                    + " '" + paciente.getUf() + "',"
-                    + " '" + paciente.getCidade() + "',"
-                    + " '" + paciente.getDiag_clinico() + "',"
-                    + " '" + paciente.getDiag_fiso() + "',"
-                    + " '" + paciente.getAnamnese() + "',"
-                    + " '" + paciente.getHma() + "',"
-                    + " '" + paciente.getHmp() + "',"
-                    + " '" + paciente.getAnt_hereditario() + "',"
-                    + " '" + paciente.getAlg_cirurgia() + "',"
-                    + " '" + paciente.getQual_cirurgia() + "',"
-                    + " '" + paciente.getTabagista() + "',"
-                    + " '" + paciente.getNum_cigarros() + "',"
-                    + " '" + paciente.getEtilista() + "',"
-                    + " '" + paciente.getQtd_etilista() + "',"
-                    + " '" + paciente.getSedentario() + "',"
-                    + " '" + paciente.getFreq_sendentario() + "',"
-                    + " '" + paciente.getMedicamentos() + "',"
-                    + " '" + paciente.getQuais_medicamentos() + "',"
-                    + " '" + paciente.getInicio_sintoma() + "',"
-                    + " '" + paciente.getMecanismo_sintoma() + "',"
-                    + " '" + paciente.getAcomp_sintoma() + "',"
-                    + " '" + paciente.getQual_sintoma() + "',"
-                    + " '" + paciente.getLocalizacao_dor() + "',"
-                    + " '" + paciente.getCarater_dor() + "',"
-                    + " '" + paciente.getIrradiacao_dor() + "',"
-                    + " '" + paciente.getLocal_dor() + "',"
-                    + " '" + paciente.getMovimento_dor() + "',"
-                    + " '" + paciente.getQual_dor() + "',"
-                    + " '" + paciente.getRepouso_dor() + "',"
-                    + " '" + paciente.getClimatica_dor() + "',"
-                    + " '" + paciente.getEsforco_dor() + "',"
-                    + " '" + paciente.getQual_esforco() + "',"
-                    + " '" + paciente.getEscala_eva() + "',"
-                    + " '" + paciente.getInspecao_exame() + "',"
-                    + " '" + paciente.getTonus_exame() + "',"
-                    + " '" + paciente.getCarac_exame() + "',"
-                    + " '" + paciente.getQtd_sessoes() + "',"
-                    + " '" + paciente.getHora_sessoes() +
-                    "' where idpacientes = " + paciente.getIdpacientes() +" ";
+        String query = "update pacientes set "                
+            + " '" + paciente.getNum_sus() + "',"
+            + " '" + paciente.getNome() + "',"
+            + " '" + paciente.getTelefone() + "',"
+            + " '" + paciente.getDt_nasc() + "',"
+            + " '" + paciente.getIdade() + "',"
+            + " '" + paciente.getSexo() + "',"
+            + " '" + paciente.getRg() + "',"
+            + " '" + paciente.getDt_emissao() + "',"
+            + " '" + paciente.getOrg_emissor() + "',"
+            + " '" + paciente.getNome_pai() + "',"
+            + " '" + paciente.getNome_mae() + "',"
+            + " '" + paciente.getProfissao() + "',"
+            + " '" + paciente.getRaca_cor() + "',"
+            + " '" + paciente.getCep() + "',"
+            + " '" + paciente.getEndereco() + "',"
+            + " '" + paciente.getNumero_casa() + "',"
+            + " '" + paciente.getBairro() + "',"
+            + " '" + paciente.getUf() + "',"
+            + " '" + paciente.getCidade() + "',"
+            + " '" + paciente.getDiag_clinico() + "',"
+            + " '" + paciente.getDiag_fiso() + "',"
+            + " '" + paciente.getAnamnese() + "',"
+            + " '" + paciente.getHma() + "',"
+            + " '" + paciente.getHmp() + "',"
+            + " '" + paciente.getAnt_hereditario() + "',"
+            + " '" + paciente.getAlg_cirurgia() + "',"
+            + " '" + paciente.getQual_cirurgia() + "',"
+            + " '" + paciente.getTabagista() + "',"
+            + " '" + paciente.getNum_cigarros() + "',"
+            + " '" + paciente.getEtilista() + "',"
+            + " '" + paciente.getQtd_etilista() + "',"
+            + " '" + paciente.getSedentario() + "',"
+            + " '" + paciente.getFreq_sendentario() + "',"
+            + " '" + paciente.getMedicamentos() + "',"
+            + " '" + paciente.getQuais_medicamentos() + "',"
+            + " '" + paciente.getInicio_sintoma() + "',"
+            + " '" + paciente.getMecanismo_sintoma() + "',"
+            + " '" + paciente.getAcomp_sintoma() + "',"
+            + " '" + paciente.getQual_sintoma() + "',"
+            + " '" + paciente.getLocalizacao_dor() + "',"
+            + " '" + paciente.getCarater_dor() + "',"
+            + " '" + paciente.getIrradiacao_dor() + "',"
+            + " '" + paciente.getLocal_dor() + "',"
+            + " '" + paciente.getMovimento_dor() + "',"
+            + " '" + paciente.getQual_dor() + "',"
+            + " '" + paciente.getRepouso_dor() + "',"
+            + " '" + paciente.getClimatica_dor() + "',"
+            + " '" + paciente.getEsforco_dor() + "',"
+            + " '" + paciente.getQual_esforco() + "',"
+            + " '" + paciente.getEscala_eva() + "',"
+            + " '" + paciente.getInspecao_exame() + "',"
+            + " '" + paciente.getTonus_exame() + "',"
+            + " '" + paciente.getCarac_exame() +
+            "' where idpacientes = " + paciente.getIdpacientes() +" ";
         
         System.out.println(query);
         try {
@@ -320,7 +356,8 @@ public class PacienteDAO {
     }
     
     public Paciente getPaciente(int idpacientes) throws SQLException {
-        String query = "select * from pacientes where idpacientes='" + idpacientes + "'";
+        //String query = "select * from pacientes where idpacientes='" + idpacientes + "'";
+        String query = "SELECT * FROM clinica.pacientes pct INNER JOIN clinica.pacientesessoes AS pctss USING (idpacientes) WHERE pct.idpacientes ='" + idpacientes + "'";
         //ArrayList<Paciente> Paciente = new ArrayList<Paciente>();
         Statement stmt = connection.createStatement();
         //PreparedStatement stmt = connection.prepareStatement(query);
@@ -391,10 +428,12 @@ public class PacienteDAO {
     
     
     public ArrayList<Paciente>listaPaciente() throws SQLException{
-        String query = "select idpacientes, num_sus, nome, status, hora_sessoes, date_format(data,'%d/%m/%Y') as data "
-                + "from clinica.pacientes "
-                + "where data regexp curdate() "
-                + "order by hora_sessoes";
+        String query = "SELECT pct.idpacientes AS idpacientes, pctss.idsessoes AS idsessoes, pct.num_sus AS num_sus, pct.nome AS nome, pctss.status AS status,"
+                + "pctss.hora_sessoes AS hora_sessoes, date_format(pctss.data,'%d/%m/%Y') AS data "
+                + "FROM clinica.pacientes as pct "
+                + "INNER JOIN clinica.pacientesessoes as pctss USING (idpacientes) "
+                + "WHERE pctss.data regexp CURDATE() "
+                + "ORDER BY pctss.hora_sessoes";
         
         ArrayList<Paciente> listaPaciente = new ArrayList<Paciente>();
         Statement stmt = connection.createStatement();
@@ -402,6 +441,7 @@ public class PacienteDAO {
         while (res.next()){
             Paciente paciente = new Paciente();
             paciente.setIdpacientes(res.getInt("idpacientes"));
+            paciente.setIdsessoes(res.getInt("idsessoes"));
             paciente.setNum_sus(res.getInt("num_sus"));
             paciente.setNome(res.getString("nome"));
             paciente.setStatus(res.getString("status"));
@@ -411,7 +451,6 @@ public class PacienteDAO {
         }
         return listaPaciente;
     }
-    
     
     
     public void removePaciente(String Idpacientes) {
@@ -424,10 +463,10 @@ public class PacienteDAO {
         }
     }
 
-    public void UpdateStatus(String Idpacientes, String status) {
-        String query = "UPDATE clinica.pacientes "
+    public void UpdateStatus(String Idsessoes, String status) {
+        String query = "UPDATE clinica.pacientesessoes "
                 + "SET status='"+ status +"' "
-                + "WHERE idpacientes='"+ Idpacientes +"'";
+                + "WHERE idsessoes='"+ Idsessoes +"'";
         System.out.println(query);
         try {
             Statement stmt = connection.createStatement();

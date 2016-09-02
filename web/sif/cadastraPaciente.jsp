@@ -383,7 +383,7 @@
 							<label for="carater_dor">C&aacute;rater:</label>
 							<select class="form-control" name="carater_dor" id="carater_dor">
 								<option value="Aguda">Aguda</option>
-								<option value="Crónica">Cr&ocirc;nica</option>
+								<option value="Cronica">Cr&ocirc;nica</option>
 							</select>
 						</div>
 						<div class="form-group col-md-2">

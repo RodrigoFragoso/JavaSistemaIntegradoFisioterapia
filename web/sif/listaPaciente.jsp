@@ -185,9 +185,9 @@
 								 </div>
 								<div class="form-group col-md-3">
 								  <label for="sexo">Sexo</label>
-								  <select class="form-control" name="sexo" id="sexo" value="${paciente.sexo}">
-									<option value="Masculino">Masculino</option>
-									<option value="Feminino">Feminino</option>
+								  <select class="form-control" name="sexo" id="sexo">
+									<option value="Masculino" value="${paciente.sexo}" <c:out value="${Masculino}"/>>Masculino</option>
+									<option value="Feminino" value="${paciente.sexo}" <c:out value="${Feminino}"/>>Feminino</option>
 								  </select>
 								</div>							
 								<div class="form-group col-md-2">
@@ -216,12 +216,12 @@
 								</div>
 								<div class="form-group col-md-3">
 								  <label for="raca_cor">Ra&ccedil;a/Cor:</label>
-								  <select class="form-control" name="raca_cor" id="raca_cor" value="${paciente.raca_cor}" >
-									<option value="Branco">Branco</option>
-									<option value="Negro">Negro</option>
-									<option value="Pardo">Pardo</option>
-									<option value="Amarelo">Amarelo</option>
-									<option value="Ignorar">Ignorar</option>
+								  <select class="form-control" name="raca_cor" id="raca_cor">
+									<option value="Branco" value="${paciente.raca_cor}" <c:out value="${Branco}"/>>Branco</option>
+									<option value="Negro" value="${paciente.raca_cor}" <c:out value="${Negro}"/>>Negro</option>
+									<option value="Pardo" value="${paciente.raca_cor}" <c:out value="${Pardo}"/>>Pardo</option>
+									<option value="Amarelo" value="${paciente.raca_cor}" <c:out value="${Amarelo}"/>>Amarelo</option>
+									<option value="Ignorar" value="${paciente.raca_cor}" <c:out value="${Ignorar}"/>>Ignorar</option>
 								  </select>
 								</div>
 								<div class="form-group col-md-2">
@@ -287,9 +287,9 @@
 						</div>
 						<div class="form-group col-md-4">
 							<label for="alg_cirurgia">Algum tipo de Cirurgia?</label>
-							<select class="form-control" name="alg_cirurgia" value="${paciente.alg_cirurgia}" id="alg_cirurgia">
-								<option value="1">Sim</option>
-								<option value="0">N&atilde;o</option>
+							<select class="form-control" name="alg_cirurgia" id="alg_cirurgia">
+								<option value="1" value="${paciente.alg_cirurgia}" <c:out value="${cirurgia_sim}"/> >Sim</option>
+								<option value="0" value="${paciente.alg_cirurgia}" <c:out value="${cirurgia_nao}"/> >N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -301,9 +301,9 @@
 						<h5 class="page-header"><b><u>HABITOS DE VIDA</u></b></h5>
 						<div class="form-group col-md-3">
 							<label for="tabagista">Tabagista?</label>
-							<select class="form-control" name="tabagista" value="${paciente.tabagista}" id="tabagista">
-								<option value="1">Sim</option>
-								<option value="0">N&atilde;o</option>
+							<select class="form-control" name="tabagista" id="tabagista">
+								<option value="1" value="${paciente.tabagista}"<c:out value="${cirurgia_sim}"/> >Sim</option>
+								<option value="0" value="${paciente.tabagista}"<c:out value="${tabagista_nao}"/>>N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
@@ -312,9 +312,9 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="etilista">Etilista?</label>
-							<select class="form-control" name="etilista" value="${paciente.etilista}" id="etilista">
-								<option value="1">Sim</option>
-								<option value="0">N&atilde;o</option>
+							<select class="form-control" name="etilista" id="etilista">
+								<option value="1" value="${paciente.etilista}"<c:out value="${etilista_sim}"/> >Sim</option>
+								<option value="0" value="${paciente.etilista}"<c:out value="${etilista_nao}"/> >N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
@@ -323,9 +323,9 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="sedentario">Sedent&aacute;rio?</label>
-							<select class="form-control" name="sedentario" value="${paciente.sedentario}" id="sedentario">
-								<option value="1">Sim</option>
-								<option value="0">N&atilde;o</option>
+							<select class="form-control" name="sedentario" id="sedentario">
+								<option value="1" value="${paciente.sedentario}" value="${sedentario.etilista}" <c:out value="${sedentario_sim}"/> >Sim</option>
+								<option value="0" value="${paciente.sedentario}" value="${sedentario.etilista}" <c:out value="${sedentario_nao}"/> >N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
@@ -334,9 +334,9 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="medicamentos">Medicamentos?</label>
-							<select class="form-control" name="medicamentos" value="${paciente.medicamentos}" id="medicamentos">
-								<option value="1">Sim</option>
-								<option value="0">N&atilde;o</option>
+							<select class="form-control" name="medicamentos" id="medicamentos">
+								<option value="1" value="${paciente.medicamentos}" <c:out value="${medicamentos_sim}"/> >Sim</option>
+								<option value="0" value="${paciente.medicamentos}" <c:out value="${medicamentos_nao}"/> >N&atilde;o</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
@@ -351,8 +351,8 @@
 						<div class="form-group col-md-3">
 							<label for="inicio_sintoma">In&iacute;cio</label>
 							<select class="form-control" name="inicio_sintoma" value="${paciente.inicio_sintoma}" id="inicio_sintoma">
-								<option value="Gradual">Gradual</option>
-								<option value="Repentino">Repentino</option>
+								<option value="Gradual" value="${paciente.inicio_sintoma}" <c:out value="${gradual}"/> >Gradual</option>
+								<option value="Repentino" value="${paciente.inicio_sintoma}" <c:out value="${repentino}"/> >Repentino</option>
 							</select>
 						</div>
 						<div class="form-group col-md-3">
