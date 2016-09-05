@@ -55,14 +55,24 @@ public class FuncionarioDAO {
         return id;
     }
         
-    public void updateFuncionario(Funcionario funcionario) {
-        String query = "update funcionario set funcionario.nome='" + funcionario.getNome() + "',"
-                + " '" + funcionario.getEmail() + "',"
+    public void updateFuncionario(Funcionario funcionario){
+        //Funcionario funcionario = new Funcionario();
+        /*String query = "update funcionario set nome='" + funcionario.getNome() + "',"
+                + "'" + funcionario.getEmail() + "',"
                 + "'" + funcionario.getSenha() + "'"
                 + ", '" + funcionario.getCpf() + "',"
                 + ", '" + funcionario.getCargo() + "',"
                 + "'" + funcionario.getTelefone() + 
-                "' where cliente.idCliente = " + funcionario.getIdfuncionario() + " ";
+                "' where cliente.idCliente = " + funcionario.getIdfuncionario() + " ";*/
+        String query = "UPDATE clinica.funcionario SET "
+                + "idfuncionario = '"+ funcionario.getIdfuncionario() +"', "
+                + "nome='" + funcionario.getNome() +"', "
+                + "email='" + funcionario.getEmail() +"', "
+                + "senha=md5('" + funcionario.getSenha() + "'), "
+                + "cpf='" + funcionario.getCpf() + "', "
+                + "cargo ='" + funcionario.getCargo() +"', "
+                + "telefone='" + funcionario.getTelefone() + "' "
+                + "WHERE idfuncionario='" + funcionario.getIdfuncionario() +"'";
         
         System.out.println(query);
         try {
@@ -166,5 +176,9 @@ public class FuncionarioDAO {
 		}
 		return status;
 	}
+
+    /*public void updateFuncionario(String idfuncionario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
 
 }

@@ -34,41 +34,53 @@ public class funcionarioController extends HttpServlet {
             String Idfuncionario = request.getParameter("idfuncionario");
             funcionariodao.removeFuncionario(Idfuncionario);
         }
-        else if (action != null && action.equals("atualiza")) {
-            String Idfuncionario = request.getParameter("idfuncionario");
-            //funcionariodao.updateFuncionario(Idfuncionario);
-            //forward = list_person;
-            /*try {
+        /*else if (action != null && action.equals("atualiza")) {
+            String idfuncionario = request.getParameter("idfuncionario");
+            funcionariodao.updateFuncionario(idfuncionario);
+            forward = list_person;
+            try {
                 request.setAttribute("funcionarios", funcionariodao.getFuncionario());
             } catch (SQLException e) {
                 e.printStackTrace();
-            }*/
-        } else {
+            }
+        }*/else {
             forward = insert_or_edit;
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
     }
         
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Funcionario funcionario = new Funcionario();
+        //String forward = "/controllerListaFunc";
+        
         funcionario.setNome(request.getParameter("nome"));
         funcionario.setEmail(request.getParameter("email"));
         funcionario.setSenha(request.getParameter("senha"));
         funcionario.setCpf(request.getParameter("cpf"));
         funcionario.setCargo(request.getParameter("cargo"));
         funcionario.setTelefone(request.getParameter("telefone"));
-        String Idfuncionario = request.getParameter("idFuncionario");
+        String Idfuncionario = request.getParameter("idfuncionario");
         System.out.println("Funcionario Cadastrado !");
         System.out.println(Idfuncionario);
         
-        if (Idfuncionario == null || Idfuncionario.isEmpty()) {
+        String action = request.getParameter("action");
+        if(Idfuncionario == null || Idfuncionario.isEmpty()) {
+            //if(Idfuncionario == null || Idfuncionario.isEmpty()) {
             funcionariodao.addFuncionario(funcionario);
-        } else {
-            funcionario.setIdfuncionario(Integer.parseInt(Idfuncionario));
-            funcionariodao.updateFuncionario(funcionario);
         }
-        response.sendRedirect(request.getContextPath() + "/controllerAgenda");
+        else if (action != null && action.equals("atualiza")) {
+            funcionario.setIdfuncionario(new Integer(request.getParameter("idfuncionario")));
+            funcionariodao.updateFuncionario(funcionario);
+            try {
+                request.setAttribute("funcionarios", funcionariodao.getFuncionario());
+            } catch (SQLException e) {
+                e.printStackTrace();
+        }
+        }
+        response.sendRedirect(request.getContextPath() + "/controllerListaFunc");
     }
+
 
 }

@@ -5,6 +5,10 @@
         <group>
             <file>file:/D:/Gerencimanento_Rodrigo/__posGraduação/__PROJETO%20CAVICHIOLLO%20RAMOS%20LTDA/NetbeansProjects/clinica/src/java/dao/PacienteDAO.java</file>
             <file>file:/D:/Gerencimanento_Rodrigo/__posGraduação/__PROJETO%20CAVICHIOLLO%20RAMOS%20LTDA/NetbeansProjects/clinica/src/java/controller/pacienteController.java</file>
+            <file>file:/D:/Gerencimanento_Rodrigo/__posGraduação/__PROJETO%20CAVICHIOLLO%20RAMOS%20LTDA/NetbeansProjects/clinica/src/java/controller/controllerAgenda.java</file>
+            <file>file:/D:/Gerencimanento_Rodrigo/__posGraduação/__PROJETO%20CAVICHIOLLO%20RAMOS%20LTDA/NetbeansProjects/clinica/src/java/model/Paciente.java</file>
+            <file>file:/D:/Gerencimanento_Rodrigo/__posGraduação/__PROJETO%20CAVICHIOLLO%20RAMOS%20LTDA/NetbeansProjects/clinica/web/sif/listaPaciente.jsp</file>
+            <file>file:/D:/Gerencimanento_Rodrigo/__posGraduação/__PROJETO%20CAVICHIOLLO%20RAMOS%20LTDA/NetbeansProjects/clinica/web/sif/cadastraPaciente.jsp</file>
         </group>
     </open-files>
 </project-private>

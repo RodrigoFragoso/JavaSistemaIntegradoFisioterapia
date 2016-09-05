@@ -22,28 +22,12 @@
     <script src="/clinica/sif/js/jquery.maskedinput.js" type="text/javascript"></script>
     <script src="/clinica/sif/js/bootstrap.min.js"></script>
         
-        <script>jQuery(function($){
-            $("#cpf").mask("999.999.999-99");
-            $("#cep").mask("99999-999");
-            $("#telefone").mask("(99) 9999-9999");
-         });
-         </script>
-
-        <script>
-            $( function() {
-            $('input[name="q"]').autocomplete({
-                source: function(request, response){
-                    $.getJSON('/clinica/controllerListaFunc', { q: request.term }, function(data){ response(data); });
-                    minLength: 3
-                }
-            });
-            });
-        </script>
+    <!--. para class e # para id-->
         <script>
             jQuery(function($){
-                $("#cpf").mask("999.999.999-99");
+                $(".cpfMask").mask("999.999.999-99");
                 $("#cep").mask("99999-999");
-                $("#telefone").mask("(99) 9999-9999");
+                $(".telefoneMask").mask("(99) 9999-9999");
             });
          </script>
 </head>
@@ -126,6 +110,7 @@
                                 <th>ID</th> 
                                 <th>NOME FUNCIONÁRIO</th> 
                                 <th>E-MAIL</th>
+                                <th>SENHA</th>
                                 <th>CPF</th>
                                 <th>CARGO</th>
                                 <th>TELEFONE</th>
@@ -133,10 +118,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${funcionarios}" var="panel">    
+                        
+                        <c:forEach items="${funcionarios}" var="panel">
+                            <form method="POST" action="/clinica/funcionarioController" name="func" id="func" role="form">     
                                 <tr>
                                     <td>
                                         <c:out value="${panel.idfuncionario}"/>
+                                        <input type="hidden" value="${panel.idfuncionario}" name="idfuncionario">
+                                        <input type="hidden" name="action" value="atualiza">
                                     </td>
                                     <td>
                                         <input type="text" name="nome" id="nome" value="<c:out value="${panel.nome}"/>">
@@ -145,20 +134,25 @@
                                         <input type="text" name="email" id="email" value="<c:out value="${panel.email}"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="cpf" id="cpf" value="<c:out value="${panel.cpf}"/>">
+                                        <input type="password" name="senha" id="senha" value="<c:out value="${panel.senha}"/>">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="cpfMask" name="cpf" id="cpf" value="<c:out value="${panel.cpf}"/>">
                                     </td>
                                     <td>
                                         <input type="text" name="cargo" id="cargo" value="<c:out value="${panel.cargo}"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="telefone" id="telefone" value="<c:out value="${panel.telefone}"/>">
+                                        <input type="text" class="telefoneMask" name="telefone" id="telefone" value="<c:out value="${panel.telefone}"/>">
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" href="funcionarioController?action=atualiza&idfuncionario=<c:out value="${panel.idfuncionario}"/>">ATUALIZAR</a>
-                                        <a class="btn btn-danger" href="funcionarioController?action=delete&idfuncionario=<c:out value="${panel.idfuncionario}"/>">EXCLUIR</a>
+                                        <button type="submit" class="btn btn-primary btn-xs">ATUALIZAR</button>
+                                        <a class="btn btn-danger  btn-xs" href="funcionarioController?action=delete&idfuncionario=<c:out value="${panel.idfuncionario}"/>">EXCLUIR</a>
                                     </td>
                                 </tr>
+                            </form>    
                         </c:forEach>
+                        </tbody>    
                 </div>
             </div>
         </div>

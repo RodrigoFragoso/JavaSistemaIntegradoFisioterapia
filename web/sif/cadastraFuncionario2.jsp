@@ -1,20 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-         pageEncoding="UTF-8"%>
+<%-- 
+    Document   : cadastraFuncionario2
+    Created on : 05/09/2016, 17:24:27
+    Author     : Rodrigo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html lang="pt-br">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>S.I.F - Sistema Integrado de Fisioterapia</title>
-    <link href="/clinica/sif/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/clinica/sif/css/sb-admin.css" rel="stylesheet">
-    <link href="/clinica/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
-    <link href="/clinica/sif/css/plugins/morris.css" rel="stylesheet">
-    <script src="/clinica/sif/js/jquery.js"></script>
-    <script src="/clinica/sif/js/jquery.maskedinput.js" type="text/javascript"></script>
-    <!--script src="/clinica/sif/js/bootstrap.min.js"></script-->
-	<script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>S.I.F - Sistema Integrado de Fisioterapia</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="/clinica/sif/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/clinica/sif/css/sb-admin.css" rel="stylesheet">
+        <link href="/clinica/sif/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
+        <link href="/clinica/sif/css/plugins/morris.css" rel="stylesheet">
+        <!--script src="/clinica/sif/js/bootstrap.min.js"></script>
+        <script src="/clinica/sif/js/plugins/morris/raphael.min.js"></script>
+        <script src="/clinica/sif/js/plugins/morris/morris.min.js"></script>
+        <script src="/clinica/sif/js/plugins/morris/morris-data.js"></script-->
+        <!--script src="jquery.js" type="text/javascript"></script-->
+        <script src="/clinica/sif/js/jquery.js"></script>
+        <script src="/clinica/sif/js/jquery.maskedinput.js" type="text/javascript"></script>
+        <script src="/clinica/sif/js/bootstrap.min.js"></script>
+        <script>
 		$('.collapse').collapse();
 	</script>
         <script>
@@ -42,8 +56,7 @@
             $("#telefone").mask("(99) 9999-9999");
          });
          </script>
-</head>
-
+    </head>
     <body>
         <div id="wrapper">    
                     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -150,5 +163,5 @@
             </div>
             </div>
         </div>
-    </body>
+    </body>  
 </html>

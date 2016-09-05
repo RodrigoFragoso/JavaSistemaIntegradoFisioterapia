@@ -46,7 +46,7 @@ public class Paciente {
     private String qual_sintoma; 
     private String localizacao_dor; 
     private String carater_dor; 
-    private String irradiacao_dor; 
+    private int irradiacao_dor; 
     private String local_dor; 
     private int movimento_dor; 
     private String qual_dor; 
@@ -406,11 +406,11 @@ public class Paciente {
         this.carater_dor = carater_dor;
     }
 
-    public String getIrradiacao_dor() {
+    public int getIrradiacao_dor() {
         return irradiacao_dor;
     }
 
-    public void setIrradiacao_dor(String irradiacao_dor) {
+    public void setIrradiacao_dor(int irradiacao_dor) {
         this.irradiacao_dor = irradiacao_dor;
     }
 

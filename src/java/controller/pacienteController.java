@@ -82,6 +82,34 @@ public class pacienteController extends HttpServlet {
                 request.setAttribute("gradual", ("Gradual".equals(paciente.getInicio_sintoma())) ? "selected" : "");
                 request.setAttribute("repentino", ("Repentino".equals(paciente.getInicio_sintoma())) ? "selected" : "");
                 
+                /*acomp_sintoma*/
+                request.setAttribute("acomp_sintoma_sim",(paciente.getAcomp_sintoma() == 1) ? "selected" : "");
+                request.setAttribute("acomp_sintoma_nao",(paciente.getAcomp_sintoma() == 0) ? "selected" : "");
+                
+                /*carater_dor*/
+                request.setAttribute("aguda", ("Aguda".equals(paciente.getCarater_dor())) ? "selected" : "");
+                request.setAttribute("cronica", ("Cronica".equals(paciente.getCarater_dor())) ? "selected" : "");
+                
+                /*irradiacao_dor*/
+                request.setAttribute("irradiacao_dor_sim",(paciente.getIrradiacao_dor() == 1) ? "selected" : "");
+                request.setAttribute("irradiacao_dor_nao",(paciente.getIrradiacao_dor() == 0) ? "selected" : "");
+                
+                /*movimento_dor*/
+                request.setAttribute("movimento_dor_sim",(paciente.getMovimento_dor() == 1) ? "selected" : "");
+                request.setAttribute("movimento_dor_nao",(paciente.getMovimento_dor() == 0) ? "selected" : "");
+                
+                /*repouso_dor*/
+                request.setAttribute("repouso_dor_sim",(paciente.getRepouso_dor() == 1) ? "selected" : "");
+                request.setAttribute("repouso_dor_nao",(paciente.getRepouso_dor() == 0) ? "selected" : "");
+                
+                /*climatica_dor*/
+                request.setAttribute("climatica_dor_sim",(paciente.getClimatica_dor() == 1) ? "selected" : "");
+                request.setAttribute("climatica_dor_nao",(paciente.getClimatica_dor() == 0) ? "selected" : "");
+                
+                /*esforco_dor*/
+                request.setAttribute("esforco_dor_sim",(paciente.getEsforco_dor() == 1) ? "selected" : "");
+                request.setAttribute("esforco_dor_nao",(paciente.getEsforco_dor() == 0) ? "selected" : "");
+                
                 /*VIEW RADIO BUTTON ESCALA EVA -- VERIFICAR SE ESTA CHECADO*/
                 request.setAttribute("radio_resultado_1", (paciente.getEscala_eva() == 1) ? "checked" : "");
                 request.setAttribute("radio_resultado_2", (paciente.getEscala_eva() == 2) ? "checked" : "");
@@ -167,7 +195,7 @@ public class pacienteController extends HttpServlet {
             paciente.setQual_sintoma(request.getParameter("qual_sintoma"));
             paciente.setLocalizacao_dor(request.getParameter("localizacao_dor"));
             paciente.setCarater_dor(request.getParameter("carater_dor"));
-            paciente.setIrradiacao_dor(request.getParameter("irradiacao_dor"));
+            paciente.setIrradiacao_dor(Integer.parseInt(request.getParameter("irradiacao_dor")));
             paciente.setLocal_dor(request.getParameter("local_dor"));
             paciente.setMovimento_dor(Integer.parseInt(request.getParameter("movimento_dor")));
             paciente.setQual_dor(request.getParameter("qual_dor"));

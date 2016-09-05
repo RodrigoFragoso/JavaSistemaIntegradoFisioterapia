@@ -228,7 +228,7 @@ public class PacienteDAO {
             stmt.setString(39, paciente.getQual_sintoma());
             stmt.setString(40, paciente.getLocalizacao_dor());
             stmt.setString(41, paciente.getCarater_dor());
-            stmt.setString(42, paciente.getIrradiacao_dor());
+            stmt.setInt(42, paciente.getIrradiacao_dor());
             stmt.setString(43, paciente.getLocal_dor());
             stmt.setInt(44, paciente.getMovimento_dor());
             stmt.setString(45, paciente.getQual_dor());
@@ -406,7 +406,7 @@ public class PacienteDAO {
                 paciente.setQual_sintoma(res.getString("qual_sintoma"));
                 paciente.setLocalizacao_dor(res.getString("localizacao_dor"));
                 paciente.setCarater_dor(res.getString("carater_dor"));
-                paciente.setIrradiacao_dor(res.getString("irradiacao_dor"));
+                paciente.setIrradiacao_dor(res.getInt("irradiacao_dor"));
                 paciente.setLocal_dor(res.getString("local_dor"));
                 paciente.setMovimento_dor(res.getInt("movimento_dor"));
                 paciente.setQual_dor(res.getString("qual_dor"));
