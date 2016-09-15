@@ -13,16 +13,17 @@ import model.Funcionario;
  * @author rodrigo
  */
 public class validacao {
-    public static void ValidaSessao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+    public static void ValidaSessao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Funcionario funcionario = (Funcionario)session.getAttribute("dadosFuncionario");
-            if(funcionario == null){
-                RequestDispatcher view = request.getRequestDispatcher("/LoginCli");
-                view.forward(request, response);
-            }
+        Funcionario funcionario = (Funcionario) session.getAttribute("dadosFuncionario");
+        if (funcionario == null) {
+            RequestDispatcher view = request.getRequestDispatcher("/LoginCli");
+            view.forward(request, response);
+        }
     }
     //validacao.ValidaSessao(request, response);
-        
+
     /*public static void ValidaSessaoEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         Funcionario funcionario = (Funcionario)session.getAttribute("dadosFuncionarioooo");

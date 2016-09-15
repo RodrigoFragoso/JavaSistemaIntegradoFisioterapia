@@ -103,6 +103,7 @@ public class PacienteDAO {
     
     public void InserirLoop(Paciente paciente, int diaSemana, int quantidade){
                 Calendar date1 = Calendar.getInstance();
+                date1.add(Calendar.DATE, 1);
                 String dias = "segunda-feira";
                 if (diaSemana==Calendar.WEDNESDAY){
                     dias = "quarta-feira";
@@ -290,7 +291,8 @@ public class PacienteDAO {
     }
     
     public void updatePaciente(Paciente paciente) {
-        String query = "update pacientes set "                
+        String query = "UPDATE clinica.pacientes SET num_sus = '" + paciente.getNum_sus() + "', nome = '" + paciente.getNome() + "', telefone = '" + paciente.getTelefone() + "', dt_nasc = '" + paciente.getDt_nasc() + "', idade = '" + paciente.getIdade() + "', sexo = '" + paciente.getSexo() + "', rg = '" + paciente.getRg() + "', dt_emissao = '" + paciente.getDt_emissao() + "', org_emissor = '" + paciente.getOrg_emissor() + "', nome_pai = '" + paciente.getNome_pai() + "', nome_mae = '" + paciente.getNome_mae() + "', profissao = '" + paciente.getProfissao() + "', raca_cor = '" + paciente.getRaca_cor() + "', cep = '" + paciente.getCep() + "', endereco = '" + paciente.getEndereco() + "', numero_casa = '" + paciente.getNumero_casa() + "', bairro = '" + paciente.getBairro() + "', uf = '" + paciente.getUf() + "', cidade = '" + paciente.getCidade() + "', diag_clinico = '" + paciente.getDiag_clinico() + "', diag_fiso = '" + paciente.getDiag_fiso() + "', anamnese = '" + paciente.getAnamnese() + "', hma = '" + paciente.getHma() + "', hmp = '" + paciente.getHmp() + "', ant_hereditario = '" + paciente.getAnt_hereditario() + "', alg_cirurgia = '" + paciente.getAlg_cirurgia() + "', qual_cirurgia = '" + paciente.getQual_cirurgia() + "', tabagista = '" + paciente.getTabagista() + "', num_cigarros = '" + paciente.getNum_cigarros() + "', etilista = '" + paciente.getEtilista() + "', qtd_etilista = '" + paciente.getQtd_etilista() + "', sedentario = '" + paciente.getSedentario() + "', freq_sendentario = '" + paciente.getFreq_sendentario() + "', medicamentos = '" + paciente.getMedicamentos() + "', quais_medicamentos = '" + paciente.getQuais_medicamentos() + "', inicio_sintoma = '" + paciente.getInicio_sintoma() + "', mecanismo_sintoma = '" + paciente.getMecanismo_sintoma() + "', acomp_sintoma = '" + paciente.getAcomp_sintoma() + "', qual_sintoma = '" + paciente.getQual_sintoma() + "', localizacao_dor = '" + paciente.getLocalizacao_dor() + "', carater_dor = '" + paciente.getCarater_dor() + "', irradiacao_dor = '" + paciente.getIrradiacao_dor() + "', local_dor = '" + paciente.getLocal_dor() + "', movimento_dor = '" + paciente.getMovimento_dor() + "', qual_dor = '" + paciente.getQual_dor() + "', repouso_dor = '" + paciente.getRepouso_dor() + "', climatica_dor = '" + paciente.getClimatica_dor() + "', esforco_dor = '" + paciente.getEsforco_dor() + "', qual_esforco = '" + paciente.getQual_esforco() + "', escala_eva = '" + paciente.getEscala_eva() + "', inspecao_exame = '" + paciente.getInspecao_exame() + "', tonus_exame = '" + paciente.getTonus_exame() + "', carac_exame = '" + paciente.getCarac_exame() + "', qtd_sessoes = '" + paciente.getQtd_sessoes() + "' WHERE idpacientes = '" + paciente.getIdpacientes() + "'"; 
+        /*String query = "update pacientes set "                
             + " '" + paciente.getNum_sus() + "',"
             + " '" + paciente.getNome() + "',"
             + " '" + paciente.getTelefone() + "',"
@@ -344,7 +346,7 @@ public class PacienteDAO {
             + " '" + paciente.getInspecao_exame() + "',"
             + " '" + paciente.getTonus_exame() + "',"
             + " '" + paciente.getCarac_exame() +
-            "' where idpacientes = " + paciente.getIdpacientes() +" ";
+            "' where idpacientes = " + paciente.getIdpacientes() +" ";*/
         
         System.out.println(query);
         try {
@@ -365,6 +367,7 @@ public class PacienteDAO {
         ResultSet res = stmt.executeQuery(query);
         if (res.next()) {
             Paciente paciente = new Paciente();
+                paciente.setIdpacientes(res.getInt("idpacientes"));
                 paciente.setNum_sus(res.getInt("num_sus"));
                 paciente.setNome(res.getString("nome"));
                 paciente.setTelefone(res.getString("telefone")); 

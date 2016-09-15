@@ -10,6 +10,7 @@ package model;
  * @author Rodrigo
  */
 public class PacienteStatus {
+
     private int compareceu;
     private int ncompareceu;
 
@@ -28,5 +29,5 @@ public class PacienteStatus {
     public void setNcompareceu(int ncompareceu) {
         this.ncompareceu = ncompareceu;
     }
-    
+
 }

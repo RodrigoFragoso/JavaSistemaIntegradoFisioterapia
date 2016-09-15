@@ -1,75 +1,76 @@
 package model;
+
 /**
  *
  * @author Rodrigo
  */
 public class Paciente {
-    public int idpacientes; 
-    private int num_sus; 
-    private String nome; 
-    private String telefone; 
-    private String dt_nasc; 
-    private int idade; 
-    private String sexo; 
-    private int rg; 
+
+    public int idpacientes;
+    private int num_sus;
+    private String nome;
+    private String telefone;
+    private String dt_nasc;
+    private int idade;
+    private String sexo;
+    private int rg;
     private String dt_emissao;
-    private String org_emissor; 
-    private String nome_pai; 
-    private String nome_mae; 
-    private String profissao; 
-    private String raca_cor; 
-    private String cep; 
-    private String endereco; 
-    private int numero_casa; 
-    private String bairro; 
-    private String uf; 
-    private String cidade; 
-    private String diag_clinico; 
-    private String diag_fiso; 
-    private String anamnese; 
-    private String hma; 
-    private String hmp; 
-    private String ant_hereditario; 
-    private int alg_cirurgia; 
-    private String qual_cirurgia; 
-    private int tabagista; 
-    private String num_cigarros; 
-    private int etilista; 
-    private String qtd_etilista; 
-    private int sedentario; 
-    private String freq_sendentario; 
-    private int medicamentos; 
-    private String quais_medicamentos; 
-    private String inicio_sintoma; 
-    private String mecanismo_sintoma; 
-    private int acomp_sintoma; 
-    private String qual_sintoma; 
-    private String localizacao_dor; 
-    private String carater_dor; 
-    private int irradiacao_dor; 
-    private String local_dor; 
-    private int movimento_dor; 
-    private String qual_dor; 
-    private int repouso_dor; 
-    private int climatica_dor; 
-    private int esforco_dor; 
-    private String qual_esforco; 
-    private int escala_eva; 
-    private String inspecao_exame; 
-    private String tonus_exame; 
-    private String carac_exame; 
+    private String org_emissor;
+    private String nome_pai;
+    private String nome_mae;
+    private String profissao;
+    private String raca_cor;
+    private String cep;
+    private String endereco;
+    private int numero_casa;
+    private String bairro;
+    private String uf;
+    private String cidade;
+    private String diag_clinico;
+    private String diag_fiso;
+    private String anamnese;
+    private String hma;
+    private String hmp;
+    private String ant_hereditario;
+    private int alg_cirurgia;
+    private String qual_cirurgia;
+    private int tabagista;
+    private String num_cigarros;
+    private int etilista;
+    private String qtd_etilista;
+    private int sedentario;
+    private String freq_sendentario;
+    private int medicamentos;
+    private String quais_medicamentos;
+    private String inicio_sintoma;
+    private String mecanismo_sintoma;
+    private int acomp_sintoma;
+    private String qual_sintoma;
+    private String localizacao_dor;
+    private String carater_dor;
+    private int irradiacao_dor;
+    private String local_dor;
+    private int movimento_dor;
+    private String qual_dor;
+    private int repouso_dor;
+    private int climatica_dor;
+    private int esforco_dor;
+    private String qual_esforco;
+    private int escala_eva;
+    private String inspecao_exame;
+    private String tonus_exame;
+    private String carac_exame;
     private int qtd_sessoes;
-    private String segunda; 
-    private String quarta; 
-    private String sexta; 
+    private String segunda;
+    private String quarta;
+    private String sexta;
     private String hora_sessoes;
     private String data;
     private String status;
     private String[] inspecao;
     private String[] tonus;
     private int idsessoes;
-    
-    
+
     public int getIdpacientes() {
         return idpacientes;
     }
@@ -133,8 +134,8 @@ public class Paciente {
     public void setRg(int rg) {
         this.rg = rg;
     }
-    
-        public String getDt_emissao() {
+
+    public String getDt_emissao() {
         return dt_emissao;
     }
 
@@ -503,7 +504,7 @@ public class Paciente {
     public void setCarac_exame(String carac_exame) {
         this.carac_exame = carac_exame;
     }
-    
+
     public int getQtd_sessoes() {
         return qtd_sessoes;
     }
@@ -583,6 +584,5 @@ public class Paciente {
     public void setIdsessoes(int idsessoes) {
         this.idsessoes = idsessoes;
     }
-      
-       
+
 }

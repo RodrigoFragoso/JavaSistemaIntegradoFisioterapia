@@ -5,9 +5,9 @@ package model;
  * @author rodrigo
  */
 public class Funcionario {
-        
+
     public int idfuncionario;
-    private String nome ="";
+    private String nome = "";
     private String email;
     private String senha;
     private String cpf;
@@ -71,5 +71,5 @@ public class Funcionario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }    
+    }
 }

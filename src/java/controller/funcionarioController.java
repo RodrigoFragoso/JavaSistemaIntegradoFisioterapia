@@ -1,4 +1,5 @@
 package controller;
+
 import dao.FuncionarioDAO;
 import dao.validacao;
 import java.io.IOException;
@@ -10,51 +11,43 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Funcionario;
-
 
 @WebServlet(name = "funcionarioController", urlPatterns = {"/funcionarioController"})
 public class funcionarioController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     private static String insert_or_edit = "/listafuncionario.jsp";
     private static String list_person = "/listafuncionario.jsp";
     private FuncionarioDAO funcionariodao;
-    
-    public funcionarioController(){
+
+    public funcionarioController() {
         super();
         funcionariodao = new FuncionarioDAO();
     }
-        
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         validacao.ValidaSessao(request, response);
         String forward = "/controllerListaFunc";
-        
+
         String action = request.getParameter("action");
-        if(action != null && action.equals("delete")){ 
+        if (action != null && action.equals("delete")) {
             String Idfuncionario = request.getParameter("idfuncionario");
             funcionariodao.removeFuncionario(Idfuncionario);
-        }
-        /*else if (action != null && action.equals("atualiza")) {
-            String idfuncionario = request.getParameter("idfuncionario");
-            funcionariodao.updateFuncionario(idfuncionario);
-            forward = list_person;
-            try {
-                request.setAttribute("funcionarios", funcionariodao.getFuncionario());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }*/else {
-            forward = insert_or_edit;
+        } else {
+            //forward = insert_or_edit;
         }
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
     }
-        
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Funcionario funcionario = new Funcionario();
+         HttpSession session = request.getSession();
         //String forward = "/controllerListaFunc";
-        
+
         funcionario.setNome(request.getParameter("nome"));
         funcionario.setEmail(request.getParameter("email"));
         funcionario.setSenha(request.getParameter("senha"));
@@ -64,23 +57,24 @@ public class funcionarioController extends HttpServlet {
         String Idfuncionario = request.getParameter("idfuncionario");
         System.out.println("Funcionario Cadastrado !");
         System.out.println(Idfuncionario);
-        
+
         String action = request.getParameter("action");
-        if(Idfuncionario == null || Idfuncionario.isEmpty()) {
+        if (Idfuncionario == null || Idfuncionario.isEmpty()) {
             //if(Idfuncionario == null || Idfuncionario.isEmpty()) {
             funcionariodao.addFuncionario(funcionario);
-        }
-        else if (action != null && action.equals("atualiza")) {
+            session.setAttribute("ok", "FuncionarioCadastrado"); //este parametro esta enviando para o arquivo cadastrafuncionaio.jsp
+            
+        } else if (action != null && action.equals("atualiza")) {
             funcionario.setIdfuncionario(new Integer(request.getParameter("idfuncionario")));
             funcionariodao.updateFuncionario(funcionario);
             try {
                 request.setAttribute("funcionarios", funcionariodao.getFuncionario());
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
         }
-        }
-        response.sendRedirect(request.getContextPath() + "/controllerListaFunc");
+        response.sendRedirect("controllerListaFunc");
+        /*RequestDispatcher rd = request.getRequestDispatcher(request.getContextPath() + "/controllerListaFunc");
+        rd.forward(request, response);*/
     }
-
-
 }

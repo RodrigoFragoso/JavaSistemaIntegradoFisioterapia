@@ -5,10 +5,11 @@ package model;
  * @author Rodrigo
  */
 public class Sessoes {
+
     private int idsessoes;
     private String dias_sessoes;
     private String hora_sessoes;
-    private String data; 
+    private String data;
     private String status;
 
     public int getIdsessoes() {
@@ -50,6 +51,5 @@ public class Sessoes {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
 }

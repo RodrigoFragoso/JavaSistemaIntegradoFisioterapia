@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Paciente;
 
-@WebServlet(name = "pacienteController", urlPatterns = {"/pacienteController"})
-public class pacienteController extends HttpServlet {
+@WebServlet(name = "pacienteUpdateController", urlPatterns = {"/pacienteUpdateController"})
+public class pacienteUpdateController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String insert_or_edit = "/Paciente.jsp";
     private static String list_person = "/sif/listaPaciente.jsp";
     private PacienteDAO pacientedao;
 
-    public pacienteController() {
+    public pacienteUpdateController() {
         super();
         pacientedao = new PacienteDAO();
     }
@@ -222,34 +222,41 @@ public class pacienteController extends HttpServlet {
         paciente.setCarac_exame(request.getParameter("carac_exame"));
 
         /*SESSÕES*/
-        paciente.setQtd_sessoes(Integer.parseInt(request.getParameter("qtd_sessoes")));
-        if (request.getParameter("segunda") == null) {
-            paciente.setSegunda("0");
-        } else {
-            paciente.setSegunda(request.getParameter("segunda"));
-        }
-        if (request.getParameter("quarta") == null) {
-            paciente.setQuarta("0");
-        } else {
-            paciente.setQuarta(request.getParameter("quarta"));
-        }
-        if (request.getParameter("sexta") == null) {
-            paciente.setSexta("0");
-        } else {
-            paciente.setSexta(request.getParameter("sexta"));
-        }
-        paciente.setHora_sessoes(request.getParameter("hora_sessoes"));
+ /*paciente.setQtd_sessoes(Integer.parseInt(request.getParameter("qtd_sessoes")));
+            if(request.getParameter("segunda")==null){
+                paciente.setSegunda("0");
+            }else{
+                paciente.setSegunda(request.getParameter("segunda"));
+            }
+            if(request.getParameter("quarta")==null){
+                paciente.setQuarta("0");
+            }else{
+                paciente.setQuarta(request.getParameter("quarta"));
+            }
+            if(request.getParameter("sexta")==null){
+                paciente.setSexta("0");
+            }else{
+                paciente.setSexta(request.getParameter("sexta"));
+            }
+            paciente.setHora_sessoes(request.getParameter("hora_sessoes"));*/
         String idpacientes = request.getParameter("idpacientes");
 
         String action = request.getParameter("action");
-        if (idpacientes == null || idpacientes.isEmpty()) {
+        if (action != null && action.equals("atualiza")) {
+            paciente.setIdpacientes(new Integer(request.getParameter("idpacientes")));
+            pacientedao.updatePaciente(paciente);
+            System.out.print("PACIENTE ATUALIZADO COM SUCESSO!");
+        }
+
+        /*if (idpacientes == null || idpacientes.isEmpty()) {
             pacientedao.addPaciente(paciente);
             System.out.println("PACIENTE CADASTRADO!");
         } /*else {
             paciente.setIdpacientes(Integer.parseInt(idpacientes));
             pacientedao.updatePaciente(paciente);
             System.out.println("PACIENTE ATUALIZADO! ID DO PACIENTE: " + idpacientes);
-        }*/ else if (action != null && action.equals("atualiza")) {
+        }*/
+ /*else if (action != null && action.equals("atualiza")) {
             paciente.setIdpacientes(new Integer(request.getParameter("idpacientes")));
             pacientedao.updatePaciente(paciente);
             System.out.print("PACIENTE ATUALIZADO COM SUCESSO!");
@@ -258,7 +265,7 @@ public class pacienteController extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }*/
-        }
+ /*}*/
         response.sendRedirect(request.getContextPath() + "/controllerAgenda");
     }
 }
