@@ -27,6 +27,8 @@
         <script>jQuery(function ($) {
                 $("#dataInicial").mask("99/99/9999");
                 $("#dataFinal").mask("99/99/9999");
+                $("#dataInicialFec").mask("99/99/9999");
+                $("#dataFinalFec").mask("99/99/9999");
             });
         </script>
     </head>
@@ -90,11 +92,11 @@
                         <h1 class="page-header">Relat&oacute;rios</h1>
                     </div>
                 </div>
-                <!--painel do primeiro relatorio-->
+                <!--RELATORIOS DE PACIENTES-->
                 <form method="GET" action='../ExportCSV' name="export" id="export" role="form" accept-charset="UTF-8">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">RELAT&Oacute;RIO DE PACIENTES</h3>
+                            <h3 class="panel-title"><b>RELAT&Oacute;RIO DE PACIENTES</b></h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -103,7 +105,7 @@
                                     <input type="radio" name="status" id="Compareceu" value="Compareceu">Pacientes Atendidos
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" id="NCompareceu" value="nCompareceu">Pacientes N&atilde;o Atendidos
+                                    <input type="radio" name="status" id="NCompareceu" value="Nao Compareceu">Pacientes N&atilde;o Atendidos
                                 </label>
                             </div>
                             <div class="form-group col-md-3">
@@ -121,6 +123,35 @@
                         </div>
                     </div>
                 </form>
+
+
+
+
+                <!-- RELATORIO DE FECHAMENTO SEM GAMBETA-->
+                <form method="GET" action='../ExportFechamento' name="export" id="export" role="form" accept-charset="UTF-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><b>RELAT&Oacute;RIO DE FECHAMENTO</b></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group col-md-3">
+                                <label for="inicio">DE: </label>
+                                <input type="text" class="form-control" name="dataInicialFec" id="dataInicialFec" OnKeyUp="mascaraData(this);">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="final">AT&Eacute;: </label>
+                                <input type="text" class="form-control" name="dataFinalFec" id="dataFinalFec" OnKeyUp="mascaraData(this);">
+                            </div>
+                            <div class="form-group col-md-8">
+                                <button type="submit" class="btn btn-SUCCESS">EXPORTAR PARA EXCEL<i class="glyphicon glyphicon-cloud-download"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
                 <!--painel do segundo relatorio-->
                 <div class="panel panel-primary">
                     <div class="panel-heading">

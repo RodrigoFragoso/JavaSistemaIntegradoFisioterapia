@@ -30,11 +30,13 @@ public class funcionarioController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         validacao.ValidaSessao(request, response);
         String forward = "/controllerListaFunc";
+        HttpSession session = request.getSession();
 
         String action = request.getParameter("action");
         if (action != null && action.equals("delete")) {
             String Idfuncionario = request.getParameter("idfuncionario");
             funcionariodao.removeFuncionario(Idfuncionario);
+            session.setAttribute("ok", "FuncionarioDelete");
         } else {
             //forward = insert_or_edit;
         }
@@ -67,6 +69,7 @@ public class funcionarioController extends HttpServlet {
         } else if (action != null && action.equals("atualiza")) {
             funcionario.setIdfuncionario(new Integer(request.getParameter("idfuncionario")));
             funcionariodao.updateFuncionario(funcionario);
+            session.setAttribute("ok", "FuncionarioAtualizado"); //este parametro esta enviando para o arquivo controllerListaFunc.jsp
             try {
                 request.setAttribute("funcionarios", funcionariodao.getFuncionario());
             } catch (SQLException e) {

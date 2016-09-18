@@ -77,6 +77,26 @@
                     <li class="active"><i class="fa fa-table"></i> Agenda</a></li>
                 </ol>
 
+                <%
+                    if (request.getSession().getAttribute("ok") == "PacienteCadastrado") {
+                        request.getSession().removeAttribute("ok");
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <p align="center" style="color:red"><b>PACIENTE AGENDADO/CADASTRADO COM SUCESSO!</b></p>
+                </div>
+                <%}
+                %>
+                
+                <%
+                    if (request.getSession().getAttribute("ok") == "PacienteAtualizado") {
+                        request.getSession().removeAttribute("ok");
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <p align="center" style="color:red"><b>PACIENTE ATUALIZADO COM SUCESSO!</b></p>
+                </div>
+                <%}
+                %>
+
                 <div class="col-sm-4">
                     <div class="panel panel-success">
                         <div class="panel-heading">
@@ -163,9 +183,9 @@
                                                 <c:out value="${panel.status}"/>
                                             </td>
                                             <td>
-                                                <a class="btn btn-success" href="controllerAgenda?action=comp&idsessoes=<c:out value="${panel.idsessoes}"/>">Compareceu</a>
-                                                <a class="btn btn-danger" href="controllerAgenda?action=ncomp&idsessoes=<c:out value="${panel.idsessoes}"/>">Falta</a>
-                                                <a class="btn btn-info" href="/clinica/pacienteController?action=paciente&idpacientes=<c:out value="${panel.idpacientes}"/>">Editar</a>
+                                                <a class="btn btn-success" href="controllerAgenda?action=comp&idsessoes=<c:out value="${panel.idsessoes}"/>"><b>COMPARECEU</b></a>
+                                                <a class="btn btn-danger" href="controllerAgenda?action=ncomp&idsessoes=<c:out value="${panel.idsessoes}"/>"><b>FALTA</b></a>
+                                                <a class="btn btn-warning" href="/clinica/pacienteController?action=paciente&idpacientes=<c:out value="${panel.idpacientes}"/>"><b>+ INFO. DO PACIENTE</b></a>
                                             </td>
                                         </tr>
                                     </c:if>

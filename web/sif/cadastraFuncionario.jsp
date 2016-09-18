@@ -101,9 +101,9 @@
                     <li><a href="#">In&iacute;cio</a></li>
                     <li class="active"><i class="fa fa-fw fa-edit"></i> Cadastrar Funcion&aacute;rios</a></li>
                 </ol>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-info" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    Cadastre as informações do funcion&aacute;rio e n&atilde;o esque&ccedil;a de preencher a <b><u>senha de acesso</u></b>!
+                    Cadastre as informações do funcionário e <b><u>não esqueça</u></b> de preencher a <b><u>senha de acesso</u></b>!
                 </div>
                 <!-- Page Heading -->
                 <div class="row">

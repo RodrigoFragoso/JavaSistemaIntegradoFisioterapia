@@ -84,18 +84,40 @@
                 <ol class="breadcrumb">
                     <li><a href="#">In&iacute;cio</a></li>
                     <li class="active"><i class="glyphicon glyphicon-list-alt"></i> Funci&oacute;narios Cadastrados</a></li>
-                <%
-                if (request.getSession().getAttribute("ok") == "FuncionarioCadastrado") {
-                    request.getSession().removeAttribute("ok");
-                %>
-                    <p align="center" style="color:red"><b>FUNCIONÁRIO CADASTRADO COM SUCESSO!</b></p>
-                <%}
-                %>
                 </ol>
                 <div class="alert alert-info" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     Atualize <b><u> o funcion&aacute;rio que deseja </u></b> e clique em <b>ATUALIZAR!</b>
-                </div>        
+                </div>
+                <%
+                    if (request.getSession().getAttribute("ok") == "FuncionarioCadastrado") {
+                        request.getSession().removeAttribute("ok");
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <p align="center" style="color:red"><b>FUNCIONÁRIO CADASTRADO COM SUCESSO!</b></p>
+                </div>
+                <%}
+                %>
+                
+                <%
+                    if (request.getSession().getAttribute("ok") == "FuncionarioAtualizado") {
+                        request.getSession().removeAttribute("ok");
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <p align="center" style="color:red"><b>FUNCIONÁRIO ATUALIZADO COM SUCESSO!</b></p>
+                </div>
+                <%}
+                %>
+                
+                <%
+                    if (request.getSession().getAttribute("ok") == "FuncionarioDelete") {
+                        request.getSession().removeAttribute("ok");
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <p align="center" style="color:red"><b>FUNCIONÁRIO APAGADO COM SUCESSO!</b></p>
+                </div>
+                <%}
+                %>
 
                 <div class="panel panel-primary" id="panel">
                     <div class="panel-heading">

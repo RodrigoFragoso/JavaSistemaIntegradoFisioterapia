@@ -135,12 +135,12 @@
                 </ol>
                 <div class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    Cadastre as informa&ccedil;&otilde;es do pacientes e <b><u>agende o dia e hora</u></b> para as sess&otilde;es!
+                    Após de modificar os dados do paciente, clique em <b><u>Atualizar Paciente</u></b>!
                 </div>
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Paciente: ${paciente.nome} - Nº SUS: ${paciente.num_sus}</h1>
+                        <h1 class="page-header">PACIENTE: ${paciente.nome} - Nº SUS: ${paciente.num_sus}</h1>
                         <!--h1 class="page-header">ID: ${paciente.idpacientes}</h1-->
                     </div>
                 </div>
@@ -556,7 +556,7 @@
                                     <!--ANVAÃAR 2 >> PARA MARCAR HORARIOS-->
                                     <div>
                                         <button type="button" id="voltar1" class="btn btn-primary "><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
-                                        <button type="submit" class="btn btn-info">SALVAR E ATUALIZAR PACIENTE <i class="glyphicon glyphicon-refresh"></i></button>
+                                        <button type="submit" class="btn btn-info">ATUALIZAR PACIENTE <i class="glyphicon glyphicon-refresh"></i></button>
                                         <button type="submit" class="btn btn-success">2º VIA FICHA DE PRESENÇA <i class="glyphicon glyphicon-floppy-disk"></i></button>
                                     </div>
 

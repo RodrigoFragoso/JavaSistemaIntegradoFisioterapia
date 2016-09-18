@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Paciente;
 
 @WebServlet(name = "pacienteUpdateController", urlPatterns = {"/pacienteUpdateController"})
@@ -154,6 +155,8 @@ public class pacienteUpdateController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Paciente paciente = new Paciente();
+        HttpSession session = request.getSession();
+        
         paciente.setNum_sus(Integer.parseInt(request.getParameter("num_sus")));
         paciente.setNome(request.getParameter("nome"));
         paciente.setTelefone(request.getParameter("telefone"));
@@ -245,7 +248,8 @@ public class pacienteUpdateController extends HttpServlet {
         if (action != null && action.equals("atualiza")) {
             paciente.setIdpacientes(new Integer(request.getParameter("idpacientes")));
             pacientedao.updatePaciente(paciente);
-            System.out.print("PACIENTE ATUALIZADO COM SUCESSO!");
+            session.setAttribute("ok", "PacienteAtualizado"); //este parametro esta enviando para o arquivo agenda.jsp
+            //System.out.print("PACIENTE ATUALIZADO COM SUCESSO!");
         }
 
         /*if (idpacientes == null || idpacientes.isEmpty()) {

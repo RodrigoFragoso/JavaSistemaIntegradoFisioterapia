@@ -141,7 +141,7 @@
                     <li><a href="#">In&iacute;cio</a></li>
                     <li class="active"><i class="fa fa-fw fa-edit"></i> Cadastrar Pacientes</a></li>
                 </ol>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-info" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     Cadastre as informa&ccedil;&otilde;es do pacientes e <b><u>agende o dia e hora</u></b> para as sess&otilde;es!
                 </div>
@@ -610,9 +610,9 @@
                                 <!-- BOTÃO CADASTRAR E GERAR FICHA DE PRESENÃA-->
                                 <div>
                                     <button type="button" onClick="Cancelar()" class="btn btn-DANGER">CANCELAR</button>
-                                    <button type="button" id="voltar2" class="btn btn-info"><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
+                                    <button type="button" id="voltar2" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>VOLTAR</button>
                                     <!--a class="btn btn-success" href="3.1_TelaFichaPresenca.png">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></a-->
-                                    <button type="submit" class="btn btn-success">GERAR FICHA DE PRESEN&Ccedil;A <i class="glyphicon glyphicon-floppy-disk"></i></button>
+                                    <button type="submit" class="btn btn-success"><b>SALVAR E GERAR FICHA DE PRESENÇA </b> <i class="glyphicon glyphicon-floppy-disk"></i></button>
                                 </div>
                             </div>
                         </div>

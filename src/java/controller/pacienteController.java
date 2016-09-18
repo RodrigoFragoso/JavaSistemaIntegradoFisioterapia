@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Paciente;
 
 @WebServlet(name = "pacienteController", urlPatterns = {"/pacienteController"})
@@ -154,6 +155,8 @@ public class pacienteController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Paciente paciente = new Paciente();
+        HttpSession session = request.getSession();
+        
         paciente.setNum_sus(Integer.parseInt(request.getParameter("num_sus")));
         paciente.setNome(request.getParameter("nome"));
         paciente.setTelefone(request.getParameter("telefone"));
@@ -244,7 +247,8 @@ public class pacienteController extends HttpServlet {
         String action = request.getParameter("action");
         if (idpacientes == null || idpacientes.isEmpty()) {
             pacientedao.addPaciente(paciente);
-            System.out.println("PACIENTE CADASTRADO!");
+            session.setAttribute("ok", "PacienteCadastrado"); //este parametro esta enviando para o arquivo agenda.jsp
+            //System.out.println("PACIENTE CADASTRADO!");
         } /*else {
             paciente.setIdpacientes(Integer.parseInt(idpacientes));
             pacientedao.updatePaciente(paciente);
@@ -252,13 +256,14 @@ public class pacienteController extends HttpServlet {
         }*/ else if (action != null && action.equals("atualiza")) {
             paciente.setIdpacientes(new Integer(request.getParameter("idpacientes")));
             pacientedao.updatePaciente(paciente);
-            System.out.print("PACIENTE ATUALIZADO COM SUCESSO!");
+            //System.out.print("PACIENTE ATUALIZADO COM SUCESSO!");
             /*try {
                 request.setAttribute("paciente", pacientedao.getPaciente());
             } catch (SQLException e) {
                 e.printStackTrace();
             }*/
         }
-        response.sendRedirect(request.getContextPath() + "/controllerAgenda");
+        response.sendRedirect("controllerAgenda");
+        //response.sendRedirect(request.getContextPath() + "/controllerAgenda");
     }
 }

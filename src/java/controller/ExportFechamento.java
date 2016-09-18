@@ -2,7 +2,6 @@ package controller;
 
 import dao.RelatoriosDAO;
 import dao.validacao;
-import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -13,20 +12,22 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.RelatorioPacientes;
+import model.RelatorioFechamento;
 
 /**
  *
  * @author Rodrigo
  */
-@WebServlet(name = "ExportCSV", urlPatterns = {"/ExportCSV"})
-public class ExportCSV extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
+@WebServlet(name = "ExportFechamento", urlPatterns = {"/ExportFechamento"})
+public class ExportFechamento extends HttpServlet {
 
     private RelatoriosDAO relatoriosDAO;
 
-    public ExportCSV() {
+    public ExportFechamento() {
         super();
         relatoriosDAO = new RelatoriosDAO();
     }
@@ -47,79 +48,74 @@ public class ExportCSV extends javax.servlet.http.HttpServlet implements javax.s
         PrintWriter out = response.getWriter();
         response.setDateHeader("Expires", 0);
 
-        String status = request.getParameter("status");
-        //DATA INICIAL
-        String dataInicial = request.getParameter("dataInicial");
+        //String status = request.getParameter("status");
+        //DATA INICIAL FECHAMENTO
+        String dataInicialFec = request.getParameter("dataInicialFec");
         SimpleDateFormat dtinicial = new java.text.SimpleDateFormat("dd/MM/yyyy");
         try {
             Date date;
-            date = (Date) dtinicial.parse(dataInicial);
+            date = (Date) dtinicial.parse(dataInicialFec);
             SimpleDateFormat formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
             String DisplayDateInicial = formatDate.format(date);
             //System.out.println(DisplayDateInicial);
-            dataInicial = DisplayDateInicial;
-        } catch (ParseException ex) {
-            Logger.getLogger(ExportCSV.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //DATA FINAL
-        String dataFinal = request.getParameter("dataFinal");
-        SimpleDateFormat dtfinal = new java.text.SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date date;
-            date = (Date) dtfinal.parse(dataFinal);
-            SimpleDateFormat formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
-            String DisplayDateFinal = formatDate.format(date);
-            //System.out.println(DisplayDateFinal);
-            dataFinal = DisplayDateFinal;
+            dataInicialFec = DisplayDateInicial;
         } catch (ParseException ex) {
             Logger.getLogger(ExportCSV.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        ArrayList<RelatorioPacientes> ListaRelatorioPacientes = new ArrayList<RelatorioPacientes>();
+        //DATA FINAL FECHAMENTO
+        String dataFinalFec = request.getParameter("dataFinalFec");
+        SimpleDateFormat dtfinal = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date date;
+            date = (Date) dtfinal.parse(dataFinalFec);
+            SimpleDateFormat formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
+            String DisplayDateFinal = formatDate.format(date);
+            //System.out.println(DisplayDateFinal);
+            dataFinalFec = DisplayDateFinal;
+        } catch (ParseException ex) {
+            Logger.getLogger(ExportCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        ArrayList<RelatorioFechamento> ListaRelatorioFechamento = new ArrayList<RelatorioFechamento>();
         try {
             //ArrayList<RelatorioPacientes> ListaRelatorioPacientes = relatoriosDAO.getRelatorioPacientes(idpacientes, status, dataInicial, dataFinal);
-            ListaRelatorioPacientes = relatoriosDAO.getRelatorioPacientes(status, dataInicial, dataFinal);
+            ListaRelatorioFechamento = relatoriosDAO.getRelatorioFechamento(dataInicialFec, dataFinalFec);
         } catch (SQLException ex) {
             Logger.getLogger(ExportCSV.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         StringBuffer fileNameFormat = new StringBuffer();
-        fileNameFormat.append("attachment; filename= RelatorioDePacientes");
+        fileNameFormat.append("attachment; filename= RelatorioDeFechamento");
         fileNameFormat.append(".csv");
         response.setHeader("Content-disposition", fileNameFormat.toString());
 
         StringBuffer totalString = new StringBuffer();
         StringBuffer header = new StringBuffer();
-        header.append("PACIENTES " + "\n");
+        header.append(";");
+        header.append("CÓD. DATASUL: 03020500-19 | 03020600-14 | 03020500-27 - 3 GUIAS - 30 SESSÕES" + "\n");
         header.append("ID_PACIENTE");
         header.append(";");
         header.append("PACIENTES");
         header.append(";");
-        header.append("DATA");
-        header.append(";");
-        header.append("STATUS");
+        header.append("QTD_SESSOES");
         header.append(";");
         StringBuffer body = new StringBuffer();
 
-        //este for chama a model RelatorioPacientes e monta os dados dentro do ListaRelatorioPacientes
-        for (RelatorioPacientes r : ListaRelatorioPacientes) {
+        //este for chama a model RelatorioFechamento e monta os dados dentro do ListaRelatorioFechamento
+        for (RelatorioFechamento r : ListaRelatorioFechamento) {
             body.append(r.getIdpacientes());
             body.append(";");
-            body.append(r.getNome());
+            body.append(r.getPaciente());
             body.append(";");
-            body.append(r.getData());
-            body.append(";");
-            body.append(r.getStatus());
+            body.append(r.getSessoes());
             body.append(";");
             body.append("\n");
         }
-
         totalString.append(header.toString());
         totalString.append("\n");
         totalString.append(body.toString());
         out.write(totalString.toString());
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
